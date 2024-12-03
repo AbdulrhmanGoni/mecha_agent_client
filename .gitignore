@@ -8,9 +8,7 @@ node_modules
 /.svelte-kit
 /build
 
-# OS
-.DS_Store
-Thumbs.db
+bun.lockb
 
 # Env
 .env
