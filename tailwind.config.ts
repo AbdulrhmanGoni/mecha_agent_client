@@ -14,11 +14,15 @@ export default {
 			'../**/*.{html,js,svelte,ts}'
 		)
 	],
-
 	theme: {
-		extend: {}
+		extend: {},
+		container: {
+			center: true,
+			screens: {
+				"2xl": "1400px",
+			},
+		},
 	},
-
 	plugins: [
 		typography,
 		forms,

@@ -1,3 +1,11 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+.gradient-heading {
+	@apply bg-clip-text text-transparent box-decoration-clone;
+
+	@apply bg-gradient-to-br;
+
+	@apply from-primary-500 via-tertiary-500 to-secondary-500;
+}
