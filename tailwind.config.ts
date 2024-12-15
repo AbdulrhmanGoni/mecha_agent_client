@@ -21,7 +21,7 @@ export default {
 			center: true,
 			screens: {
 				"2xl": "1400px",
-				"xl": "900px",
+				"xl": "1000px",
 			},
 		},
 	},
