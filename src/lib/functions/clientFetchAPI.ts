@@ -8,7 +8,7 @@ type ClientFetchAPIOption = {
 export default async function clientFetchAPI<DataT>(options: ClientFetchAPIOption) {
     const response = await fetch(options.path, {
         method: options.method || "GET",
-        body: options.body && JSON.stringify(options.body)
+        body: options.body && options.body instanceof FormData ? options.body : JSON.stringify(options.body)
     })
 
     const res = await response.json();
