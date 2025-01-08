@@ -7,10 +7,19 @@
 		errorMessage: string;
 		title: string;
 		iconName: string;
-		retryFn: () => void;
+		retryFn?: () => void;
+		hideBackButton?: boolean;
+		hideRetryButton?: boolean;
 	};
 
-	const { errorMessage, title, iconName, retryFn }: ErrorPageProps = $props();
+	const {
+		errorMessage,
+		title,
+		iconName,
+		retryFn,
+		hideBackButton,
+		hideRetryButton
+	}: ErrorPageProps = $props();
 </script>
 
 <div class="flex flex-1 flex-col items-center justify-center gap-3 p-4">
@@ -24,10 +33,14 @@
 		{/if}
 	</p>
 	<div class="flex gap-2">
-		<Button size="sm" onclick={retryFn} class="variant-filled-primary">
-			<Icon icon="stash:arrow-retry" width="25" height="25" />
-			Retry
-		</Button>
-		<BackButton size="sm" />
+		{#if !hideRetryButton}
+			<Button size="sm" onclick={retryFn} class="variant-filled-primary">
+				<Icon icon="stash:arrow-retry" width="25" height="25" />
+				Retry
+			</Button>
+		{/if}
+		{#if !hideBackButton}
+			<BackButton size="sm" />
+		{/if}
 	</div>
 </div>
