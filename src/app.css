@@ -17,3 +17,7 @@ body {
 	background-repeat: no-repeat;
 	background-size: cover;
 }
+
+textarea {
+	field-sizing: content
+}
