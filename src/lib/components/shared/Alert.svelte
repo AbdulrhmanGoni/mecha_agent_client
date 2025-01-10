@@ -12,15 +12,15 @@
 		title: string;
 		message: string;
 		variant: keyof typeof alertVariants;
-		avtionIconName?: string;
-		avtionFunction?: (
+		actionIconName?: string;
+		actionFunction?: (
 			e: MouseEvent & {
 				currentTarget: EventTarget & HTMLButtonElement;
 			}
 		) => void;
 	};
 
-	const { variant, title, message, avtionIconName, avtionFunction }: AlertProps = $props();
+	const { variant, title, message, actionIconName, actionFunction }: AlertProps = $props();
 </script>
 
 <div class={`alert ${alertVariants[variant]} p-3" flex-row items-center gap-3`}>
@@ -29,9 +29,9 @@
 		<h4 class="h4">{title}</h4>
 		<p class="!mt-0">{message}</p>
 	</div>
-	{#if avtionIconName}
-		<button onclick={avtionFunction}>
-			<Icon icon={avtionIconName} width="27" height="27" />
+	{#if actionIconName}
+		<button onclick={actionFunction}>
+			<Icon icon={actionIconName} width="27" height="27" />
 		</button>
 	{/if}
 </div>
