@@ -1,12 +1,17 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
 	import Button from './Button.svelte';
+	import { goto } from '$app/navigation';
+
+	const { target, ...props }: CustomButtonProps & { target?: string } = $props();
 
 	const back = () => {
-		window.history.back();
+		if (target) {
+			goto(target);
+		} else {
+			window.history.back();
+		}
 	};
-
-	const props: CustomButtonProps = $props();
 </script>
 
 <Button {...props} onclick={back} class="variant-filled-primary {props.class}">
