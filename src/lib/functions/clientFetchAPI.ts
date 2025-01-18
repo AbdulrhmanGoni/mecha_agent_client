@@ -1,6 +1,6 @@
 type ClientFetchAPIOption = {
     path: string;
-    method?: string;
+    method?: HTTPRequestMethod;
     body?: any;
     successStatusCode?: number
 }

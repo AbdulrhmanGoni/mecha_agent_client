@@ -3,7 +3,7 @@ import type { Cookies } from "@sveltejs/kit";
 
 type ServerFetchAPIOptions = {
     path: string;
-    method?: string;
+    method?: HTTPRequestMethod
     body?: RequestInit["body"];
     headers?: Record<string, string>;
     cookies: Cookies;
