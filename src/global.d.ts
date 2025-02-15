@@ -1,3 +1,8 @@
+type User = {
+    name: string;
+    email: string;
+    avatar?: string;
+}
 
 type HTTPRequestMethod = "GET" | "POST" | "DELETE" | "PATCH";
 
