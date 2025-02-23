@@ -4,7 +4,7 @@
 	import BackButton from './BackButton.svelte';
 
 	type ErrorPageProps = {
-		errorMessage: string;
+		errorMessage?: string;
 		title: string;
 		iconName: string;
 		retryFn?: () => void;
