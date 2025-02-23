@@ -3,6 +3,7 @@ import serverFetchAPI from "$lib/functions/serverFetchAPI";
 import verifyJWT from "$lib/functions/verifyJWT";
 import { CredentialsSignin, SvelteKitAuth } from "@auth/sveltekit";
 import Credentials from "@auth/sveltekit/providers/credentials";
+import GitHub from "@auth/sveltekit/providers/github";
 
 class SigninError extends CredentialsSignin {
     code = ""
@@ -42,11 +43,38 @@ export const { handle, signIn, signOut } = SvelteKitAuth({
                 }
             },
         }),
+        GitHub,
     ],
     callbacks: {
         async signIn({ user, account }) {
             if (account?.provider === 'credentials') {
                 return true
+            }
+
+            let newUser = {
+                username: user.name,
+                email: user.email,
+                avatar: user.image,
+                password: account?.providerAccountId,
+                signingMethod: account?.provider,
+            }
+
+            try {
+                const response = await serverFetchAPI({
+                    path: `/api/auth/sign-up?signing-existing-user=yes`,
+                    method: "POST",
+                    body: JSON.stringify(newUser),
+                    headers: { "Content-Type": "application/json" },
+                })
+
+                if (response.status === 200) {
+                    return true
+                }
+
+                const responseBody = await response.json();
+                throw new SigninError(responseBody.error);
+            } catch (error) {
+                throw new SigninError("Unexpected server error !");
             }
         },
         jwt({ token, user }) {
