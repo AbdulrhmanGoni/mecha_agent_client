@@ -15,7 +15,7 @@ export default async function serverFetchAPI(options: ServerFetchAPIOptions) {
     const headers = new Headers(options.headers)
 
     if (jwt) {
-        headers.set("Authorization", jwt)
+        headers.set("Authorization", `Bearer ${jwt}`)
     }
 
     return await fetch(`${SERVER_HOST}${options.path}`, {
