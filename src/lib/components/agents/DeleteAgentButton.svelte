@@ -1,0 +1,64 @@
+<script lang="ts">
+	import deleteAgentRequest from '$lib/functions/deleteAgentRequest';
+	import { getModalStore, getToastStore } from '@skeletonlabs/skeleton';
+	import { agentsState } from '../../../stores/agents.svelte';
+	import Button from '../shared/Button.svelte';
+	import Icon from '@iconify/svelte';
+
+	const { agent, onSuccess }: { agent: Agent; onSuccess?: () => void } = $props();
+
+	const toastStore = getToastStore();
+	const modalStore = getModalStore();
+
+	let isDeleting = $state(false);
+
+	function deleteAgent(e: ButtonEvent) {
+		e.stopPropagation();
+		modalStore.trigger({
+			type: 'confirm',
+			title: 'Delete Agent',
+			body: `
+				Are you sure you want to delete the agent? <br />
+				If you continued, You cannot undone this action!.
+			`,
+			response(confirmed) {
+				if (confirmed) {
+					isDeleting = true;
+					agentsState.actionInProgress = true;
+					deleteAgentRequest(agent.id)
+						.then(() => {
+							agentsState.agents = agentsState.agents.filter((a) => a.id !== agent.id);
+							toastStore.trigger({
+								message: 'The Agent was deleted successfully',
+								background: 'variant-filled-success'
+							});
+							onSuccess?.();
+						})
+						.catch(() => {
+							toastStore.trigger({
+								message: 'The Agent has failed to be deleted',
+								background: 'variant-filled-error'
+							});
+						})
+						.finally(() => {
+							isDeleting = false;
+							agentsState.actionInProgress = false;
+						});
+				}
+			}
+		});
+	}
+</script>
+
+<Button
+	disabled={isDeleting || agentsState.actionInProgress}
+	size="sm"
+	class={`variant-filled-error ${isDeleting ? 'cursor-progress' : agentsState.actionInProgress ? 'cursor-not-allowed' : ''}`}
+	onclick={deleteAgent}
+>
+	{#if isDeleting}
+		<Icon icon="svg-spinners:6-dots-scale" width="22" height="22" />
+	{:else}
+		<Icon icon="material-symbols:delete-outline-rounded" width="22" height="22" />
+	{/if}
+</Button>
