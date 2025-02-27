@@ -4,13 +4,20 @@
 	import EditAgentButton from './EditAgentButton.svelte';
 	import ChatWithAgentButton from '../chat/ChatWithAgentButton.svelte';
 	import { goto } from '$app/navigation';
+	import { agentPageState } from '../../../stores/agentPage.svelte';
 	import AgentFallbackAvatar from './AgentFallbackAvatar.svelte';
 	import mediaURL from '$lib/functions/mediaURL';
 
 	const { agent }: { agent: Agent } = $props();
 </script>
 
+<!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_static_element_interactions -->
 <div
+	onclick={(e) => {
+		e.stopPropagation();
+		agentPageState.agent = agent;
+		goto('/agents/' + agent.id);
+	}}
 	class="card card-hover flex w-full cursor-pointer flex-col overflow-hidden rounded-lg shadow-xl sm:mx-auto sm:max-w-lg"
 >
 	<div class="variant-gradient-secondary-tertiary h-32 w-full bg-gradient-to-br"></div>
