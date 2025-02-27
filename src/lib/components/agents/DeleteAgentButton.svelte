@@ -2,6 +2,7 @@
 	import deleteAgentRequest from '$lib/functions/deleteAgentRequest';
 	import { getModalStore, getToastStore } from '@skeletonlabs/skeleton';
 	import { agentsState } from '../../../stores/agents.svelte';
+	import { agentPageState } from '../../../stores/agentPage.svelte';
 	import Button from '../shared/Button.svelte';
 	import Icon from '@iconify/svelte';
 
@@ -28,6 +29,9 @@
 					deleteAgentRequest(agent.id)
 						.then(() => {
 							agentsState.agents = agentsState.agents.filter((a) => a.id !== agent.id);
+							if (agentPageState.agent?.id === agent.id) {
+								agentPageState.agent = undefined;
+							}
 							toastStore.trigger({
 								message: 'The Agent was deleted successfully',
 								background: 'variant-filled-success'
