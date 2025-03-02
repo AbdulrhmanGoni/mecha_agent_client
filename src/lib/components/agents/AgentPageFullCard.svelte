@@ -7,6 +7,7 @@
 	import ChatWithAgentButton from '../chat/ChatWithAgentButton.svelte';
 	import mediaURL from '$lib/functions/mediaURL';
 	import { goto } from '$app/navigation';
+	import AgentDatasetCard from '../dataset/AgentDatasetCard.svelte';
 
 	const { agent }: { agent: Agent } = $props();
 </script>
@@ -62,5 +63,9 @@
 			description="The syntax used to format the response of the agent"
 			valueStyle={agent.responseSyntax ? 'variant-soft-primary w-fit rounded-md py-1.5 px-3' : ''}
 		/>
+	</div>
+	<hr class="!border-t-1 my-3" />
+	<div>
+		<AgentDatasetCard {agent} />
 	</div>
 </div>
