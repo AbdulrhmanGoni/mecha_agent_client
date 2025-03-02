@@ -1,5 +1,6 @@
 <script>
 	import { AppBar, LightSwitch } from '@skeletonlabs/skeleton';
+	import NavigationMenu from './NavigationMenu.svelte';
 </script>
 
 <AppBar background="none" padding="px-0 py-4">
@@ -8,5 +9,6 @@
 	</svelte:fragment>
 	<svelte:fragment slot="trail">
 		<LightSwitch rounded="rounded-full" />
+		<NavigationMenu />
 	</svelte:fragment>
 </AppBar>
