@@ -4,6 +4,7 @@
 	import ApiKeysLoadingState from './ApiKeysLoadingState.svelte';
 	import NoApiKeysMessage from './NoApiKeysMessage.svelte';
 	import ApiKeysTableRow from './ApiKeysTableRow.svelte';
+	import ApiKeysTableFooter from './ApiKeysTableFooter.svelte';
 </script>
 
 <div class="table-container mb-7">
@@ -40,5 +41,6 @@
 				</tr>
 			{/if}
 		</tbody>
+		<ApiKeysTableFooter />
 	</table>
 </div>
