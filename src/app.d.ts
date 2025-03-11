@@ -5,9 +5,9 @@ declare global {
 		// interface Error {}
 		// interface Locals {}
 		// interface PageData {}
-		// interface PageState {}
+		interface PageState { isNewChat?: boolean }
 		// interface Platform {}
 	}
 }
 
-export {};
+export { };
