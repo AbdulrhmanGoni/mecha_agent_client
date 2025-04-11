@@ -5,7 +5,7 @@ import { CredentialsSignin, SvelteKitAuth } from "@auth/sveltekit";
 import Credentials from "@auth/sveltekit/providers/credentials";
 import GitHub from "@auth/sveltekit/providers/github";
 
-class SigninError extends CredentialsSignin {
+class SigningError extends CredentialsSignin {
     code = ""
     constructor(message: string) {
         super()
@@ -23,24 +23,20 @@ export const { handle, signIn, signOut } = SvelteKitAuth({
                 email: { label: "Email", type: "email" },
             },
             async authorize(c) {
-                try {
-                    const response = await serverFetchAPI({
-                        path: `/api/auth/sign-${c.username !== "null" ? "up" : "in"}`,
-                        method: "POST",
-                        body: JSON.stringify({ ...c, signingMethod: "credentials" }),
-                        headers: { "Content-Type": "application/json" },
-                    })
+                const response = await serverFetchAPI({
+                    path: `/api/auth/sign-${c.username !== "null" ? "up" : "in"}`,
+                    method: "POST",
+                    body: JSON.stringify({ ...c, signingMethod: "credentials" }),
+                    headers: { "Content-Type": "application/json" },
+                })
 
-                    const responseBody = await response.json();
+                const responseBody = await response.json();
 
-                    if (response.status === 200) {
-                        return responseBody.result;
-                    }
-
-                    throw new SigninError(responseBody.error);
-                } catch (error) {
-                    throw new SigninError("Unexpected server error !");
+                if (response.status === 200) {
+                    return responseBody.result;
                 }
+
+                throw new SigningError(responseBody.error || "Unexpected Error");
             },
         }),
         GitHub,
@@ -59,23 +55,20 @@ export const { handle, signIn, signOut } = SvelteKitAuth({
                 signingMethod: account?.provider,
             }
 
-            try {
-                const response = await serverFetchAPI({
-                    path: `/api/auth/sign-up?signing-existing-user=yes`,
-                    method: "POST",
-                    body: JSON.stringify(newUser),
-                    headers: { "Content-Type": "application/json" },
-                })
+            const response = await serverFetchAPI({
+                path: `/api/auth/sign-up?signing-existing-user=yes`,
+                method: "POST",
+                body: JSON.stringify(newUser),
+                headers: { "Content-Type": "application/json" },
+            })
 
-                if (response.status === 200) {
-                    return true
-                }
-
-                const responseBody = await response.json();
-                throw new SigninError(responseBody.error);
-            } catch (error) {
-                throw new SigninError("Unexpected server error !");
+            if (response.status === 200) {
+                return true
             }
+
+            const responseBody = await response.json();
+            throw new SigningError(responseBody.error || "Unexpected Error");
+
         },
         jwt({ token, user }) {
             const { picture, ...restToken } = token;
