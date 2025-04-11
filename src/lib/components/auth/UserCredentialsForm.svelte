@@ -25,9 +25,9 @@
 	<h1 class="text-2xl font-bold">
 		Sign
 		{#if isNewUser}
-			in
-		{:else}
 			up
+		{:else}
+			in
 		{/if}
 		<span class="text-primary-500">Mecha Agent</span>
 	</h1>
