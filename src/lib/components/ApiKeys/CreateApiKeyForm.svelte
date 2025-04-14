@@ -1,17 +1,17 @@
 <script lang="ts">
 	import createApiKeyRequest from '$lib/functions/createApiKeyRequest';
 	import Icon from '@iconify/svelte';
-	import {
-		apiKeysState,
-		createApiKeysState,
-		apiKeymaxAgeOptions
-	} from '../../../stores/apiKeys.svelte';
+	import { apiKeysState, apiKeymaxAgeOptions } from '../../../stores/apiKeys.svelte';
 	import Button from '../shared/Button.svelte';
 	import { permissions } from '$lib/constants/auth';
+	import { getToastStore } from '@skeletonlabs/skeleton';
 
+	let isLoading = $state(false);
 	let KEY_NAME_MIN_LENGTH = 3;
-	let keyNameError = '';
-	let permissionsError = '';
+	let keyNameError = $state('');
+	let permissionsError = $state('');
+
+	const toast = getToastStore();
 
 	async function createApiKeyHandler(event: SubmitFormEvent) {
 		event.preventDefault();
@@ -37,7 +37,7 @@
 		}
 
 		if (!keyNameError && !permissionsError) {
-			createApiKeysState.isLoading = true;
+			isLoading = true;
 			await createApiKeyRequest({
 				keyName,
 				permissions: selectedPermissions,
@@ -48,10 +48,13 @@
 					apiKeysState.apiKeys.push(newKey);
 				})
 				.catch((error) => {
-					createApiKeysState.error = error.message;
+					toast.trigger({
+						message: error,
+						background: 'variant-filled-error'
+					});
 				})
 				.finally(() => {
-					createApiKeysState.isLoading = false;
+					isLoading = false;
 				});
 		}
 	}
@@ -64,7 +67,7 @@
 			<label class="label sm:col-span-2">
 				<span>API Key Name</span>
 				<input
-					disabled={createApiKeysState.isLoading}
+					disabled={isLoading}
 					type="text"
 					name="keyName"
 					placeholder="Key Name"
@@ -77,7 +80,7 @@
 			<label class="label sm:col-span-1">
 				<span>API Key Max Age</span>
 				<select
-					disabled={createApiKeysState.isLoading}
+					disabled={isLoading}
 					class="select variant-form-material"
 					name="maxAge"
 					placeholder="Key Name"
@@ -93,12 +96,7 @@
 			<div class="space-y-2">
 				{#each permissions as permission}
 					<label class="flex w-fit items-center space-x-2">
-						<input
-							disabled={createApiKeysState.isLoading}
-							name={permission}
-							class="checkbox"
-							type="checkbox"
-						/>
+						<input disabled={isLoading} name={permission} class="checkbox" type="checkbox" />
 						<p>{permission}</p>
 					</label>
 				{/each}
@@ -108,7 +106,7 @@
 			{/if}
 		</div>
 		<Button size="sm" class="variant-filled-primary" type="submit">
-			{#if createApiKeysState.isLoading}
+			{#if isLoading}
 				<Icon icon="svg-spinners:6-dots-rotate" width="21" height="21" />
 			{:else}
 				<Icon icon="material-symbols:add" width="21" height="21" />

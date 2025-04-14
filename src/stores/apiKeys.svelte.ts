@@ -25,11 +25,6 @@ const apiKeysState = $state<ApiKeysState>({
     removeApiKeys,
 });
 
-const createApiKeysState = $state<CreateApiKeysState>({
-    isLoading: false,
-    error: ""
-});
-
 const apiKeymaxAgeOptions = [7, 15, 30, 60, 90];
 
-export { apiKeysState, createApiKeysState, apiKeymaxAgeOptions }
+export { apiKeysState, apiKeymaxAgeOptions }

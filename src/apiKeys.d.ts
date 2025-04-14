@@ -22,11 +22,6 @@ type ApiKeysState = {
     removeApiKeys: (keyIds: string[]) => void;
 }
 
-type CreateApiKeysState = {
-    isLoading: boolean;
-    error: string;
-}
-
 type CreateApiKeyInput = Pick<ApiKeyRow, "keyName" | "permissions"> & {
     maxAgeInDays: number;
 };
