@@ -6,6 +6,7 @@
 	import mediaURL from '$lib/functions/mediaURL';
 	import AgentFallbackAvatar from './AgentFallbackAvatar.svelte';
 	import BackButton from '../shared/BackButton.svelte';
+	import Alert from '../shared/Alert.svelte';
 	import { page } from '$app/stores';
 	import agentAvatarFieldHandler from './agentAvatarFieldHandler.svelte';
 
@@ -25,6 +26,8 @@
 		agentAvatarFieldHandler(!!props.defaults?.avatar);
 
 	const responseSyntaxOptions = ['markdown'];
+
+	const error = $derived($page.url.searchParams.get('error'));
 </script>
 
 <div class="space-y-8">
@@ -178,5 +181,8 @@
 			{/if}
 			{props.submitButtonText}
 		</Button>
+		{#if error}
+			<Alert title="Create Agent Error" message={error} variant="error" />
+		{/if}
 	</form>
 </div>
