@@ -6,6 +6,8 @@
 	import mediaURL from '$lib/functions/mediaURL';
 	import AgentFallbackAvatar from './AgentFallbackAvatar.svelte';
 	import BackButton from '../shared/BackButton.svelte';
+	import { page } from '$app/stores';
+	import agentAvatarFieldHandler from './agentAvatarFieldHandler.svelte';
 
 	type AgentFormProps = {
 		formTitle: string;
@@ -19,56 +21,13 @@
 
 	const props: AgentFormProps = $props();
 
-	let avatarRemoved: boolean = $state(false);
-	let selectedAvatar: string | ArrayBuffer | null = $state(null);
-	const allowedImagesTypes = ['svg+xml', 'png', 'jpeg', 'webp'];
-
-	function onAvatarSelect(e: Event & { currentTarget: EventTarget & HTMLInputElement }) {
-		const avatarFile = e.currentTarget.files?.[0];
-		if (avatarFile) {
-			if (allowedImagesTypes.some((type) => avatarFile?.type.slice(6) === type)) {
-				const reader = new FileReader();
-				reader.readAsDataURL(avatarFile);
-				reader.onload = () => {
-					selectedAvatar = reader.result;
-				};
-				undoAvatarRemoving();
-			} else {
-				const agentAvatar = document.getElementById('agent-avatar') as HTMLInputElement;
-				agentAvatar!.value = '';
-				selectedAvatar = null;
-			}
-		} else {
-			selectedAvatar = null;
-		}
-	}
-
-	function setRemoveAvatarState(state: boolean) {
-		avatarRemoved = state;
-		const avatarRemovedCheckbox = document.getElementById(
-			'avatar-removed'
-		) as HTMLInputElement | null;
-		if (avatarRemovedCheckbox) avatarRemovedCheckbox.checked = state;
-	}
-
-	function onAvatarRemoving() {
-		const agentAvatar = document.getElementById('agent-avatar') as HTMLInputElement;
-		agentAvatar!.value = '';
-		selectedAvatar = null;
-
-		if (props.defaults?.avatar) {
-			setRemoveAvatarState(true);
-		}
-	}
-
-	function undoAvatarRemoving() {
-		setRemoveAvatarState(false);
-	}
+	const { selectedAvatar, onAvatarSelect, onAvatarRemoving, undoAvatarRemoving, avatarRemoved } =
+		agentAvatarFieldHandler(!!props.defaults?.avatar);
 
 	const responseSyntaxOptions = ['markdown'];
 </script>
 
-<div class="space-y-4">
+<div class="space-y-8">
 	<div class="flex items-center justify-between gap-2">
 		<h3 class="h2 flex flex-1 items-center font-bold">{props.formTitle}</h3>
 		<BackButton />
@@ -98,7 +57,7 @@
 				<label class="label flex-1">
 					<span>
 						Avarat
-						<strong class="text-sm text-red-600">{avatarRemoved ? '(Removed)' : ''}</strong>
+						<strong class="text-sm text-red-600">{$avatarRemoved ? '(Removed)' : ''}</strong>
 					</span>
 					<input
 						id="agent-avatar"
@@ -109,17 +68,17 @@
 						disabled={props.isLoading}
 					/>
 				</label>
-				<div class="flex items-end {avatarRemoved || props.isLoading ? 'opacity-50' : ''}">
+				<div class="flex items-end {$avatarRemoved || props.isLoading ? 'opacity-50' : ''}">
 					<Avatar
-						src={selectedAvatar
-							? selectedAvatar.toString()
+						src={$selectedAvatar
+							? ($selectedAvatar as string).toString()
 							: mediaURL.agentsAvatars(props.defaults?.avatar)}
 						width="size-12 sm:size-16"
 					>
 						<AgentFallbackAvatar />
 					</Avatar>
 				</div>
-				{#if props.defaults?.avatar || selectedAvatar}
+				{#if props.defaults?.avatar || $selectedAvatar}
 					<input
 						class="hidden"
 						id="avatar-removed"
@@ -129,17 +88,17 @@
 					/>
 					<button
 						type="button"
-						onclick={avatarRemoved ? undoAvatarRemoving : onAvatarRemoving}
+						onclick={$avatarRemoved ? undoAvatarRemoving : onAvatarRemoving}
 						class="absolute right-0 top-0 {props.isLoading
 							? 'cursor-not-allowed'
 							: 'cursor-pointer'} {props.isLoading
 							? 'opacity-50'
-							: avatarRemoved
+							: $avatarRemoved
 								? '!opacity-100'
 								: ''}"
 						disabled={props.isLoading}
 					>
-						{#if avatarRemoved}
+						{#if $avatarRemoved}
 							<Icon icon="majesticons:undo" width="24" height="24" />
 						{:else}
 							<Icon icon="material-symbols:close-rounded" width="24" height="24" />
