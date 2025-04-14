@@ -5,7 +5,7 @@
 	import ApiKeyIdCell from './ApiKeyIdCell.svelte';
 
 	const { apiKeyRow }: { apiKeyRow: ApiKeyRow } = $props();
-	let isSelected = $state(apiKeysState.selectedKeys.includes(apiKeyRow.id));
+	let isSelected = $derived(apiKeysState.selectedKeys.includes(apiKeyRow.id));
 </script>
 
 <tr
@@ -18,7 +18,6 @@
 		} else {
 			apiKeysState.selectedKeys.push(apiKeyRow.id);
 		}
-		isSelected = !isSelected;
 	}}
 >
 	<td><ApiKeyIdCell {apiKeyRow} /></td>
