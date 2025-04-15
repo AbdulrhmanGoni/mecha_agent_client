@@ -13,7 +13,7 @@
 	class={`variant-filled-primary ${agentsState.actionInProgress ? 'cursor-not-allowed' : ''}`}
 	onclick={(e) => {
 		e.stopPropagation();
-		goto(`/agents/${agent.id}/chat`);
+		goto(`/agents/${agent.id}/chat/new`);
 	}}
 >
 	<Icon icon="ri:chat-ai-line" width="22" height="22" />
