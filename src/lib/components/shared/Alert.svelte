@@ -23,10 +23,10 @@
 	const { variant, title, message, actionIconName, actionFunction }: AlertProps = $props();
 </script>
 
-<div class={`alert ${alertVariants[variant]} p-3" flex-row items-center gap-3`}>
+<div class={`alert ${alertVariants[variant]} flex-row items-center gap-3 px-3 py-2`}>
 	<Icon icon="mingcute:alert-line" width="24" height="24" />
 	<div class="alert-message !mt-0 text-start text-white">
-		<h4 class="h4">{title}</h4>
+		<h4 class="h4 font-bold">{title}</h4>
 		<p class="!mt-0">{message}</p>
 	</div>
 	{#if actionIconName}
