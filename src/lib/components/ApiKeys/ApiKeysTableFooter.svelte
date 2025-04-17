@@ -16,7 +16,6 @@
 					<DeactivateApiKeysButton />
 					<ActivateApiKeysButton />
 				{/if}
-				<span class="flex-1"></span>
 			</div>
 			{#if apiKeysState.actionInProgress}
 				<div

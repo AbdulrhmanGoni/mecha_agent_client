@@ -18,6 +18,6 @@ export default async function routesProtector({ locals, url }: { locals: App.Loc
     }
 
     return {
-        error: "Error while authenticating you"
+        error: "Failed to authenticate you",
     }
 };
