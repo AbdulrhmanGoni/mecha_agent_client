@@ -13,7 +13,9 @@
 		"lint": "prettier --check ."
 	},
 	"devDependencies": {
+		"@iconify-json/hugeicons": "^1.2.4",
 		"@iconify/svelte": "^4.1.0",
+		"@iconify/tailwind": "^1.2.0",
 		"@skeletonlabs/skeleton": "^2.10.3",
 		"@skeletonlabs/tw-plugin": "^0.4.0",
 		"@sveltejs/adapter-auto": "^3.0.0",

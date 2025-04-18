@@ -5,6 +5,7 @@ import type { Config } from 'tailwindcss';
 import { join } from 'path';
 import { skeleton } from '@skeletonlabs/tw-plugin';
 import { customTheme } from "./src/lib/constants/customTheme"
+import { addIconSelectors } from "@iconify/tailwind";
 
 export default {
 	darkMode: 'selector',
@@ -29,6 +30,7 @@ export default {
 		typography,
 		forms,
 		containerQueries,
+		addIconSelectors({ prefixes: ["hugeicons"] }),
 		skeleton({
 			themes: { custom: [customTheme] },
 		})
