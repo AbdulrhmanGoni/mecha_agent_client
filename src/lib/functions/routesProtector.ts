@@ -6,7 +6,7 @@ export default async function routesProtector({ locals, url }: { locals: App.Loc
     const session = await locals.auth();
 
     if (session) {
-        if (publicRoutes.includes(url.pathname)) {
+        if (url.pathname === "/sign-in") {
             redirect(307, '/');
         }
 
