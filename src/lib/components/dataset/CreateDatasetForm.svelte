@@ -29,9 +29,7 @@
 		}
 	}
 
-	const createDatasetState: { loading: boolean } = $state({
-		loading: false
-	});
+	let loading = $state(false);
 
 	const toast = getToastStore();
 
@@ -50,7 +48,7 @@
 
 		formData.set('datasetFile', datasetFile);
 
-		createDatasetState.loading = true;
+		loading = true;
 		createDatasetRequest(formData)
 			.then((res) => {
 				agentPageState.agent!.dataset = res;
@@ -76,7 +74,7 @@
 				});
 			})
 			.finally(() => {
-				createDatasetState.loading = false;
+				loading = false;
 			});
 	}
 </script>
@@ -147,10 +145,10 @@
 		</Button>
 	</div>
 </form>
-{#if createDatasetState.loading}
+{#if loading}
 	<dialog
 		class="fixed left-0 top-0 z-50 flex h-screen w-screen items-center justify-center bg-black/15"
 	>
-		<LoadingSpinner className="size-14 text-black dark:text-white" />
+		<LoadingSpinner className="size-12 text-black dark:text-white" />
 	</dialog>
 {/if}
