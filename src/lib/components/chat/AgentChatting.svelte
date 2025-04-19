@@ -54,7 +54,7 @@
 			<ErrorPage
 				title="Failed to fetch chat messages"
 				errorMessage={openedChatState.error}
-				iconName="tabler:message-2-x"
+				iconName="hugeicons--bubble-chat-cancel"
 				retryFn={() => {
 					chatId !== 'new' && fetchChatMessages(agent.id, chatId);
 				}}

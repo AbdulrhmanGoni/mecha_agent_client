@@ -6,7 +6,7 @@
 <ErrorPage
 	title="Error!"
 	errorMessage={$page.error?.message}
-	iconName="hugeicons:rss-error"
+	iconName="hugeicons--rss-error"
 	hideBackButton
 	retryFn={() => window.location.reload()}
 />

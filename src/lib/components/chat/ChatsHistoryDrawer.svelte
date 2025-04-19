@@ -1,5 +1,4 @@
 <script lang="ts">
-	import Icon from '@iconify/svelte';
 	import Button from '../shared/Button.svelte';
 	import { Drawer, getDrawerStore } from '@skeletonlabs/skeleton';
 	import ChatsHistory from './ChatsHistory.svelte';
@@ -15,7 +14,7 @@
 
 <div>
 	<Button onclick={openDrawer} size="sm" class="variant-filled-secondary flex w-fit">
-		<Icon icon="material-symbols:history-rounded" width="24" height="24" />
+		<span class="iconify size-5 hugeicons--date-time"></span>
 		Chats Histories
 	</Button>
 </div>

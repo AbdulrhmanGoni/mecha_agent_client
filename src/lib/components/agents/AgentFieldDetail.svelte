@@ -1,5 +1,4 @@
 <script lang="ts">
-	import Icon from '@iconify/svelte';
 	import { popup, type PopupSettings } from '@skeletonlabs/skeleton';
 
 	type Props = {
@@ -21,17 +20,20 @@
 </script>
 
 <div class="space-y-2">
-	<h4 class="h4 line-clamp-2 flex items-center gap-1 font-bold">
-		<Icon icon={iconName} width="24" height="24" />
+	<h4 class="h4 line-clamp-2 flex items-center gap-2 font-bold">
+		<span class={`iconify ${iconName} size-7`}></span>
 		{title}
 		{#if description}
 			<span use:popup={popupHover} class="group cursor-help p-1 [&>*]:pointer-events-none">
-				<Icon
-					icon="mingcute:question-line"
-					width="16"
-					height="16"
-					class="group-hover:stroke-warning-500"
-				/>
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
+					<g fill="none" stroke="currentColor" stroke-width="2">
+						<circle cx="12" cy="12" r="10" />
+						<path
+							stroke-linecap="round"
+							d="M10 8.484C10.5 7.494 11 7 12 7c1.246 0 2 .989 2 1.978s-.5 1.483-2 2.473V13m0 3.5v.5"
+						/>
+					</g>
+				</svg>
 			</span>
 			<div class="variant-filled-surface rounded-md p-1.5 text-sm" data-popup={title}>
 				<p>{description}</p>

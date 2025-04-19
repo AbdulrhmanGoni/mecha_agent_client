@@ -5,7 +5,7 @@
 <AgentForm
 	formTitle="Create Agent"
 	submitButtonText="Create"
-	submitButtonIconName="fluent:bot-add-20-regular"
+	submitButtonIconName="hugeicons--add-square"
 	formProps={{
 		method: 'POST',
 		enctype: 'multipart/form-data',

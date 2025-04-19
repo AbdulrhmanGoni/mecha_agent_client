@@ -64,8 +64,8 @@
 {:else if agentPageState.agent}
 	<AgentForm
 		formTitle="Edit Agent"
-		submitButtonText="Confirm"
-		submitButtonIconName="material-symbols:fact-check-outline-rounded"
+		submitButtonText="Save"
+		submitButtonIconName="hugeicons--pencil-edit-02"
 		{onFormSubmit}
 		{isLoading}
 		defaults={{

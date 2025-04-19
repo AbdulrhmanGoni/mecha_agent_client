@@ -1,7 +1,6 @@
 <script lang="ts">
 	import type { PopupSettings } from '@skeletonlabs/skeleton';
 	import { Avatar, popup } from '@skeletonlabs/skeleton';
-	import Icon from '@iconify/svelte';
 	import { page } from '$app/stores';
 	import { signOut } from '@auth/sveltekit/client';
 
@@ -16,7 +15,7 @@
 
 <button use:popup={popupClick}>
 	<Avatar width="w-10" src={user.avatar}>
-		<Icon icon="arcticons:super-status-bar" width="48" height="48" />
+		<span class="iconify size-12 hugeicons--user-circle-02"></span>
 	</Avatar>
 </button>
 
@@ -27,19 +26,19 @@
 		<ul>
 			<li>
 				<a href="/">
-					<Icon icon="typcn:home-outline" width="24" height="24" />
+					<span class="iconify size-6 hugeicons--home-11"></span>
 					<span class="flex-auto">Dashboard</span>
 				</a>
 			</li>
 			<li>
 				<a href="/agents">
-					<Icon icon="hugeicons:bot" width="24" height="24" />
+					<span class="iconify size-6 hugeicons--bot"></span>
 					<span class="flex-auto">Agents</span>
 				</a>
 			</li>
 			<li>
 				<a href="/api-keys">
-					<Icon icon="flowbite:api-key-outline" width="24" height="24" />
+					<span class="iconify size-6 hugeicons--key-01"></span>
 					<span class="flex-auto">API Keys</span>
 				</a>
 			</li>
@@ -51,7 +50,7 @@
 					}}
 					class="w-full text-start"
 				>
-					<Icon icon="ic:round-logout" width="23" height="23" />
+					<span class="iconify size-6 hugeicons--logout-02"></span>
 					<span class="flex-auto">Log Out</span>
 				</button>
 			</li>

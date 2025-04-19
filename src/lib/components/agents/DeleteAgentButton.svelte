@@ -63,6 +63,6 @@
 	{#if isDeleting}
 		<Icon icon="svg-spinners:6-dots-scale" width="22" height="22" />
 	{:else}
-		<Icon icon="material-symbols:delete-outline-rounded" width="22" height="22" />
+		<span class="iconify size-[22px] hugeicons--delete-02"></span>
 	{/if}
 </Button>

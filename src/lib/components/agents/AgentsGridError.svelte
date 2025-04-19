@@ -8,6 +8,6 @@
 <ErrorPage
 	title="Failed to fetch the Agents"
 	errorMessage={errorMessage || 'Something wrong happened while fetching your Agents'}
-	iconName="emojione:sad-but-relieved-face"
+	iconName="hugeicons--rss-error"
 	retryFn={agentsState.refetchAgents}
 />

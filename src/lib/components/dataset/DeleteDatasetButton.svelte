@@ -59,7 +59,7 @@
 	{#if isLoading}
 		<Icon icon="svg-spinners:6-dots-scale" width="19" height="19" />
 	{:else}
-		<Icon icon="eva:file-remove-outline" width="19" height="19" />
+		<span class="iconify size-[19px] hugeicons--delete-02"></span>
 	{/if}
 	delete
 </Button>

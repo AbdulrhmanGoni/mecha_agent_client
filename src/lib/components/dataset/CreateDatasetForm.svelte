@@ -119,7 +119,7 @@
 	>
 		<svelte:fragment slot="lead">
 			<div class="flex flex-col items-center gap-1">
-				<Icon icon="material-symbols:upload-file-outline-rounded" width="54" height="54" />
+				<span class="iconify size-12 hugeicons--file-02"></span>
 				<p class="text-lg font-bold">Dataset File</p>
 			</div>
 		</svelte:fragment>
@@ -133,21 +133,16 @@
 		<svelte:fragment slot="meta">
 			JSONL and CSV Allowed
 			{#if fileInput}
-				<Icon
-					class="text-success-700"
-					icon="line-md:circle-twotone-to-confirm-circle-transition"
-					width="17"
-					height="17"
-				/>
+				<span class="iconify size-4 text-success-700 hugeicons--checkmark-circle-04"></span>
 			{:else}
-				<Icon class="text-warning-700" icon="line-md:alert-circle" width="17" height="17" />
+				<span class="iconify size-4 text-warning-700 hugeicons--alert-circle"></span>
 			{/if}
 		</svelte:fragment>
 	</FileDropzone>
 	<div class="flex justify-center gap-2">
 		<BackButton class="variant-filled-error" target="/agents/{$page.params.agentId}" />
 		<Button class="variant-filled-primary" type="submit">
-			<Icon icon="iconamoon:file-add-light" width="22" height="22" />
+			<span class="iconify size-5 hugeicons--file-add"></span>
 			Create
 		</Button>
 	</div>

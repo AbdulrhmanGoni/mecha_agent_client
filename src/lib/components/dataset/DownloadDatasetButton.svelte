@@ -1,5 +1,4 @@
 <script lang="ts">
-	import Icon from '@iconify/svelte';
 	import Button from '../shared/Button.svelte';
 	import downloadDatasetRequest from '$lib/functions/downloadDatasetRequest';
 
@@ -12,6 +11,6 @@
 </script>
 
 <Button size="sm" class="variant-outline-primary" onclick={download}>
-	<Icon icon="uil:file-download" width="19" height="19" />
+	<span class="iconify size-5 hugeicons--download-04"></span>
 	download
 </Button>

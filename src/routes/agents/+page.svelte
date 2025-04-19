@@ -3,7 +3,6 @@
 	import AgentsGrid from '$lib/components/agents/AgentsGrid.svelte';
 	import BackButton from '$lib/components/shared/BackButton.svelte';
 	import Button from '$lib/components/shared/Button.svelte';
-	import Icon from '@iconify/svelte';
 	import { agentsState } from '../../stores/agents.svelte';
 	import { onMount } from 'svelte';
 	import AgentsGridLoading from '$lib/components/agents/AgentsGridLoading.svelte';
@@ -49,7 +48,7 @@
 				onclick={() => goto('/agents/create')}
 				class="variant-filled-primary sm:btn-md"
 			>
-				<Icon icon="fluent:bot-add-20-regular" width="23" height="23" />
+				<span class="iconify size-[22px] hugeicons--add-square"></span>
 				Create Agents
 			</Button>
 		</div>

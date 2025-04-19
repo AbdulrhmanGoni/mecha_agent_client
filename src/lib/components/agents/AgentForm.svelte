@@ -102,9 +102,9 @@
 						disabled={props.isLoading}
 					>
 						{#if $avatarRemoved}
-							<Icon icon="majesticons:undo" width="24" height="24" />
+							<span class="iconify size-6 hugeicons--undo-03"></span>
 						{:else}
-							<Icon icon="material-symbols:close-rounded" width="24" height="24" />
+							<span class="iconify size-6 hugeicons--cancel-01"></span>
 						{/if}
 					</button>
 				{/if}
@@ -177,7 +177,7 @@
 			{#if props.isLoading}
 				<Icon icon="svg-spinners:6-dots-scale" width="22" height="22" />
 			{:else if props.submitButtonIconName}
-				<Icon icon={props.submitButtonIconName} width="22" height="22" />
+				<span class={`iconify size-5 ${props.submitButtonIconName}`}></span>
 			{/if}
 			{props.submitButtonText}
 		</Button>

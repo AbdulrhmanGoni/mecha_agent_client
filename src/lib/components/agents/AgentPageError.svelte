@@ -8,6 +8,6 @@
 <ErrorPage
 	title="Failed to fetch the Agent"
 	{errorMessage}
-	iconName="emojione:sad-but-relieved-face"
+	iconName="hugeicons--rss-error"
 	retryFn={agentPageState.refetchAgent}
 />

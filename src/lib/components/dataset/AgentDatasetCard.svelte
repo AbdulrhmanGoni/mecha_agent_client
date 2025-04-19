@@ -1,5 +1,4 @@
 <script lang="ts">
-	import Icon from '@iconify/svelte';
 	import DeleteDatasetButton from './DeleteDatasetButton.svelte';
 	import DownloadDatasetButton from './DownloadDatasetButton.svelte';
 	import NoDatasetMessage from './NoDatasetMessage.svelte';
@@ -10,8 +9,8 @@
 
 {#if agent?.dataset}
 	<div>
-		<div class="mb-2 flex items-center gap-1">
-			<Icon icon="uil:file-alt" width="25" height="25" />
+		<div class="mb-2 flex items-center gap-2">
+			<span class="iconify size-7 hugeicons--file-02"></span>
 			<h5 class="text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
 				{agent.dataset?.title}
 			</h5>

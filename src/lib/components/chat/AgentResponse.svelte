@@ -2,7 +2,6 @@
 	import { Avatar } from '@skeletonlabs/skeleton';
 	import TypingState from './TypingState.svelte';
 	import { micromark } from 'micromark';
-	import Icon from '@iconify/svelte';
 	import { openedChatState } from '../../../stores/chatStore.svelte';
 	import AgentFallbackAvatar from '../agents/AgentFallbackAvatar.svelte';
 	import mediaURL from '$lib/functions/mediaURL';
@@ -30,15 +29,11 @@
 		{#if agentMessage.error}
 			<br />
 			<div class="flex gap-2">
-				<Icon icon="mingcute:alert-line" width="22" height="22" />
+				<span class="iconify size-5 hugeicons--alert-02"></span>
 				<p>Error while generating the response</p>
-				<Icon
-					onclick={openedChatState.reGenerate}
-					class="cursor-pointer"
-					icon="stash:arrow-retry"
-					width="22"
-					height="22"
-				/>
+				<button onclick={openedChatState.reGenerate} aria-label="Regenerate the response">
+					<span class="iconify size-6 hugeicons--undo"></span>
+				</button>
 			</div>
 		{/if}
 	</div>

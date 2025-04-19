@@ -20,7 +20,7 @@
 		variant="error"
 		title={error.name}
 		message={error.message}
-		actionIconName="iconamoon:close-bold"
+		actionIconName="hugeicons--cancel-01"
 		actionFunction={() => {
 			error = {
 				name: '',

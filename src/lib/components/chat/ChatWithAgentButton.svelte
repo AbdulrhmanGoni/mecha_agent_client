@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { agentsState } from '../../../stores/agents.svelte';
 	import Button from '../shared/Button.svelte';
-	import Icon from '@iconify/svelte';
 	import { goto } from '$app/navigation';
 
 	const { agent }: { agent: Agent } = $props();
@@ -16,5 +15,5 @@
 		goto(`/agents/${agent.id}/chat/new`);
 	}}
 >
-	<Icon icon="ri:chat-ai-line" width="22" height="22" />
+	<span class="iconify size-[22px] hugeicons--chatting-01"></span>
 </Button>

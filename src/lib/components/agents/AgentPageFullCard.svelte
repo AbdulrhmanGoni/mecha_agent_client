@@ -37,28 +37,28 @@
 		<AgentFieldDetail
 			title="System Instructions"
 			value={agent.systemInstructions}
-			iconName="ic:outline-integration-instructions"
+			iconName="hugeicons--message-programming"
 			description="Additional system instructions to customize the behavior of the agent"
 			noValueMessage="No additional system instructions"
 		/>
 		<AgentFieldDetail
 			title="Don't Know Response"
 			value={agent.dontKnowResponse}
-			iconName="tabler:message-question"
+			iconName="hugeicons--message-question"
 			description="What should the agent respond if it doesn't find a suitable response?"
 			noValueMessage="No custom don't know response, The default will be used"
 		/>
 		<AgentFieldDetail
 			title="Greeting Message"
 			value={agent.greetingMessage}
-			iconName="mdi:human-greeting-variant"
+			iconName="hugeicons--waving-hand-01"
 			description="How does your agent greet users?"
 			noValueMessage="No custom greeting message, The default will be used"
 		/>
 		<AgentFieldDetail
 			title="Response Syntax"
 			value={agent.responseSyntax}
-			iconName="fluent:code-text-16-filled"
+			iconName="hugeicons--text-align-left"
 			noValueMessage="No perfered response syntax, a normal text will be used"
 			description="The syntax used to format the response of the agent"
 			valueStyle={agent.responseSyntax ? 'variant-soft-primary w-fit rounded-md py-1.5 px-3' : ''}

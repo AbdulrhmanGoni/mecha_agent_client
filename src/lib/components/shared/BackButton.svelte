@@ -1,5 +1,4 @@
 <script lang="ts">
-	import Icon from '@iconify/svelte';
 	import Button from './Button.svelte';
 	import { goto } from '$app/navigation';
 
@@ -15,6 +14,6 @@
 </script>
 
 <Button {...props} onclick={back} class="variant-filled-primary {props.class}">
-	<Icon icon="typcn:arrow-back" width="24" height="24" />
+	<span class="iconify size-6 hugeicons--link-backward"> </span>
 	Back
 </Button>

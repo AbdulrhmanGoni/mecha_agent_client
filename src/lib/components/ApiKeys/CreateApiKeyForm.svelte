@@ -109,7 +109,7 @@
 			{#if isLoading}
 				<Icon icon="svg-spinners:6-dots-rotate" width="21" height="21" />
 			{:else}
-				<Icon icon="material-symbols:add" width="21" height="21" />
+				<span class="iconify size-[18px] hugeicons--add-square"></span>
 			{/if}
 			Create
 		</Button>

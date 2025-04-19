@@ -1,12 +1,11 @@
 <script lang="ts">
-	import Icon from '@iconify/svelte';
 	import { Avatar } from '@skeletonlabs/skeleton';
 	let { userMessage, user }: { userMessage: ChatMessage; user: User } = $props();
 </script>
 
 <div class="grid grid-cols-[auto_1fr] gap-2">
 	<Avatar src={user.avatar} width="w-12">
-		<Icon icon="arcticons:super-status-bar" width="48" height="48" />
+		<span class="iconify size-12 hugeicons--user-circle-02"></span>
 	</Avatar>
 	<div class="card variant-soft space-y-2 rounded-tl-none p-4">
 		<header class="flex items-center justify-between">
