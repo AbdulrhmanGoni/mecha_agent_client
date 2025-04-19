@@ -21,7 +21,7 @@
 </script>
 
 <div class="flex w-full flex-col items-center space-y-3">
-	<Avatar width="w-24" src="/mecha_agent_logo_2.webp">MA</Avatar>
+	<Avatar width="w-24" src="/mecha_agent_logo.webp">MA</Avatar>
 	<h1 class="text-2xl font-bold">
 		Sign
 		{#if isNewUser}
