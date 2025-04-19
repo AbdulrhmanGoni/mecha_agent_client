@@ -1,5 +1,3 @@
-import { permissions } from "$lib/constants/auth";
-
 function updateApiKeys(keyIds: string[], newData: Partial<ApiKeyRow>) {
     apiKeysState.apiKeys = apiKeysState.apiKeys.map((key) => {
         if (keyIds.includes(key.id)) {
