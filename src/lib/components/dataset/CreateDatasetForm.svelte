@@ -2,12 +2,12 @@
 	import { page } from '$app/stores';
 	import { FileDropzone, getToastStore } from '@skeletonlabs/skeleton';
 	import Button from '../shared/Button.svelte';
-	import Icon from '@iconify/svelte';
 	import createDatasetRequest from '$lib/functions/createDatasetRequest';
 	import { agentPageState } from '../../../stores/agentPage.svelte';
 	import BackButton from '../shared/BackButton.svelte';
 	import { goto } from '$app/navigation';
 	import { agentsState } from '../../../stores/agents.svelte';
+	import LoadingSpinner from './LoadingSpinner.svelte';
 
 	const supportedFilesTypes = ['application/jsonl', 'text/csv'];
 
@@ -151,6 +151,6 @@
 	<dialog
 		class="fixed left-0 top-0 z-50 flex h-screen w-screen items-center justify-center bg-black/15"
 	>
-		<Icon color="white" icon="eos-icons:loading" width="55" height="55" />
+		<LoadingSpinner className="size-14 text-black dark:text-white" />
 	</dialog>
 {/if}

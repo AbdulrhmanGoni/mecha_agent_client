@@ -4,7 +4,7 @@
 	import { agentsState } from '../../../stores/agents.svelte';
 	import { agentPageState } from '../../../stores/agentPage.svelte';
 	import Button from '../shared/Button.svelte';
-	import Icon from '@iconify/svelte';
+	import LoadingSpinner from '../dataset/LoadingSpinner.svelte';
 
 	const { agent, onSuccess }: { agent: Agent; onSuccess?: () => void } = $props();
 
@@ -61,7 +61,7 @@
 	onclick={deleteAgent}
 >
 	{#if isDeleting}
-		<Icon icon="svg-spinners:6-dots-scale" width="22" height="22" />
+		<LoadingSpinner className="size-5" />
 	{:else}
 		<span class="iconify size-[22px] hugeicons--delete-02"></span>
 	{/if}

@@ -1,10 +1,10 @@
 <script lang="ts">
 	import createApiKeyRequest from '$lib/functions/createApiKeyRequest';
-	import Icon from '@iconify/svelte';
 	import { apiKeysState, apiKeymaxAgeOptions } from '../../../stores/apiKeys.svelte';
 	import Button from '../shared/Button.svelte';
 	import { permissions } from '$lib/constants/auth';
 	import { getToastStore } from '@skeletonlabs/skeleton';
+	import LoadingSpinner from '../dataset/LoadingSpinner.svelte';
 
 	let isLoading = $state(false);
 	let KEY_NAME_MIN_LENGTH = 3;
@@ -107,7 +107,7 @@
 		</div>
 		<Button size="sm" class="variant-filled-primary" type="submit">
 			{#if isLoading}
-				<Icon icon="svg-spinners:6-dots-rotate" width="21" height="21" />
+				<LoadingSpinner className="size-5" />
 			{:else}
 				<span class="iconify size-[18px] hugeicons--add-square"></span>
 			{/if}

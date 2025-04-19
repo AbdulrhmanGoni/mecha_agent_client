@@ -1,5 +1,4 @@
 <script lang="ts">
-	import Icon from '@iconify/svelte';
 	import Button from '../shared/Button.svelte';
 	import { Avatar } from '@skeletonlabs/skeleton';
 	import type { HTMLFormAttributes } from 'svelte/elements';
@@ -9,6 +8,7 @@
 	import Alert from '../shared/Alert.svelte';
 	import { page } from '$app/stores';
 	import agentAvatarFieldHandler from './agentAvatarFieldHandler.svelte';
+	import LoadingSpinner from '../dataset/LoadingSpinner.svelte';
 
 	type AgentFormProps = {
 		formTitle: string;
@@ -175,7 +175,7 @@
 			disabled={props.isLoading}
 		>
 			{#if props.isLoading}
-				<Icon icon="svg-spinners:6-dots-scale" width="22" height="22" />
+				<LoadingSpinner className="size-5" />
 			{:else if props.submitButtonIconName}
 				<span class={`iconify size-5 ${props.submitButtonIconName}`}></span>
 			{/if}

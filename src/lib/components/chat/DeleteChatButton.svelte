@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import Icon from '@iconify/svelte';
 	import { getModalStore, getToastStore } from '@skeletonlabs/skeleton';
 	import { chatsHistoryState, resetOpenedChatState } from '../../../stores/chatStore.svelte';
 	import { goto } from '$app/navigation';
 	import clientFetchAPI from '$lib/functions/clientFetchAPI';
+	import LoadingSpinner from '../dataset/LoadingSpinner.svelte';
 
 	const { chatHistory }: { chatHistory: ChatHistory } = $props();
 
@@ -67,7 +67,7 @@
 	onclick={deleteHandler}
 >
 	{#if isDeleting}
-		<Icon icon="svg-spinners:6-dots-scale" width="19" height="19" />
+		<LoadingSpinner className="size-4" />
 	{:else}
 		<span class="iconify size-4 transition-colors hugeicons--delete-02 hover:text-red-500"></span>
 	{/if}

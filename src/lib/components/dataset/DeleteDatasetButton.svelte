@@ -1,10 +1,10 @@
 <script lang="ts">
-	import Icon from '@iconify/svelte';
 	import Button from '../shared/Button.svelte';
 	import { getModalStore, getToastStore } from '@skeletonlabs/skeleton';
 	import deleteDatasetRequest from '$lib/functions/deleteDatasetRequest';
 	import { agentsState } from '../../../stores/agents.svelte';
 	import { agentPageState } from '../../../stores/agentPage.svelte';
+	import LoadingSpinner from './LoadingSpinner.svelte';
 
 	const modalStore = getModalStore();
 
@@ -57,7 +57,7 @@
 
 <Button disabled={isLoading} onclick={deletionHandler} size="sm" class="variant-outline-error">
 	{#if isLoading}
-		<Icon icon="svg-spinners:6-dots-scale" width="19" height="19" />
+		<LoadingSpinner />
 	{:else}
 		<span class="iconify size-[19px] hugeicons--delete-02"></span>
 	{/if}
