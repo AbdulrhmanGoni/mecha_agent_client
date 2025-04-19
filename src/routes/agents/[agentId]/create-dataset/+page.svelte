@@ -17,7 +17,7 @@
 		<h1 class="text-center text-2xl font-bold">
 			Dataset for "<span class="text-primary-500">{agentPageState.agent.agentName}</span>" agent
 		</h1>
-		<p class="mb-8 mt-2 text-center text-lg text-gray-400">
+		<p class="secondary-text-color mb-8 mt-2 text-center text-lg">
 			This agent will answer to users questions based on the dataset that you are going to upload in
 			the form below
 		</p>

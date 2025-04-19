@@ -24,7 +24,7 @@
 <div class="flex flex-1 flex-col items-center justify-center gap-3 p-4">
 	<span class={`iconify size-24 ${iconName}`}></span>
 	<h2 class="h2 font-bold">{title}</h2>
-	<p class="text-center sm:text-lg">
+	<p class="secondary-text-color text-center sm:text-lg">
 		{#if errorMessage}
 			{errorMessage}
 		{:else}

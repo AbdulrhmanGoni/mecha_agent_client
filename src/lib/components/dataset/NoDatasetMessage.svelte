@@ -12,7 +12,9 @@
 	<div class="flex flex-1 flex-col items-center justify-center gap-3 p-4">
 		<span class="iconify size-12 hugeicons--file-block"></span>
 		<h2 class="h2 font-bold">No Dataset</h2>
-		<p class="text-center sm:text-lg">You didn't give this agent a dataset to answer based on</p>
+		<p class="secondary-text-color text-center sm:text-lg">
+			You didn't give this agent a dataset to answer based on
+		</p>
 		<div class="flex gap-2">
 			<Button size="sm" onclick={goToCreateDatasetPage} class="variant-filled-primary">
 				<span class="iconify size-5 hugeicons--file-add"></span>

@@ -30,7 +30,7 @@
 	</div>
 	<div class="flex-1 p-3 text-center">
 		<h2 class="line-clamp-2 font-bold">{agent.agentName}</h2>
-		<p class="line-clamp-3">{agent.description}</p>
+		<p class="secondary-text-color line-clamp-3">{agent.description}</p>
 	</div>
 	<hr class="!border-t-1 mx-3" />
 	<div class="mx-3 flex items-center justify-center gap-2 py-3">

@@ -44,6 +44,6 @@
 	{#if value}
 		<p class={valueStyle}>{value}</p>
 	{:else}
-		<p class="italic !text-surface-300">{noValueMessage}</p>
+		<p class="italic text-surface-400 dark:text-surface-300">{noValueMessage}</p>
 	{/if}
 </div>

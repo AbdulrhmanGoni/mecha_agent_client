@@ -25,7 +25,7 @@
 	</div>
 	<div class="p-3 text-center">
 		<h2 class="h2 line-clamp-2 font-bold">{agent.agentName}</h2>
-		<p class="line-clamp-3 text-lg">{agent.description}</p>
+		<p class="secondary-text-color line-clamp-3 text-lg">{agent.description}</p>
 	</div>
 	<div class="mx-3 flex items-center justify-center gap-2 pb-3">
 		<ChatWithAgentButton {agent} />
