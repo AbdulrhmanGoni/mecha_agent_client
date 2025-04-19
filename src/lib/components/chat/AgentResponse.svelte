@@ -5,6 +5,7 @@
 	import { openedChatState } from '../../../stores/chatStore.svelte';
 	import AgentFallbackAvatar from '../agents/AgentFallbackAvatar.svelte';
 	import mediaURL from '$lib/functions/mediaURL';
+	import Alert from '../shared/Alert.svelte';
 
 	let { agentMessage, agent }: { agentMessage: ChatMessage; agent: Agent } = $props();
 </script>
@@ -28,13 +29,13 @@
 		{/if}
 		{#if agentMessage.error}
 			<br />
-			<div class="flex gap-2">
-				<span class="iconify size-5 hugeicons--alert-02"></span>
-				<p>Error while generating the response</p>
-				<button onclick={openedChatState.reGenerate} aria-label="Regenerate the response">
-					<span class="iconify size-6 hugeicons--undo"></span>
-				</button>
-			</div>
+			<Alert
+				variant="error"
+				title="Response Error"
+				actionIconName="hugeicons--undo"
+				message="Error while generating the response"
+				actionFunction={openedChatState.reGenerate}
+			/>
 		{/if}
 	</div>
 	<Avatar src={mediaURL.agentsAvatars(agent.avatar)} width="w-12">
