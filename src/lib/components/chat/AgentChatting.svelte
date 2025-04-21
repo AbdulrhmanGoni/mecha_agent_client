@@ -34,10 +34,10 @@
 	});
 
 	afterNavigate(() => {
-		if (chatId !== 'new' && !$page.state.isNewChat) {
-			fetchChatMessages(agent.id, chatId);
-		} else if (openedChatState.chatFeed.length) {
+		if (chatId === 'new') {
 			resetOpenedChatState();
+		} else if (!$page.state.isNewChat) {
+			fetchChatMessages(agent.id, chatId);
 		}
 	});
 </script>
