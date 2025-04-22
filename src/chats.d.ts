@@ -2,7 +2,7 @@ type ChatMessage = {
     role: "user" | "agent";
     content: string;
     isGenerating?: boolean;
-    error?: boolean;
+    error?: string;
 }
 
 type ChatHistory = {

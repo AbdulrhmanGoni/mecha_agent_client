@@ -33,7 +33,7 @@
 				variant="error"
 				title="Response Error"
 				actionIconName="hugeicons--undo"
-				message="Error while generating the response"
+				message={agentMessage.error || 'Error while generating the response'}
 				actionFunction={openedChatState.reGenerate}
 			/>
 		{/if}

@@ -24,7 +24,7 @@ export default function PromptSubmitHandler({ agent, chatId, toastStore }: { age
 				openedChatState.isGenerating = true;
 				responsePart.isGenerating = true;
 				openedChatState.error = '';
-				responsePart.error = false;
+				responsePart.error = "";
 
 				promptRequest({
 					prompt: openedChatState.currentPrompt,
@@ -55,8 +55,7 @@ export default function PromptSubmitHandler({ agent, chatId, toastStore }: { age
 					onError(message) {
 						openedChatState.isGenerating = false;
 						responsePart.isGenerating = false;
-						openedChatState.error = message;
-						responsePart.error = true;
+						responsePart.error = message;
 					}
 				});
 			}
