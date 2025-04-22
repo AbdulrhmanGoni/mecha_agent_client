@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { afterNavigate, beforeNavigate } from '$app/navigation';
+	import { afterNavigate, beforeNavigate, goto } from '$app/navigation';
 	import {
 		fetchChatMessages,
 		openedChatState,
@@ -15,6 +15,7 @@
 	import ChatMessagesLoading from './ChatMessagesLoading.svelte';
 	import { onMount } from 'svelte';
 	import ErrorPage from '../shared/ErrorPage.svelte';
+	import Button from '../shared/Button.svelte';
 
 	const { agent, user, chatId }: { agent: Agent; user: User; chatId: string } = $props();
 
@@ -42,8 +43,18 @@
 	});
 </script>
 
-<div class="mb-4 flex gap-2 sm:mb-6">
+<div class="my-6 flex gap-2 sm:my-8">
 	<BackButton size="sm" target="/agents/{agent.id}" />
+	<Button
+		size="sm"
+		class="variant-filled-secondary gap-2"
+		onclick={() => {
+			goto(`/agents/${$page.params.agentId}/chat/new`, { state: { isNewChat: true } });
+		}}
+	>
+		<span class="iconify size-5 hugeicons--bubble-chat-add"></span>
+		New Chat
+	</Button>
 	<ChatsHistoryDrawer />
 </div>
 <div class="flex flex-1 gap-5">

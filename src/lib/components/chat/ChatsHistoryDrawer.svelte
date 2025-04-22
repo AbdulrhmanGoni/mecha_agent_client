@@ -12,12 +12,10 @@
 	}
 </script>
 
-<div>
-	<Button onclick={openDrawer} size="sm" class="variant-filled-secondary flex w-fit">
-		<span class="iconify size-5 hugeicons--date-time"></span>
-		Chats Histories
-	</Button>
-</div>
+<Button onclick={openDrawer} size="sm" class="variant-filled-surface flex w-fit gap-2">
+	<span class="iconify size-5 hugeicons--date-time"></span>
+	Chats Histories
+</Button>
 <Drawer describedby="chats-histories">
 	<ChatsHistory closeDrawer={drawerStore.close} />
 </Drawer>
