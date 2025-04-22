@@ -84,15 +84,13 @@
 				{/if}
 			</div>
 
-			{#if !areThereFeed && !openedChatState.isFetching && !openedChatState.error}
+			{#if !areThereFeed}
 				<h1 class="text-center text-4xl font-extrabold">
 					{agent.greetingMessage || 'Hi, How can i help you?'}
 				</h1>
 			{/if}
 
-			{#if !openedChatState.isFetching && !openedChatState.error}
-				<PromptField {agent} {chatId} />
-			{/if}
+			<PromptField {agent} {chatId} />
 		{/if}
 	</div>
 </div>
