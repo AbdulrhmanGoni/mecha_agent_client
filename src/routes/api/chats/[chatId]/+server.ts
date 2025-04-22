@@ -8,7 +8,8 @@ export async function POST({ cookies, url, request }) {
         cookies
     })
 
-    return new Response(response.body, { status: response.status, headers: response.headers });
+    const newChatId = response.headers.get("chatId");
+    return new Response(response.body, { status: response.status, headers: { chatId: newChatId || "" } });
 }
 
 export async function GET({ cookies, url }) {
