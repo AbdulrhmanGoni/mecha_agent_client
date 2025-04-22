@@ -20,21 +20,11 @@ export async function POST({ request, cookies, url }) {
 
     const response = await serverFetchAPI({
         method: "POST",
-        path: "/api/agents",
+        path: url.pathname,
         body: formData,
         cookies
     })
 
-    if (response.status === 201) {
-        return new Response(null, {
-            status: 302,
-            headers: new Headers({ Location: '/agents' })
-        });
-    } else {
-        const redirectUrl = new URL(url.origin);
-        const res = await response.json()
-        redirectUrl.searchParams.set("error", res.error || "an error happened while creating the agent");
-        return Response.redirect(redirectUrl);
-    }
+    return new Response(response.body, { status: response.status });
 }
 
