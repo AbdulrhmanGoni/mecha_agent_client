@@ -5,7 +5,6 @@
 	const { datasetId }: { datasetId: string } = $props();
 
 	function download() {
-		console.log('download');
 		downloadDatasetRequest(datasetId);
 	}
 </script>
