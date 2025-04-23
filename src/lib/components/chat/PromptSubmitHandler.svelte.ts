@@ -32,10 +32,6 @@ export default function PromptSubmitHandler({ agent, chatId, toastStore }: { age
 					chatId,
 					onData(data) {
 						responsePart.content += data;
-						document.documentElement.scrollTo({
-							top: document.documentElement.scrollHeight,
-							behavior: 'smooth'
-						});
 					},
 					onEnd(newChatId) {
 						if (newChatId) {
