@@ -6,7 +6,7 @@
 	const { agent, chatId }: { agent: Agent; chatId: string } = $props();
 
 	const toastStore = getToastStore();
-	const handler = PromptSubmitHandler({ agent, chatId, toastStore });
+	const handler = $derived.by(() => PromptSubmitHandler({ agent, chatId, toastStore }));
 </script>
 
 <div
