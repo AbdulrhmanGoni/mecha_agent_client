@@ -30,9 +30,9 @@
 	const error = $derived($page.url.searchParams.get('error'));
 </script>
 
-<div class="space-y-8">
+<div class="mt-8 space-y-5">
 	<div class="flex items-center justify-between gap-2">
-		<h3 class="h2 flex flex-1 items-center font-bold">{props.formTitle}</h3>
+		<h3 class="flex flex-1 items-center text-3xl font-bold">{props.formTitle}</h3>
 		<BackButton />
 	</div>
 	<form
