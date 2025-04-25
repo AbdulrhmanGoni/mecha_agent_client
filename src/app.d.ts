@@ -4,7 +4,7 @@ declare global {
 	namespace App {
 		// interface Error {}
 		// interface Locals {}
-		interface PageData { user: User, error: string }
+		interface PageData { }
 		interface PageState { isNewChat?: boolean }
 		// interface Platform {}
 	}

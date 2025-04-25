@@ -4,15 +4,20 @@
 	import { initializeStores, Modal, Toast } from '@skeletonlabs/skeleton';
 	import { computePosition, autoUpdate, offset, shift, flip, arrow } from '@floating-ui/dom';
 	import { storePopup } from '@skeletonlabs/skeleton';
+	import { userDataState, fetchUserData } from '../stores/userData.svelte';
+	import { onMount } from 'svelte';
+
 	initializeStores();
 
 	storePopup.set({ computePosition, autoUpdate, offset, shift, flip, arrow });
 
-	let { data, children } = $props();
+	onMount(fetchUserData);
+
+	let { children } = $props();
 </script>
 
 <main class="container mx-auto flex min-h-screen flex-col gap-2 px-2">
-	{#if data.user}
+	{#if userDataState.user}
 		<Header />
 	{/if}
 	{@render children()}

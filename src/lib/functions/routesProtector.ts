@@ -1,15 +1,13 @@
-import { redirect, type Cookies } from "@sveltejs/kit";
-import serverFetchAPI from "./serverFetchAPI";
+import { redirect } from "@sveltejs/kit";
 
 const publicRoutes = ["/sign-in"];
 
 type RoutesProtectorParams = {
     locals: App.Locals,
     url: URL,
-    cookies?: Cookies
 }
 
-export default async function routesProtector({ locals, url, cookies }: RoutesProtectorParams) {
+export default async function routesProtector({ locals, url }: RoutesProtectorParams) {
     const session = await locals.auth();
 
     if (session) {
@@ -17,15 +15,7 @@ export default async function routesProtector({ locals, url, cookies }: RoutesPr
             redirect(307, '/');
         }
 
-        const res = await serverFetchAPI({ path: '/api/users', cookies })
-            .then((res) => res.json())
-
-        return {
-            user: {
-                ...session.user,
-                ...res.result
-            }
-        };
+        return { session };
     }
 
     if (!publicRoutes.includes(url.pathname)) {

@@ -1,10 +1,8 @@
 <script lang="ts">
 	import type { PopupSettings } from '@skeletonlabs/skeleton';
 	import { Avatar, popup } from '@skeletonlabs/skeleton';
-	import { page } from '$app/stores';
 	import { signOut } from '@auth/sveltekit/client';
-
-	const user = $page.data.user as User;
+	import { userDataState } from '../../stores/userData.svelte';
 
 	const popupClick: PopupSettings = {
 		event: 'click',
@@ -14,13 +12,13 @@
 </script>
 
 <button use:popup={popupClick}>
-	<Avatar width="w-10" src={user.avatar}>
+	<Avatar width="w-10" src={userDataState.user?.avatar}>
 		<span class="iconify size-12 hugeicons--user-circle-02"></span>
 	</Avatar>
 </button>
 
 <div class="card variant-filled-surface z-50 p-3" data-popup="user-account">
-	<p class="px-4 py-1 text-lg font-bold">{user.name}</p>
+	<p class="px-4 py-1 text-lg font-bold">{userDataState.user?.name}</p>
 	<hr class="!border-t-1 my-1 !border-surface-300" />
 	<nav class="list-nav">
 		<ul>
