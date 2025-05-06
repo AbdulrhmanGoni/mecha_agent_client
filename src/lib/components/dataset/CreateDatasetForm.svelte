@@ -7,7 +7,7 @@
 	import BackButton from '../shared/BackButton.svelte';
 	import { goto } from '$app/navigation';
 	import { agentsState } from '../../../stores/agents.svelte';
-	import LoadingSpinner from './LoadingSpinner.svelte';
+	import LoadingOverlay from '../shared/LoadingOverlay.svelte';
 
 	const supportedFilesTypes = ['application/jsonl', 'text/csv'];
 
@@ -145,10 +145,4 @@
 		</Button>
 	</div>
 </form>
-{#if loading}
-	<dialog
-		class="fixed left-0 top-0 z-50 flex h-screen w-screen items-center justify-center bg-black/15"
-	>
-		<LoadingSpinner className="size-12 text-black dark:text-white" />
-	</dialog>
-{/if}
+<LoadingOverlay open={loading} />

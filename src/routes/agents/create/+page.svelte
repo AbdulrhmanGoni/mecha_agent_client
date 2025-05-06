@@ -1,10 +1,10 @@
 <script>
 	import { goto } from '$app/navigation';
 	import AgentForm from '$lib/components/agents/AgentForm.svelte';
-	import LoadingSpinner from '$lib/components/dataset/LoadingSpinner.svelte';
 	import clientFetchAPI from '$lib/functions/clientFetchAPI';
 	import { getToastStore } from '@skeletonlabs/skeleton';
 	import { agentsState } from '../../../stores/agents.svelte';
+	import LoadingOverlay from '$lib/components/shared/LoadingOverlay.svelte';
 
 	let loading = $state(false);
 
@@ -47,11 +47,4 @@
 			});
 	}}
 />
-
-{#if loading}
-	<dialog
-		class="fixed left-0 top-0 z-50 flex h-screen w-screen items-center justify-center bg-black/15"
-	>
-		<LoadingSpinner className="size-12 text-black dark:text-white" />
-	</dialog>
-{/if}
+<LoadingOverlay open={loading} />
