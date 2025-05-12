@@ -8,5 +8,6 @@
 	errorMessage={$page.error?.message}
 	iconName="hugeicons--rss-error"
 	hideBackButton
+	hideRetryButton={$page.error?.status != 404}
 	retryFn={() => window.location.reload()}
 />
