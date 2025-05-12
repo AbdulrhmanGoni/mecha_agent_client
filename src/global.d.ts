@@ -2,6 +2,10 @@ type User = {
     name: string;
     email: string;
     avatar?: string;
+    lastSignIn: string;
+    agentsCount: number;
+    apiKeysCount: number;
+    currentPlan: Plan["planName"];
 }
 
 type HTTPRequestMethod = "GET" | "POST" | "DELETE" | "PATCH";

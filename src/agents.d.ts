@@ -18,4 +18,5 @@ type Agent = {
     dontKnowResponse?: string;
     responseSyntax?: "markdown"
     greetingMessage?: string;
+    isPublished: boolean;
 };
