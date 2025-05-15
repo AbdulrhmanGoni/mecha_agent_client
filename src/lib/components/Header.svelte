@@ -1,6 +1,7 @@
 <script>
 	import { AppBar, Avatar, LightSwitch } from '@skeletonlabs/skeleton';
 	import NavigationMenu from './NavigationMenu.svelte';
+	import { userDataState } from '../../stores/userData.svelte';
 </script>
 
 <AppBar background="none" padding="px-0 py-4">
@@ -12,6 +13,10 @@
 	</svelte:fragment>
 	<svelte:fragment slot="trail">
 		<LightSwitch rounded="rounded-full" />
-		<NavigationMenu />
+		{#if userDataState.isFetching}
+			<div class="placeholder h-11 w-11 rounded-full"></div>
+		{:else if userDataState.user}
+			<NavigationMenu />
+		{/if}
 	</svelte:fragment>
 </AppBar>
