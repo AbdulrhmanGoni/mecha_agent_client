@@ -1,0 +1,80 @@
+<script lang="ts">
+	import { goto } from '$app/navigation';
+	import Button from './shared/Button.svelte';
+	import LoadingOverlay from './shared/LoadingOverlay.svelte';
+	const { plan, user }: { plan: Plan; user: User | null } = $props();
+
+	const isUserCurrentPlan = $derived(user?.currentPlan === plan.planName);
+	const isNotPaidUser = $derived(user?.currentPlan !== 'Free');
+	const isPaidPlan = plan.planName !== 'Free';
+
+	let isLoading = $state(false);
+</script>
+
+<div
+	class={`card relative ${isNotPaidUser && !isPaidPlan ? 'opacity-70' : 'card-hover'} shadow-xl ${isUserCurrentPlan ? 'border border-primary-500' : ''} flex w-full max-w-md flex-col space-y-4 rounded-lg p-6`}
+>
+	<h1 class="text-2xl font-bold sm:text-3xl">
+		{plan.planName} <span class="ms-3">${plan.subscriptionCostPerMonth}/m</span>
+	</h1>
+
+	<ul class="flex flex-col gap-2">
+		<li class="flex justify-between gap-4 font-semibold">
+			<p>Agents count :</p>
+			<span>{plan.maxAgentsCount}</span>
+		</li>
+		<li class="flex justify-between gap-4 font-semibold">
+			<p>API Keys count :</p>
+			<span>{plan.maxApiKeysCount}</span>
+		</li>
+		<li class="flex justify-between gap-4 font-semibold">
+			<p>Inferences per day :</p>
+			<span>{plan.maxInferencesPerDay || 0}</span>
+		</li>
+	</ul>
+
+	<Button
+		class={`w-fit ${isUserCurrentPlan ? 'bg-primary-500/50' : 'bg-primary-500'}`}
+		disabled={isUserCurrentPlan || (isNotPaidUser && !isPaidPlan)}
+		onclick={() => {
+			if (isPaidPlan && !isNotPaidUser) {
+				// Go To Checkout page
+			} else if (!user) {
+				goto('/sign-in');
+			}
+		}}
+	>
+		{#if isUserCurrentPlan}
+			Current Plan
+		{:else if isPaidPlan && user}
+			Upgrade 🚀
+		{:else}
+			Get Started 🚀
+		{/if}
+	</Button>
+	{#if isPaidPlan}
+		<div class="bookmark after:transition dark:after:!border-b-surface-800"></div>
+	{/if}
+</div>
+<LoadingOverlay open={isLoading} />
+
+<style>
+	.bookmark {
+		background-color: rgb(var(--color-primary-500) / var(--tw-bg-opacity, 1));
+		height: 40px;
+		position: absolute;
+		top: 0;
+		right: 20px;
+		width: 28px;
+		margin: 0 !important;
+	}
+
+	.bookmark:after {
+		content: '';
+		display: block;
+		border: 14px solid transparent;
+		border-bottom-color: rgb(var(--color-surface-100));
+		position: absolute;
+		bottom: -1px;
+	}
+</style>
