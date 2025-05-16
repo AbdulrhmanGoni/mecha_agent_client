@@ -17,3 +17,11 @@ type ButtonEvent = MouseEvent & { currentTarget: EventTarget & HTMLButtonElement
 type CustomButtonProps = import("svelte/elements").HTMLButtonAttributes & {
     size?: 'sm' | 'md' | 'lg';
 };
+
+type Plan = {
+    planName: "Free" | "Pro"
+    maxAgentsCount: number,
+    maxApiKeysCount: number,
+    maxInferencesPerDay: number,
+    subscriptionCostPerMonth: number,
+}
