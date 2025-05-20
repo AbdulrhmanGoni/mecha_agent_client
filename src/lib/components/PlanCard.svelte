@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import clientFetchAPI from '$lib/functions/clientFetchAPI';
+	import { getToastStore } from '@skeletonlabs/skeleton';
 	import Button from './shared/Button.svelte';
 	import LoadingOverlay from './shared/LoadingOverlay.svelte';
 	const { plan, user }: { plan: Plan; user: User | null } = $props();
@@ -8,7 +10,38 @@
 	const isNotPaidUser = $derived(user?.currentPlan !== 'Free');
 	const isPaidPlan = plan.planName !== 'Free';
 
+	const toastStore = getToastStore();
+
 	let isLoading = $state(false);
+
+	async function goToCheckout(plan: string) {
+		if (user) {
+			isLoading = true;
+			await clientFetchAPI<{ url: string }>({
+				path: `/api/subscriptions/sessions/new?plan=${plan}`
+			})
+				.then((res) => {
+					if (res.url) {
+						window.location.href = res.url;
+					} else {
+						toastStore.trigger({
+							message:
+								'Our server failed to create a checkout session for you, Please try again later',
+							background: 'variant-filled-error'
+						});
+					}
+				})
+				.catch((error) => {
+					toastStore.trigger({
+						message: error,
+						background: 'variant-filled-error'
+					});
+				})
+				.finally(() => {
+					isLoading = false;
+				});
+		}
+	}
 </script>
 
 <div
@@ -38,7 +71,7 @@
 		disabled={isUserCurrentPlan || (isNotPaidUser && !isPaidPlan)}
 		onclick={() => {
 			if (isPaidPlan && !isNotPaidUser) {
-				// Go To Checkout page
+				goToCheckout(plan.planName);
 			} else if (!user) {
 				goto('/sign-in');
 			}
