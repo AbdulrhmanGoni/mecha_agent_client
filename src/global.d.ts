@@ -6,6 +6,7 @@ type User = {
     agentsCount: number;
     apiKeysCount: number;
     currentPlan: Plan["planName"];
+    signingMethod: string;
 }
 
 type HTTPRequestMethod = "GET" | "POST" | "DELETE" | "PATCH";
