@@ -8,6 +8,7 @@
 	import mediaURL from '$lib/functions/mediaURL';
 	import { goto } from '$app/navigation';
 	import AgentDatasetCard from '../dataset/AgentDatasetCard.svelte';
+	import CopyAgentIdButton from './CopyAgentIdButton.svelte';
 
 	const { agent }: { agent: Agent } = $props();
 </script>
@@ -24,7 +25,12 @@
 		</Avatar>
 	</div>
 	<div class="p-3 text-center">
-		<h2 class="h2 line-clamp-2 font-bold">{agent.agentName}</h2>
+		<div class="mx-auto flex w-fit gap-1.5">
+			<CopyAgentIdButton {agent} />
+			<h2 class="h2 line-clamp-2 font-bold">
+				{agent.agentName}
+			</h2>
+		</div>
 		<p class="secondary-text-color line-clamp-3 text-lg">{agent.description}</p>
 	</div>
 	<div class="mx-3 flex items-center justify-center gap-2 pb-3">
