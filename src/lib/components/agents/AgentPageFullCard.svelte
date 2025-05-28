@@ -36,7 +36,7 @@
 	<div class="mx-3 flex items-center justify-center gap-2 pb-3">
 		<ChatWithAgentButton {agent} />
 		<EditAgentButton {agent} />
-		<DeleteAgentButton {agent} onSuccess={() => goto('/agents')} />
+		<DeleteAgentButton {agent} onSuccess={() => goto('/agents', { replaceState: true })} />
 	</div>
 	<hr class="!border-t-1 my-3" />
 	<div class="my-3 grid gap-4 md:grid-cols-2">
