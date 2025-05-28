@@ -8,6 +8,7 @@
 	import mediaURL from '$lib/functions/mediaURL';
 	import { goto } from '$app/navigation';
 	import AgentDatasetCard from '../dataset/AgentDatasetCard.svelte';
+	import PublishAgentCard from './PublishAgentCard.svelte';
 	import CopyAgentIdButton from './CopyAgentIdButton.svelte';
 
 	const { agent }: { agent: Agent } = $props();
@@ -71,7 +72,8 @@
 		/>
 	</div>
 	<hr class="!border-t-1 my-3" />
-	<div>
+	<div class="grid sm:grid-cols-2">
 		<AgentDatasetCard {agent} />
+		<PublishAgentCard />
 	</div>
 </div>
