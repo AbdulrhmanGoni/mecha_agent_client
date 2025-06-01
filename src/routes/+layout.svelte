@@ -6,6 +6,7 @@
 	import { storePopup } from '@skeletonlabs/skeleton';
 	import { fetchUserData } from '../stores/userData.svelte';
 	import { onMount } from 'svelte';
+	import Footer from '$lib/components/Footer.svelte';
 
 	initializeStores();
 
@@ -22,3 +23,4 @@
 	<Toast />
 	<Modal />
 </main>
+<Footer />
