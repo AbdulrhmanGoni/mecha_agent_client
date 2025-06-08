@@ -29,3 +29,7 @@ textarea {
 code {
 	text-wrap: wrap;
 }
+
+span.iconify {
+	flex-shrink: 0;
+}
