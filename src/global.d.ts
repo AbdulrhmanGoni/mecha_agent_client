@@ -7,6 +7,10 @@ type User = {
     apiKeysCount: number;
     currentPlan: Plan["planName"];
     signingMethod: string;
+    todayInference: {
+        current: number | string,
+        max: number | string,
+    };
 }
 
 type HTTPRequestMethod = "GET" | "POST" | "DELETE" | "PATCH";
