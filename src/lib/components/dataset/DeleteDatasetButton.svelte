@@ -4,7 +4,7 @@
 	import deleteDatasetRequest from '$lib/functions/deleteDatasetRequest';
 	import { agentsState } from '../../../stores/agents.svelte';
 	import { agentPageState } from '../../../stores/agentPage.svelte';
-	import LoadingSpinner from './LoadingSpinner.svelte';
+	import LoadingSpinner from '../shared/LoadingSpinner.svelte';
 
 	const modalStore = getModalStore();
 

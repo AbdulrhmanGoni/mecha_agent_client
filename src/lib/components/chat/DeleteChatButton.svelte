@@ -4,7 +4,7 @@
 	import { chatsHistoryState, resetOpenedChatState } from '../../../stores/chatStore.svelte';
 	import { goto } from '$app/navigation';
 	import clientFetchAPI from '$lib/functions/clientFetchAPI';
-	import LoadingSpinner from '../dataset/LoadingSpinner.svelte';
+	import LoadingSpinner from '../shared/LoadingSpinner.svelte';
 
 	const { chatHistory }: { chatHistory: ChatHistory } = $props();
 

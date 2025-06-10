@@ -3,7 +3,7 @@
 	import DeleteApiKeysButton from './DeleteApiKeysButton.svelte';
 	import DeactivateApiKeysButton from './DeactivateApiKeysButton.svelte';
 	import ActivateApiKeysButton from './ActivateApiKeysButton.svelte';
-	import LoadingSpinner from '../dataset/LoadingSpinner.svelte';
+	import LoadingSpinner from '../shared/LoadingSpinner.svelte';
 </script>
 
 <tfoot class="!bg-surface-300 dark:!bg-surface-700">

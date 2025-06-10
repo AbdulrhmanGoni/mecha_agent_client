@@ -8,7 +8,7 @@
 	import Alert from '../shared/Alert.svelte';
 	import { page } from '$app/stores';
 	import agentAvatarFieldHandler from './agentAvatarFieldHandler.svelte';
-	import LoadingSpinner from '../dataset/LoadingSpinner.svelte';
+	import LoadingSpinner from '../shared/LoadingSpinner.svelte';
 
 	type AgentFormProps = {
 		formTitle: string;

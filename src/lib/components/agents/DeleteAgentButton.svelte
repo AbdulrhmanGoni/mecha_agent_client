@@ -4,7 +4,7 @@
 	import { agentsState } from '../../../stores/agents.svelte';
 	import { agentPageState } from '../../../stores/agentPage.svelte';
 	import Button from '../shared/Button.svelte';
-	import LoadingSpinner from '../dataset/LoadingSpinner.svelte';
+	import LoadingSpinner from '../shared/LoadingSpinner.svelte';
 
 	const { agent, onSuccess }: { agent: Agent; onSuccess?: () => void } = $props();
 

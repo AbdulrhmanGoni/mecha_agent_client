@@ -2,7 +2,7 @@
 	import clientFetchAPI from '$lib/functions/clientFetchAPI';
 	import { getToastStore } from '@skeletonlabs/skeleton';
 	import Button from '../shared/Button.svelte';
-	import LoadingSpinner from '../dataset/LoadingSpinner.svelte';
+	import LoadingSpinner from '../shared/LoadingSpinner.svelte';
 	import { agentPageState } from '../../../stores/agentPage.svelte';
 	import { agentsState } from '../../../stores/agents.svelte';
 	import PublishAgentState from './PublishAgentState.svelte';

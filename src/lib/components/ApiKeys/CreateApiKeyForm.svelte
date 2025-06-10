@@ -4,7 +4,7 @@
 	import Button from '../shared/Button.svelte';
 	import { permissions } from '$lib/constants/auth';
 	import { getToastStore } from '@skeletonlabs/skeleton';
-	import LoadingSpinner from '../dataset/LoadingSpinner.svelte';
+	import LoadingSpinner from '../shared/LoadingSpinner.svelte';
 
 	let isLoading = $state(false);
 	let KEY_NAME_MIN_LENGTH = 3;

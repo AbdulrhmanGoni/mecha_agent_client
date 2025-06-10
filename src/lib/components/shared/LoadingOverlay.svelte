@@ -1,5 +1,5 @@
 <script lang="ts">
-	import LoadingSpinner from '../dataset/LoadingSpinner.svelte';
+	import LoadingSpinner from './LoadingSpinner.svelte';
 
 	const { open }: { open?: boolean } = $props();
 
