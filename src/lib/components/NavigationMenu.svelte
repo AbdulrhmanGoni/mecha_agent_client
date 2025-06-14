@@ -35,6 +35,12 @@
 				</a>
 			</li>
 			<li>
+				<a href="/datasets">
+					<span class="iconify size-6 hugeicons--database"></span>
+					<span class="flex-auto">Datasets</span>
+				</a>
+			</li>
+			<li>
 				<a href="/api-keys">
 					<span class="iconify size-6 hugeicons--key-01"></span>
 					<span class="flex-auto">API Keys</span>
