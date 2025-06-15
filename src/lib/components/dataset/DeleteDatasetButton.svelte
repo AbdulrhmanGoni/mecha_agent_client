@@ -1,16 +1,16 @@
 <script lang="ts">
-	import Button from '../shared/Button.svelte';
 	import { getModalStore, getToastStore } from '@skeletonlabs/skeleton';
-	import deleteDatasetRequest from '$lib/functions/deleteDatasetRequest';
 	import { agentsState } from '../../../stores/agents.svelte';
 	import { agentPageState } from '../../../stores/agentPage.svelte';
 	import LoadingSpinner from '../shared/LoadingSpinner.svelte';
+	import { goto } from '$app/navigation';
+	import clientFetchAPI from '$lib/functions/clientFetchAPI';
 
 	const modalStore = getModalStore();
 
-	const { agent }: { agent: Agent } = $props();
+	const { id }: { id: string } = $props();
 
-	let isLoading: boolean = $state(false);
+	let isLoading = $state(false);
 
 	const toast = getToastStore();
 
@@ -23,22 +23,27 @@
 				The Agent won't be able to answer question based on this dataset anymore
 			`,
 			response(confirmation) {
-				if (confirmation && agent.dataset?.id) {
+				if (confirmation) {
 					isLoading = true;
-					deleteDatasetRequest(agent.id, agent.dataset?.id)
-						.then(() => {
+					clientFetchAPI<string>({ path: `/api/datasets/${id}`, method: 'DELETE' })
+						.then((res) => {
 							toast.trigger({
-								message: 'The dataset was deleted successfully',
+								message: res,
 								background: 'variant-filled-success'
 							});
 
-							agentPageState.agent!.dataset = undefined;
+							if (agentPageState.agent) {
+								agentPageState.agent.datasetId = null;
+							}
+
 							agentsState.agents.map((agent) => {
 								if (agent.id === agentPageState.agent?.id) {
-									agent.dataset = undefined;
+									agent.datasetId = null;
 								}
 								return agent;
 							});
+
+							goto('/datasets', { replaceState: true });
 						})
 						.catch((error) => {
 							toast.trigger({
@@ -55,11 +60,15 @@
 	}
 </script>
 
-<Button disabled={isLoading} onclick={deletionHandler} size="sm" class="variant-outline-error">
+<button
+	class="variant-filled-error flex h-fit items-center rounded-md p-1 sm:p-1.5"
+	aria-label="Delete the dataset"
+	onclick={deletionHandler}
+	disabled={isLoading}
+>
 	{#if isLoading}
-		<LoadingSpinner />
+		<LoadingSpinner className="size-5" />
 	{:else}
-		<span class="iconify size-[19px] hugeicons--delete-02"></span>
+		<span class="iconify size-5 hugeicons--delete-02"></span>
 	{/if}
-	delete
-</Button>
+</button>
