@@ -2,6 +2,10 @@ export default function timeAgo(date: Date): string {
     const now = new Date();
     const secondsAgo = Math.floor((now.getTime() - date.getTime()) / 1000);
 
+    if (secondsAgo < 1) {
+        return 'Now';
+    }
+
     if (secondsAgo < 60) {
         return `${secondsAgo} second${secondsAgo !== 1 ? 's' : ''} ago`;
     }
