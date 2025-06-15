@@ -1,10 +1,11 @@
-<script>
+<script lang="ts">
 	import { goto } from '$app/navigation';
 	import AgentForm from '$lib/components/agents/AgentForm.svelte';
 	import clientFetchAPI from '$lib/functions/clientFetchAPI';
 	import { getToastStore } from '@skeletonlabs/skeleton';
 	import { agentsState } from '../../../stores/agents.svelte';
 	import LoadingOverlay from '$lib/components/shared/LoadingOverlay.svelte';
+	import { userDataState } from '../../../stores/userData.svelte';
 
 	let loading = $state(false);
 
@@ -19,13 +20,14 @@
 		e.preventDefault();
 		const formData = new FormData(e.currentTarget);
 		loading = true;
-		clientFetchAPI({
+		clientFetchAPI<string>({
 			path: '/api/agents',
 			body: formData,
 			method: 'POST',
 			successStatusCode: 201
 		})
 			.then(async (res) => {
+				userDataState.user!.agentsCount++;
 				if (agentsState.isFetched) {
 					agentsState.isFetched = false;
 					agentsState.refetchAgents();

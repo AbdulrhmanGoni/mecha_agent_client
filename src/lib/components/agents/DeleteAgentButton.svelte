@@ -5,6 +5,7 @@
 	import { agentPageState } from '../../../stores/agentPage.svelte';
 	import Button from '../shared/Button.svelte';
 	import LoadingSpinner from '../shared/LoadingSpinner.svelte';
+	import { userDataState } from '../../../stores/userData.svelte';
 
 	const { agent, onSuccess }: { agent: Agent; onSuccess?: () => void } = $props();
 
@@ -28,6 +29,7 @@
 					agentsState.actionInProgress = true;
 					deleteAgentRequest(agent.id)
 						.then(() => {
+							userDataState.user!.agentsCount--;
 							agentsState.agents = agentsState.agents.filter((a) => a.id !== agent.id);
 							if (agentPageState.agent?.id === agent.id) {
 								agentPageState.agent = undefined;

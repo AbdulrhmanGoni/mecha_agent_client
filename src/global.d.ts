@@ -4,7 +4,9 @@ type User = {
     avatar?: string;
     lastSignIn: string;
     agentsCount: number;
+    publishedAgents: number;
     apiKeysCount: number;
+    datasetsCount: number;
     currentPlan: Plan["planName"];
     signingMethod: string;
     todayInference: {

@@ -5,6 +5,7 @@
 	import { permissions } from '$lib/constants/auth';
 	import { getToastStore } from '@skeletonlabs/skeleton';
 	import LoadingSpinner from '../shared/LoadingSpinner.svelte';
+	import { userDataState } from '../../../stores/userData.svelte';
 
 	let isLoading = $state(false);
 	let KEY_NAME_MIN_LENGTH = 3;
@@ -46,6 +47,7 @@
 				.then((newKey) => {
 					formElement.reset();
 					apiKeysState.apiKeys.push(newKey);
+					userDataState.user!.apiKeysCount++;
 				})
 				.catch((error) => {
 					toast.trigger({

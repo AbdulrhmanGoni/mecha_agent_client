@@ -5,6 +5,7 @@
 	import LoadingSpinner from '../shared/LoadingSpinner.svelte';
 	import { goto } from '$app/navigation';
 	import clientFetchAPI from '$lib/functions/clientFetchAPI';
+	import { userDataState } from '../../../stores/userData.svelte';
 
 	const modalStore = getModalStore();
 
@@ -42,6 +43,8 @@
 								}
 								return agent;
 							});
+
+							userDataState.user!.datasetsCount--;
 
 							goto('/datasets', { replaceState: true });
 						})

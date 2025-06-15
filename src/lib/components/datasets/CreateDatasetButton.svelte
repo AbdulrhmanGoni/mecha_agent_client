@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { datasetsState } from '../../../stores/datasets.svelte';
+	import { userDataState } from '../../../stores/userData.svelte';
 	import DatasetFormModalButton from './DatasetFormModalButton.svelte';
 	import { getToastStore } from '@skeletonlabs/skeleton';
 
@@ -22,6 +23,7 @@
 				background: 'variant-filled-success'
 			});
 			datasetsState.datasets.push(res);
+			userDataState.user!.datasetsCount++;
 		},
 		submitButtonText: 'Create',
 		submitButtonIcon: 'hugeicons--add-circle'

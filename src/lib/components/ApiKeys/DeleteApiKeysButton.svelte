@@ -3,6 +3,7 @@
 	import { apiKeysState } from '../../../stores/apiKeys.svelte';
 	import Button from '../shared/Button.svelte';
 	import clientFetchAPI from '$lib/functions/clientFetchAPI';
+	import { userDataState } from '../../../stores/userData.svelte';
 
 	const toastStore = getToastStore();
 	const modalStore = getModalStore();
@@ -27,6 +28,7 @@
 							});
 							apiKeysState.removeApiKeys(apiKeysState.selectedKeys);
 							apiKeysState.selectedKeys = [];
+							userDataState.user!.apiKeysCount--;
 						})
 						.catch((error) => {
 							toastStore.trigger({
