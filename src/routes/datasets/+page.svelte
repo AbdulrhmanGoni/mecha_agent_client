@@ -29,9 +29,22 @@
 					<DatasetsLoadingCard />
 				{/each}
 			{:else if datasetsState.fetched}
-				{#each datasetsState.datasets as dataset}
-					<DatasetCard {...dataset} />
-				{/each}
+				{#if datasetsState.datasets.length}
+					{#each datasetsState.datasets as dataset}
+						<DatasetCard {...dataset} />
+					{/each}
+				{:else}
+					<div class="col-span-2">
+						<ErrorPage
+							title="No datasets"
+							errorMessage={`You don't have datasets now, Click on "Create" button in the top right to create one`}
+							iconName="hugeicons--database"
+							retryFn={fetchDatasets}
+							hideRetryButton
+							hideBackButton
+						/>
+					</div>
+				{/if}
 			{/if}
 		</div>
 	{/if}
