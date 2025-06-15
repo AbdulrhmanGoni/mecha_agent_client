@@ -39,7 +39,7 @@
 		<AgentsGridError errorMessage={agentsState.error} />
 	{:else}
 		<div>
-			<BackButton target="/" />
+			<BackButton />
 		</div>
 		<div class="flex items-center gap-2">
 			<h3 class="h3 flex-1 font-bold">Your Agents</h3>

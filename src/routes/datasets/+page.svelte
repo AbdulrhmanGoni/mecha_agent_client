@@ -5,11 +5,13 @@
 	import ErrorPage from '$lib/components/shared/ErrorPage.svelte';
 	import DatasetsLoadingCard from '$lib/components/datasets/DatasetsLoadingCard.svelte';
 	import CreateDatasetButton from '$lib/components/datasets/CreateDatasetButton.svelte';
+	import BackButton from '$lib/components/shared/BackButton.svelte';
 
 	onMount(fetchDatasets);
 </script>
 
 <div class="mt-7 space-y-4 sm:mt-14">
+	<BackButton />
 	<div class="flex items-center gap-2">
 		<span class="iconify size-6 hugeicons--database sm:size-7"></span>
 		<h1 class="flex-1 text-xl font-bold sm:text-2xl">Your Datasets</h1>

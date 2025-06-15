@@ -13,7 +13,7 @@
 	};
 </script>
 
-<Button {...props} onclick={back} class="variant-filled-primary {props.class}">
+<Button {...props} onclick={back} class="variant-filled-primary !btn-sm sm:!btn-md {props.class}">
 	<span class="iconify size-6 hugeicons--link-backward"> </span>
 	Back
 </Button>
