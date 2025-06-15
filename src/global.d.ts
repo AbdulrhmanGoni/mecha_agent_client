@@ -25,8 +25,7 @@ type CustomButtonProps = import("svelte/elements").HTMLButtonAttributes & {
 
 type Plan = {
     planName: "Free" | "Pro"
-    maxAgentsCount: number,
-    maxApiKeysCount: number,
+    maxPublishedAgentsCount: number,
     maxInferencesPerDay: number,
     subscriptionCostPerMonth: number,
 }

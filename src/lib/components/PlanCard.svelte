@@ -53,12 +53,8 @@
 
 	<ul class="flex flex-col gap-2">
 		<li class="flex justify-between gap-4 font-semibold">
-			<p>Agents count :</p>
-			<span>{plan.maxAgentsCount}</span>
-		</li>
-		<li class="flex justify-between gap-4 font-semibold">
-			<p>API Keys count :</p>
-			<span>{plan.maxApiKeysCount}</span>
+			<p>Published Agents count :</p>
+			<span>{plan.maxPublishedAgentsCount}</span>
 		</li>
 		<li class="flex justify-between gap-4 font-semibold">
 			<p>Inferences per day :</p>
