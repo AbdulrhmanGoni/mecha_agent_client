@@ -44,7 +44,7 @@
 </script>
 
 <div class="my-6 flex gap-2 sm:my-8">
-	<BackButton size="sm" target="/agents/{agent.id}" />
+	<BackButton size="sm" />
 	<Button
 		size="sm"
 		class="variant-filled-secondary gap-2"

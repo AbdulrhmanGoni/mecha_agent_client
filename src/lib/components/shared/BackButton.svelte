@@ -1,15 +1,10 @@
 <script lang="ts">
 	import Button from './Button.svelte';
-	import { goto } from '$app/navigation';
 
-	const { target, ...props }: CustomButtonProps & { target?: string } = $props();
+	const { ...props }: CustomButtonProps = $props();
 
 	const back = () => {
-		if (target) {
-			goto(target);
-		} else {
-			window.history.back();
-		}
+		window.history.back();
 	};
 </script>
 

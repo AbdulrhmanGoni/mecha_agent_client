@@ -15,7 +15,7 @@
 	<AgentPageError errorMessage={agentPageState.error} />
 {:else if agentPageState.agent}
 	<div class="space-y-3 py-6">
-		<BackButton target="/agents" />
+		<BackButton />
 		<AgentPageFullCard agent={agentPageState.agent} />
 	</div>
 {/if}
