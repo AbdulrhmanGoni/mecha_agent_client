@@ -1,5 +1,22 @@
 import serverFetchAPI from '$lib/functions/serverFetchAPI';
 
+export async function GET({ cookies, url }) {
+    const response = await serverFetchAPI({ path: url.pathname, cookies })
+
+    return new Response(response.body, { status: response.status });
+}
+
+export async function PATCH({ request, cookies, url }) {
+    const response = await serverFetchAPI({
+        method: "PATCH",
+        path: url.pathname,
+        cookies,
+        body: await request.formData()
+    })
+
+    return new Response(response.body, { status: response.status });
+}
+
 export async function DELETE({ cookies, url }) {
     const response = await serverFetchAPI({
         method: "DELETE",
