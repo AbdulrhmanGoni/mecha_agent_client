@@ -6,6 +6,7 @@
 	import { goto } from '$app/navigation';
 	import clientFetchAPI from '$lib/functions/clientFetchAPI';
 	import { userDataState } from '../../../stores/userData.svelte';
+	import { datasetsState } from '../../../stores/datasets.svelte';
 
 	const modalStore = getModalStore();
 
@@ -33,12 +34,16 @@
 								background: 'variant-filled-success'
 							});
 
+							datasetsState.datasets = datasetsState.datasets.filter(
+								(dataset) => dataset.id !== id
+							);
+
 							if (agentPageState.agent) {
 								agentPageState.agent.datasetId = null;
 							}
 
 							agentsState.agents.map((agent) => {
-								if (agent.id === agentPageState.agent?.id) {
+								if (id === agent.datasetId) {
 									agent.datasetId = null;
 								}
 								return agent;
