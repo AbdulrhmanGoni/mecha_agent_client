@@ -1,9 +1,9 @@
 import serverFetchAPI from '$lib/functions/serverFetchAPI';
 
-export async function DELETE({ cookies, url }) {
+export async function PATCH({ cookies, url }) {
     const response = await serverFetchAPI({
         path: url.pathname,
-        method: "DELETE",
+        method: "PATCH",
         cookies,
     })
 
