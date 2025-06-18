@@ -2,10 +2,11 @@ type Dataset = {
     id: string;
     title: string;
     description: string;
-    instructionsCount: number;
     createdAt: string;
     updatedAt: string;
 };
+
+type DatasetFullData = Dataset & { instructionsCount: number }
 
 type FormProps<FormDataT> = {
     formTitle: string;
