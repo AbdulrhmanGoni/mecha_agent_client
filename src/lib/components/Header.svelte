@@ -4,6 +4,7 @@
 	import { userDataState } from '../../stores/userData.svelte';
 	import Button from './shared/Button.svelte';
 	import { goto } from '$app/navigation';
+	import SubscriptionModalButton from './dashboard/SubscriptionModalButton.svelte';
 </script>
 
 <AppBar background="none" padding="px-0 py-4">
@@ -19,6 +20,13 @@
 			<Button size="sm" class="variant-ghost-primary" onclick={() => goto('/plans')}>
 				Upgrade 🚀
 			</Button>
+		{:else if userDataState.user?.subscription}
+			<SubscriptionModalButton
+				class="badge variant-gradient-primary-tertiary relative bg-gradient-to-br uppercase"
+				user={userDataState.user}
+			>
+				{userDataState.user.currentPlan}
+			</SubscriptionModalButton>
 		{/if}
 		{#if userDataState.isFetching}
 			<div class="placeholder h-11 w-11 rounded-full"></div>

@@ -13,6 +13,10 @@ type User = {
         current: number | string,
         max: number | string,
     };
+    subscription?: {
+        status: string;
+        createdAt: string;
+    };
 }
 
 type HTTPRequestMethod = "GET" | "POST" | "DELETE" | "PATCH";
