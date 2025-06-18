@@ -72,8 +72,8 @@
 		/>
 	</div>
 	<hr class="!border-t-1 my-3" />
-	<div class="grid sm:grid-cols-2">
-		<AgentDatasetCard {agent} />
+	<div class="grid gap-4 sm:grid-cols-2">
+		<AgentDatasetCard />
 		<PublishAgentCard />
 	</div>
 </div>

@@ -40,5 +40,12 @@
 			</div>
 			<div class="placeholder h-16 w-full animate-pulse"></div>
 		</div>
+		<div class="space-y-2 py-3">
+			<div class="flex items-center gap-2">
+				<div class="placeholder size-7 animate-pulse"></div>
+				<div class="placeholder h-7 w-60 animate-pulse"></div>
+			</div>
+			<div class="placeholder h-16 w-full animate-pulse"></div>
+		</div>
 	</div>
 </div>
