@@ -7,7 +7,7 @@
 	const percenage = (value / max) * 100;
 </script>
 
-<div class="flex flex-col items-center justify-center gap-3 px-3 py-6">
+<div class="flex h-full flex-col items-center justify-center gap-3 px-3 py-6">
 	<p class="text-center text-xl font-semibold">Today's inferences</p>
 	<ProgressRadial
 		width="w-28"

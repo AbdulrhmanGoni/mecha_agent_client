@@ -17,6 +17,7 @@ type User = {
         status: string;
         createdAt: string;
     };
+    lastWeekInferences: (number | string)[];
 }
 
 type HTTPRequestMethod = "GET" | "POST" | "DELETE" | "PATCH";
