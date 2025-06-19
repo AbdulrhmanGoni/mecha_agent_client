@@ -1,6 +1,6 @@
 <script lang="ts">
 	import timeAgo from '$lib/functions/timeAgo';
-	import DeleteDatasetButton from '../dataset/DeleteDatasetButton.svelte';
+	import DeleteDatasetButton from './DeleteDatasetButton.svelte';
 	import EditDatasetButton from './EditDatasetButton.svelte';
 	import Divider from '../shared/Divider.svelte';
 

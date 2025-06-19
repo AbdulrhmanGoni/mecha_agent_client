@@ -7,7 +7,7 @@
 	import ChatWithAgentButton from '../chat/ChatWithAgentButton.svelte';
 	import mediaURL from '$lib/functions/mediaURL';
 	import { goto } from '$app/navigation';
-	import AgentDatasetCard from '../dataset/AgentDatasetCard.svelte';
+	import AgentDatasetCard from '../datasets/AgentDatasetCard.svelte';
 	import PublishAgentCard from './PublishAgentCard.svelte';
 	import CopyAgentIdButton from './CopyAgentIdButton.svelte';
 
