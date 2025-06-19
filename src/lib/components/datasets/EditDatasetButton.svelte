@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { getToastStore } from '@skeletonlabs/skeleton';
 	import DatasetFormModalButton from './DatasetFormModalButton.svelte';
+	import { datasetPageState } from '../../../stores/datasetPage.svelte';
 	import { datasetsState } from '../../../stores/datasets.svelte';
 
 	const toast = getToastStore();
@@ -27,6 +28,13 @@
 				description: formData.get('description')?.toString() as string,
 				updatedAt: new Date().toISOString()
 			};
+
+			if (datasetPageState.dataset?.id === dataset.id) {
+				datasetPageState.dataset = {
+					...datasetPageState.dataset,
+					...updatedData
+				};
+			}
 
 			datasetsState.datasets.map((dataset) => {
 				dataset = {
