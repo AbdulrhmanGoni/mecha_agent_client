@@ -30,6 +30,7 @@
 					deleteAgentRequest(agent.id)
 						.then(() => {
 							userDataState.user!.agentsCount--;
+							userDataState.user!.publishedAgents -= agent.isPublished ? 1 : 0;
 							agentsState.agents = agentsState.agents.filter((a) => a.id !== agent.id);
 							if (agentPageState.agent?.id === agent.id) {
 								agentPageState.agent = undefined;
