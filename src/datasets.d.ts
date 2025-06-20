@@ -33,3 +33,7 @@ type FormProps<FormDataT> = {
 }
 
 type DatasetFormProps = FormProps<Pick<Dataset, 'title' | 'description'>>
+
+type DatasetInstructionsFormProps = FormProps<Pick<Instruction, 'prompt' | 'response'>> & {
+    mutateForm?(form: FormData): FormData;
+}
