@@ -3,6 +3,8 @@
 	import DeleteDatasetButton from './DeleteDatasetButton.svelte';
 	import EditDatasetButton from './EditDatasetButton.svelte';
 	import Divider from '../shared/Divider.svelte';
+	import { datasetInstructionsState } from '../../../stores/datasetPage.svelte';
+	import Button from '../shared/Button.svelte';
 
 	const { dataset }: { dataset: DatasetFullData } = $props();
 </script>
@@ -34,6 +36,22 @@
 		<span class="variant-ghost-primary h-fit rounded-full px-2 text-sm sm:text-base">
 			{dataset.instructionsCount}
 		</span>
+		<Button
+			size="sm"
+			class="variant-filled-primary ms-auto h-7 gap-1.5 px-2 text-sm sm:h-8 sm:px-3 sm:text-base"
+			onclick={() => {
+				datasetInstructionsState.openAddInstructionsForm =
+					!datasetInstructionsState.openAddInstructionsForm;
+			}}
+		>
+			{#if datasetInstructionsState.openAddInstructionsForm}
+				Show Instructions
+				<span class="iconify size-5 hugeicons--eye"></span>
+			{:else}
+				Add Instructions
+				<span class="iconify size-5 hugeicons--add-square"></span>
+			{/if}
+		</Button>
 	</div>
 
 	<Divider />
