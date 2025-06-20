@@ -2,6 +2,7 @@
 	import DatasetFullCard from '$lib/components/datasets/DatasetFullCard.svelte';
 	import DatasetFullCardError from '$lib/components/datasets/DatasetFullCardError.svelte';
 	import DatasetFullCardLoading from '$lib/components/datasets/DatasetFullCardLoading.svelte';
+	import InstructionsBrowser from '$lib/components/datasets/InstructionsBrowser.svelte';
 	import {
 		datasetInstructionsState,
 		datasetPageState,
@@ -40,6 +41,9 @@
 				<AddInstructionsForm />
 			{:else if datasetInstructionsState.openEditInstructionsForm}
 				<EditInstructionsForm />
+			{:else}
+				<InstructionsBrowser />
+			{/if}
 		{/if}
 	</div>
 </div>
