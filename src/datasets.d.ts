@@ -8,6 +8,14 @@ type Dataset = {
 
 type DatasetFullData = Dataset & { instructionsCount: number }
 
+type Instruction = {
+    id: string;
+    prompt: string;
+    response: string;
+    createdAt: number;
+    updatedAt: number;
+};
+
 type FormProps<FormDataT> = {
     formTitle: string;
     formTitleIcon: string,
