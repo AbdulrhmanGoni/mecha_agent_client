@@ -48,7 +48,8 @@
 						})
 						.catch((error) => {
 							toastStore.trigger({
-								message: error
+								message: error,
+								background: 'variant-filled-error'
 							});
 						})
 						.finally(() => {

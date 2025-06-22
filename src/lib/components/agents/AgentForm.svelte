@@ -42,7 +42,7 @@
 	>
 		<div class="flex flex-col gap-2 sm:flex-row">
 			<label class="label flex-1">
-				<span>Agent Name</span>
+				<span class="font-semibold">Agent Name</span>
 				<input
 					value={props.defaults?.agentName}
 					class="input variant-form-material"
@@ -58,7 +58,7 @@
 			</label>
 			<div class="relative flex flex-1 gap-2">
 				<label class="label flex-1">
-					<span>
+					<span class="font-semibold">
 						Avarat
 						<strong class="text-sm text-red-600">{$avatarRemoved ? '(Removed)' : ''}</strong>
 					</span>
@@ -111,7 +111,7 @@
 			</div>
 		</div>
 		<label class="label">
-			<span>Description</span>
+			<span class="font-semibold">Description</span>
 			<textarea
 				value={props.defaults?.description}
 				class="input variant-form-material"
@@ -123,7 +123,7 @@
 			></textarea>
 		</label>
 		<label class="label">
-			<span>System Instructions</span>
+			<span class="font-semibold">System Instructions</span>
 			<textarea
 				value={props.defaults?.systemInstructions}
 				class="input variant-form-material"
@@ -134,7 +134,7 @@
 			></textarea>
 		</label>
 		<label class="label">
-			<span>Don't know response</span>
+			<span class="font-semibold">Don't know response</span>
 			<textarea
 				value={props.defaults?.dontKnowResponse}
 				class="input variant-form-material"
@@ -145,7 +145,7 @@
 			></textarea>
 		</label>
 		<label class="label flex-1">
-			<span>Greeting Message</span>
+			<span class="font-semibold">Greeting Message</span>
 			<input
 				value={props.defaults?.greetingMessage}
 				class="input variant-form-material"
@@ -159,7 +159,7 @@
 			<p id="agent-name-error-message" class="text-red-600"></p>
 		</label>
 		<label class="label">
-			<span>Response Syntax</span>
+			<span class="font-semibold">Response Syntax</span>
 			<select disabled={props.isLoading} name="responseSyntax" class="select variant-form-material">
 				<option value="none">none</option>
 				{#each responseSyntaxOptions as option}
