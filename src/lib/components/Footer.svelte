@@ -17,10 +17,12 @@
 			</div>
 			<div class="grid grid-cols-2 gap-8 sm:grid-cols-3 sm:gap-6">
 				<div>
-					<h2 class="mb-6 font-bold">INTEGRATIONS</h2>
+					<h2 class="mb-6 font-bold">DOCS</h2>
 					<ul class="secondary-text-color font-medium">
 						<li class="mb-4">
-							<a href="https://llms-tdm.abdulrhman.icu" class="hover:underline">Datasets</a>
+							<a href="https://abdulrhmangoni.github.com/mecha_agent_docs/" class="hover:underline">
+								Getting Started
+							</a>
 						</li>
 						<li class="mb-4">
 							<a
