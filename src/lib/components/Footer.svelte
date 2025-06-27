@@ -1,5 +1,5 @@
 <script>
-	import { Avatar } from '@skeletonlabs/skeleton';
+	import Logo from './Logo.svelte';
 </script>
 
 <footer class="card w-full">
@@ -7,7 +7,7 @@
 		<div class="md:flex md:justify-between">
 			<div class="mb-6 space-y-4 md:mb-0">
 				<div class="flex items-center gap-3">
-					<Avatar width="w-10" src="/mecha_agent_logo.webp">MA</Avatar>
+					<Logo className="w-10" />
 					<h1 class="gradient-heading text-2xl font-extrabold">Mecha Agent</h1>
 				</div>
 				<p class="secondary-text-color max-w-[470px]">

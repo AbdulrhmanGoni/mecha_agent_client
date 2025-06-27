@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { Avatar } from '@skeletonlabs/skeleton';
 	import { signIn } from '@auth/sveltekit/client';
+	import Logo from '../Logo.svelte';
 
 	type UserCredentialsFormProps = {
 		isNewUser: boolean;
@@ -21,7 +21,7 @@
 </script>
 
 <div class="flex w-full flex-col items-center space-y-3">
-	<Avatar width="w-24" src="/mecha_agent_logo.webp">MA</Avatar>
+	<Logo className="w-24" />
 	<h1 class="text-2xl font-bold">
 		Sign
 		{#if isNewUser}
