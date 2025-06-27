@@ -29,6 +29,6 @@
 		submitButtonIcon: 'hugeicons--add-circle'
 	}}
 >
-	Create
+	Create Dataset
 	<span class="iconify size-4 hugeicons--database-add sm:size-5"></span>
 </DatasetFormModalButton>
