@@ -1,3 +1,7 @@
+<script>
+	import SupportEmail from '$lib/components/shared/SupportEmail.svelte';
+</script>
+
 <div class="px-4 py-12">
 	<h1 class="mb-6 text-3xl font-bold">Privacy Policy</h1>
 	<p class="secondary-text-color mb-8 text-sm">Effective Date: June 2, 2025</p>
@@ -71,9 +75,7 @@
 		</ul>
 		<p class="mt-4">
 			To exercise your rights, contact us at:
-			<a class="font-semibold hover:underline" href="mailto:abdulrhmangoni@gmail.com"
-				>abdulrhmangoni@gmail.com</a
-			>
+			<SupportEmail className="font-semibold hover:underline" />
 		</p>
 	</section>
 
@@ -89,9 +91,7 @@
 		<h2 class="mb-2 text-xl font-semibold">7. Contact Us</h2>
 		<p class="text-base">
 			For any questions or concerns about this Privacy Policy, contact us at:
-			<a class="font-semibold hover:underline" href="mailto:abdulrhmangoni@gmail.com"
-				>abdulrhmangoni@gmail.com</a
-			>
+			<SupportEmail className="font-semibold hover:underline" />
 		</p>
 	</section>
 </div>
