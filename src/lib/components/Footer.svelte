@@ -20,13 +20,13 @@
 					<h2 class="mb-6 font-bold">DOCS</h2>
 					<ul class="secondary-text-color font-medium">
 						<li class="mb-4">
-							<a href="https://abdulrhmangoni.github.com/mecha_agent_docs/" class="hover:underline">
+							<a href="https://abdulrhmangoni.github.io/mecha_agent_docs/" class="hover:underline">
 								Getting Started
 							</a>
 						</li>
 						<li class="mb-4">
 							<a
-								href="https://github.com/AbdulrhmanGoni/mecha-agent-inference-client"
+								href="https://abdulrhmangoni.github.io/mecha_agent_docs/inference-client"
 								class="hover:underline">Inference Client</a
 							>
 						</li>
