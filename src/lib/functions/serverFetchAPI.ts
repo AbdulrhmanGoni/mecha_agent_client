@@ -1,4 +1,4 @@
-import { SERVER_HOST } from "$env/static/private";
+import { SERVER_HOST, NODE_ENV } from "$env/static/private";
 import type { Cookies } from "@sveltejs/kit";
 
 type ServerFetchAPIOptions = {
@@ -10,7 +10,7 @@ type ServerFetchAPIOptions = {
 }
 
 export default async function serverFetchAPI(options: ServerFetchAPIOptions) {
-    const jwt = options.cookies?.get("authjs.session-token");
+    const jwt = options.cookies?.get(`${NODE_ENV === "production" ? "__Secure-" : ""}authjs.session-token`);
 
     const headers = new Headers(options.headers)
 
