@@ -64,7 +64,7 @@
 
 	<Button
 		class={`w-fit ${isUserCurrentPlan ? 'bg-primary-500/50' : 'bg-primary-500'}`}
-		disabled={isUserCurrentPlan || (isNotPaidUser && !isPaidPlan)}
+		disabled={true}
 		onclick={() => {
 			if (isPaidPlan && !isNotPaidUser) {
 				goToCheckout(plan.planName);
