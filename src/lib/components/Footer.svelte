@@ -11,9 +11,9 @@
 					<h1 class="gradient-heading text-2xl font-extrabold">Mecha Agent</h1>
 				</div>
 				<p class="secondary-text-color max-w-[470px]">
-					<strong>Mecha Agent</strong> is a web application where users can create their own AI agent
-					chatbots, Give them custom instructions and knowledge as dataset, And publish them for the
-					world to interact and chat with.
+					<strong>Mecha Agent</strong> is where users can create their own AI agent chatbots, Give them
+					custom instructions and knowledge as dataset, And publish them for the world to interact and
+					chat with.
 				</p>
 			</div>
 			<div class="grid grid-cols-2 gap-8 sm:grid-cols-3 sm:gap-6">

@@ -42,7 +42,9 @@
 			<BackButton />
 		</div>
 		<div class="flex items-center gap-2">
-			<h3 class="h3 flex-1 font-bold">Your Agents</h3>
+			{#if agentsState.agents.length || agentsState.isFetching}
+				<h3 class="h3 flex-1 font-bold">Your Agents</h3>
+			{/if}
 			<Button
 				size="sm"
 				onclick={() => goto('/agents/create')}
