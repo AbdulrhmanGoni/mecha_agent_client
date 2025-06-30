@@ -13,7 +13,8 @@
 	formParams={{
 		formTitle: 'Create a dataset',
 		formTitleIcon: 'hugeicons--database-add',
-		formDescription: 'variant-filled-secondary flex h-fit items-center rounded-md p-1 sm:p-1.5',
+		formDescription:
+			'Create a dataset and fill it with instructions to link it later with your agents',
 		path: '/',
 		method: 'POST',
 		successStatusCode: 201,
