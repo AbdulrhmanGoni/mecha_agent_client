@@ -5,17 +5,18 @@
 	import { computePosition, autoUpdate, offset, shift, flip, arrow } from '@floating-ui/dom';
 	import { storePopup } from '@skeletonlabs/skeleton';
 	import { fetchUserData } from '../stores/userData.svelte';
-	import { onMount, type Snippet } from 'svelte';
+	import { onMount } from 'svelte';
 	import Footer from '$lib/components/Footer.svelte';
+	import { page } from '$app/stores';
 
 	initializeStores();
 
 	storePopup.set({ computePosition, autoUpdate, offset, shift, flip, arrow });
 
-	let { children, data }: { children: Snippet<[]>; data: App.PageData } = $props();
+	let { children } = $props();
 
 	onMount(() => {
-		if (data.session) fetchUserData();
+		if ($page.data.session) fetchUserData();
 	});
 </script>
 
