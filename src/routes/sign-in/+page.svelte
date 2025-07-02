@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { afterNavigate, goto } from '$app/navigation';
 	import SignInWithGithub from '$lib/components/auth/SignInWithGithub.svelte';
+	import SignInWithGoogle from '$lib/components/auth/SignInWithGoogle.svelte';
 	import UserCredentialsForm from '$lib/components/auth/UserCredentialsForm.svelte';
 	import SignInErrorMessages from '$lib/components/auth/SignInErrorMessages.svelte';
 
@@ -25,6 +26,7 @@
 		>
 			OR
 		</span>
+		<SignInWithGoogle />
 		<SignInWithGithub />
 		{#if isNewUser}
 			<button onclick={() => changeIsNewUserQuery(true)}>Already have an account?, Sign in !</button

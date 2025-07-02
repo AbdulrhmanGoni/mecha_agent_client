@@ -4,6 +4,7 @@ import verifyJWT from "$lib/functions/verifyJWT";
 import { CredentialsSignin, SvelteKitAuth } from "@auth/sveltekit";
 import Credentials from "@auth/sveltekit/providers/credentials";
 import GitHub from "@auth/sveltekit/providers/github";
+import Google from "@auth/sveltekit/providers/google";
 
 class SigningError extends CredentialsSignin {
     code = ""
@@ -40,6 +41,7 @@ export const { handle, signIn, signOut } = SvelteKitAuth({
             },
         }),
         GitHub,
+        Google,
     ],
     callbacks: {
         async signIn({ user, account }) {
