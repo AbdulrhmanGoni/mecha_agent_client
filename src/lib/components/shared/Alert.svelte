@@ -28,8 +28,12 @@
 		<p class="!mt-0">{message}</p>
 	</div>
 	{#if actionIconName}
-		<button onclick={actionFunction} aria-label="An action to be taken after the alert">
-			<span class={`iconify size-7 ${actionIconName}`}></span>
+		<button
+			class="flex"
+			onclick={actionFunction}
+			aria-label="An action to be taken after the alert"
+		>
+			<span class={`iconify size-6 ${actionIconName}`}></span>
 		</button>
 	{/if}
 </div>
