@@ -4,6 +4,7 @@
 	import { datasetInstructionsState } from '../../../stores/datasetPage.svelte';
 	import Button from '../shared/Button.svelte';
 	import { page } from '$app/stores';
+	import LoadingSpinner from '../shared/LoadingSpinner.svelte';
 
 	const props: DatasetInstructionsFormProps = $props();
 
@@ -98,7 +99,11 @@
 				Close
 			</Button>
 			<Button class="variant-filled-primary" size="sm" type="submit" disabled={loading}>
-				{props.submitButtonText}
+				{#if loading}
+					<LoadingSpinner />
+				{:else}
+					{props.submitButtonText}
+				{/if}
 			</Button>
 		</div>
 	</div>
