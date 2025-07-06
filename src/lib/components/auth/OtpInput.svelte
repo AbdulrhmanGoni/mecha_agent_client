@@ -6,7 +6,13 @@
 	import { getToastStore } from '@skeletonlabs/skeleton';
 	import Alert from '../shared/Alert.svelte';
 
-	let { email, onVerify }: { email: string; onVerify: () => void } = $props();
+	type Props = {
+		email: string;
+		onVerify: () => void;
+		verificationPurpose: EmailVerificationPurpose;
+	};
+
+	let { email, onVerify, verificationPurpose }: Props = $props();
 
 	let loading = $state(false);
 	let otpSignature = $state('');
@@ -37,8 +43,16 @@
 		const otp = formData.entries().reduce((otp, input) => otp + input[1], '');
 
 		loading = true;
+
+		const query = new URLSearchParams([
+			['email', email],
+			['otp', otp],
+			['signature', otpSignature],
+			['purpose', verificationPurpose]
+		]);
+
 		clientFetchAPI<boolean>({
-			path: `/api/verify-email?email=${email}&otp=${otp}&signature=${otpSignature}`,
+			path: `/api/verify-email?${query.toString()}`,
 			method: 'POST'
 		})
 			.then((res) => {
