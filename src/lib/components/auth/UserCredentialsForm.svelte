@@ -43,7 +43,11 @@
 </script>
 
 {#if isNewUser && openOtpFormFor}
-	<OtpInput email={openOtpFormFor} onVerify={submitCredentials} verificationPurpose="sign-up" />
+	<OtpInput
+		bind:email={openOtpFormFor}
+		onVerify={submitCredentials}
+		verificationPurpose="sign-up"
+	/>
 {:else}
 	<div class="flex w-full flex-col items-center space-y-3">
 		<Logo className="w-24" />

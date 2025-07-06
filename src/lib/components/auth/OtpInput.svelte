@@ -12,7 +12,7 @@
 		verificationPurpose: EmailVerificationPurpose;
 	};
 
-	let { email, onVerify, verificationPurpose }: Props = $props();
+	let { email = $bindable(), onVerify, verificationPurpose }: Props = $props();
 
 	let loading = $state(false);
 	let otpSignature = $state('');
@@ -73,7 +73,17 @@
 	}
 </script>
 
-<form class="flex h-60 flex-col justify-center" onsubmit={onSubmit}>
+<form class="flex min-h-60 flex-col justify-center gap-3" onsubmit={onSubmit}>
+	<button
+		type="button"
+		class="w-fit"
+		onclick={() => {
+			email = '';
+		}}
+		aria-label="Back to sign up form"
+	>
+		<span class="iconify size-7 hugeicons--arrow-left-02"></span>
+	</button>
 	{#if loading}
 		<LoadingSpinner className="size-14" />
 	{:else if sendOtpError}
@@ -85,8 +95,11 @@
 			actionFunction={requestOTP}
 		/>
 	{:else if otpSignature}
-		<h1 class="text-center text-lg font-semibold">Enter the OTP sent to your email</h1>
-		<div class="my-5 flex gap-3">
+		<h1 class="text-center text-xl font-semibold">Enter the OTP sent to your email</h1>
+		<p class="secondary-text-color text-center">
+			⚠️ Note: Look for the OTP in your spam folder if you couldn't find it in your mail box
+		</p>
+		<div class="flex justify-center gap-3">
 			{#each [1, 2, 3, 4, 5, 6] as inputNumber}
 				<!-- svelte-ignore a11y_autofocus -->
 				<input
@@ -94,7 +107,7 @@
 					name="otp-field-{inputNumber}"
 					class="input variant-form-material size-12 text-center"
 					type="text"
-					pattern="\d*"
+					pattern="\d"
 					required
 					maxlength="1"
 					autofocus={inputNumber === 1}
