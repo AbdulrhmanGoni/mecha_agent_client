@@ -25,6 +25,7 @@
 		clientFetchAPI<string>({ path: `/api/verify-email?email=${email}` })
 			.then((signature) => {
 				otpSignature = signature;
+				sendOtpError = '';
 			})
 			.catch((error) => {
 				sendOtpError = error;
