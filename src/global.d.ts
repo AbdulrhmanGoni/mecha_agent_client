@@ -36,3 +36,5 @@ type Plan = {
     maxInferencesPerDay: number,
     subscriptionCostPerMonth: number,
 }
+
+type EmailVerificationPurpose = "sign-up" | "reset-password"
