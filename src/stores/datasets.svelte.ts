@@ -15,20 +15,22 @@ const datasetsState = $state<DatasetsState>({
 });
 
 function fetchDatasets() {
-    datasetsState.fetching = true
-    clientFetchAPI<Dataset[]>({ path: "/api/datasets" })
-        .then((datasets) => {
-            datasetsState.datasets = datasets;
-            datasetsState.fetched = true;
-            datasetsState.error = "";
-        })
-        .catch((error) => {
-            datasetsState.error = error;
-            datasetsState.fetched = false;
-        })
-        .finally(() => {
-            datasetsState.fetching = false
-        })
+    if (!datasetsState.fetched && !datasetsState.fetching) {
+        datasetsState.fetching = true
+        clientFetchAPI<Dataset[]>({ path: "/api/datasets" })
+            .then((datasets) => {
+                datasetsState.datasets = datasets;
+                datasetsState.fetched = true;
+                datasetsState.error = "";
+            })
+            .catch((error) => {
+                datasetsState.error = error;
+                datasetsState.fetched = false;
+            })
+            .finally(() => {
+                datasetsState.fetching = false
+            })
+    }
 }
 
 export { datasetsState, fetchDatasets }
