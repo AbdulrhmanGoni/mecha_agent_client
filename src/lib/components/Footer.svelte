@@ -11,9 +11,8 @@
 					<h1 class="gradient-heading text-2xl font-extrabold">Mecha Agent</h1>
 				</div>
 				<p class="secondary-text-color max-w-[470px]">
-					<strong>Mecha Agent</strong> is where users can create their own AI agent chatbots, Give them
-					custom instructions and knowledge as dataset, And publish them for the world to interact and
-					chat with.
+					<strong>Mecha Agent</strong> is where users create their own AI agent chatbots, Give them custom
+					instructions and knowledge, And publish them for the world to interact and chat with.
 				</p>
 			</div>
 			<div class="grid grid-cols-2 gap-8 sm:grid-cols-3 sm:gap-6">
@@ -21,14 +20,17 @@
 					<h2 class="mb-6 font-bold">DOCS</h2>
 					<ul class="secondary-text-color font-medium">
 						<li class="mb-4">
-							<a href="https://abdulrhmangoni.github.io/mecha_agent_docs/" class="hover:underline">
-								Getting Started
-							</a>
+							<a
+								href="https://abdulrhmangoni.github.io/mecha_agent_docs/docs/get-started/onboarding/"
+								class="hover:underline"
+								target="_blank">Onboarding</a
+							>
 						</li>
 						<li class="mb-4">
 							<a
-								href="https://abdulrhmangoni.github.io/mecha_agent_docs/inference-client"
-								class="hover:underline">Inference Client</a
+								href="https://abdulrhmangoni.github.io/mecha_agent_docs/docs/get-started/inference-client/"
+								class="hover:underline"
+								target="_blank">Inference Client</a
 							>
 						</li>
 					</ul>
@@ -50,15 +52,16 @@
 		<div class="flex flex-wrap justify-between gap-4 text-sm sm:items-center">
 			<span class="secondary-text-color sm:text-center">
 				© {new Date().getFullYear()}
-				<a href="https://github.com/AbdulrhmanGoni/mecha_agent_client" class="hover:underline">
-					Mecha Agent
-				</a>
-				. All Rights Reserved.
+				Mecha Agent . All Rights Reserved.
 			</span>
 			<div class="flex items-center gap-4 sm:mt-0 sm:justify-center">
 				<p class="space-x-0.5">
 					<span class="secondary-text-color">Created by</span>
-					<a class="hover:underline" href="https://abdulrhmangoni.github.io/my-portfolio/">
+					<a
+						class="hover:underline"
+						target="_blank"
+						href="https://abdulrhmangoni.github.io/my-portfolio/"
+					>
 						"Abdulrhman Goni"
 					</a>
 				</p>
@@ -70,7 +73,7 @@
 					<span class="iconify size-5 hugeicons--github"></span>
 				</a>
 				<a
-					href="https://www.linkedin.com/in/abdulrhman-goni-857a36275"
+					href="https://www.linkedin.com/in/abdulrhman-goni"
 					aria-label="Abdulrhman Goni's LinkedIn account"
 					target="_blank"
 				>
