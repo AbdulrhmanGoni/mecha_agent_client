@@ -58,6 +58,7 @@
 			{:else}
 				in
 			{/if}
+			into
 			<span class="text-primary-500">Mecha Agent</span>
 		</h1>
 		<form id="user-credentials-form" class="flex w-full flex-col gap-3" onsubmit={submitHandler}>
