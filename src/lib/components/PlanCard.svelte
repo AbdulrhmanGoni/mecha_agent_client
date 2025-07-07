@@ -63,7 +63,7 @@
 	</ul>
 
 	<Button
-		class={`w-fit ${isUserCurrentPlan ? 'bg-primary-500/50' : 'bg-primary-500'}`}
+		class={`w-fit ${isUserCurrentPlan ? 'bg-primary-500/50' : 'bg-primary-500'} cursor-not-allowed`}
 		disabled={true}
 		onclick={() => {
 			if (isPaidPlan && !isNotPaidUser) {

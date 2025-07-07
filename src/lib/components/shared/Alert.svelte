@@ -22,7 +22,7 @@
 </script>
 
 <div class={`alert ${alertVariants[variant]} flex-row items-center gap-3 px-3 py-2`}>
-	<span class="iconify size-7 hugeicons--alert-02"></span>
+	<span class="iconify size-7 text-white hugeicons--alert-02"></span>
 	<div class="alert-message !mt-0 text-start text-white">
 		<h4 class="h4 font-bold">{title}</h4>
 		<p class="!mt-0">{message}</p>
@@ -33,7 +33,7 @@
 			onclick={actionFunction}
 			aria-label="An action to be taken after the alert"
 		>
-			<span class={`iconify size-6 ${actionIconName}`}></span>
+			<span class={`iconify size-6 text-white ${actionIconName}`}></span>
 		</button>
 	{/if}
 </div>
