@@ -2,6 +2,7 @@
 	import { signIn } from '@auth/sveltekit/client';
 	import Logo from '../Logo.svelte';
 	import OtpInput from './OtpInput.svelte';
+	import ShowAndHidePasswordButton from '../shared/ShowAndHidePasswordButton.svelte';
 
 	type UserCredentialsFormProps = {
 		isNewUser: boolean;
@@ -40,6 +41,8 @@
 	function submitCredentials() {
 		newUser && signIn('credentials', newUser);
 	}
+
+	let showPassword = $state(false);
 </script>
 
 {#if isNewUser && openOtpFormFor}
@@ -89,11 +92,14 @@
 			</label>
 
 			<label class="label">
-				<span>Password</span>
+				<div class="flex items-center justify-between">
+					Password
+					<ShowAndHidePasswordButton bind:showPassword />
+				</div>
 				<input
 					class="input variant-form-material"
 					name="password"
-					type="password"
+					type={showPassword ? 'text' : 'password'}
 					placeholder="Enter your password"
 					required
 					minlength="6"
