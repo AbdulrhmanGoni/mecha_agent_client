@@ -3,7 +3,7 @@
 </script>
 
 <footer class="card w-full">
-	<div class="container px-2 py-6">
+	<div class="container px-2 py-5">
 		<div class="md:flex md:justify-between">
 			<div class="mb-6 space-y-4 md:mb-0">
 				<div class="flex items-center gap-3">
@@ -48,7 +48,7 @@
 				</div>
 			</div>
 		</div>
-		<hr class="my-6 border-gray-200 lg:my-8 dark:border-gray-700" />
+		<hr class="my-5 border-gray-200 dark:border-gray-700" />
 		<div class="flex flex-wrap justify-between gap-4 text-sm sm:items-center">
 			<span class="secondary-text-color sm:text-center">
 				© {new Date().getFullYear()}
