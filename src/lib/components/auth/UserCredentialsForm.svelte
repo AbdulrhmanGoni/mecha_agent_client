@@ -107,14 +107,19 @@
 				/>
 			</label>
 
-			<button class="btn self-end bg-primary-500 text-white" type="submit">
-				Sign
-				{#if isNewUser}
-					up
-				{:else}
-					in
-				{/if}
-			</button>
+			<div class="flex flex-wrap items-center gap-3">
+				<a class="flex-1 text-sm hover:underline" href="/forgot-password">
+					Forgot your password?, Reset it
+				</a>
+				<button class="btn btn-sm self-end bg-primary-500 text-white sm:btn-md" type="submit">
+					Sign
+					{#if isNewUser}
+						up
+					{:else}
+						in
+					{/if}
+				</button>
+			</div>
 		</form>
 	</div>
 {/if}
