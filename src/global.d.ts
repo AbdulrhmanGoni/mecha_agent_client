@@ -38,3 +38,9 @@ type Plan = {
 }
 
 type EmailVerificationPurpose = "sign-up" | "reset-password"
+
+type UserPasswordFormValues = {
+    currentPassword: string;
+    newPassword: string;
+    confirmedPassword: string;
+};
