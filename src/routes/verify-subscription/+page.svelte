@@ -13,7 +13,7 @@
 
 {#if !$page.data.checkSessionSuccess}
 	<div class="mt-10 flex flex-1 flex-col items-center gap-3 text-center sm:mt-32">
-		<img src="/docs/Online-Payment.svg" alt="" class="w-72 sm:w-96" />
+		<img src="/Online-Payment.svg" alt="" class="w-72 sm:w-96" />
 		<h1 class="text-3xl font-bold sm:text-4xl">Thank You for Subscribing</h1>
 		<p class="sm:text-lg">
 			Your subscription was successful! You now have access to all the features included in your

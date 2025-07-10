@@ -2,7 +2,7 @@
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import OtpInput from '$lib/components/auth/OtpInput.svelte';
-	import UserPasswordForm from '$lib/components/profile/UserPasswordForm.svelte';
+	import UserPasswordForm from '$lib/components/shared/UserPasswordForm.svelte';
 	import Alert from '$lib/components/shared/Alert.svelte';
 	import Button from '$lib/components/shared/Button.svelte';
 	import LoadingSpinner from '$lib/components/shared/LoadingSpinner.svelte';

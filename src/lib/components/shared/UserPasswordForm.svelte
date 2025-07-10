@@ -1,7 +1,7 @@
 <script lang="ts">
-	import Button from '../shared/Button.svelte';
-	import LoadingSpinner from '../shared/LoadingSpinner.svelte';
-	import ShowAndHidePasswordButton from '../shared/ShowAndHidePasswordButton.svelte';
+	import Button from './Button.svelte';
+	import LoadingSpinner from './LoadingSpinner.svelte';
+	import ShowAndHidePasswordButton from './ShowAndHidePasswordButton.svelte';
 
 	type Props = {
 		title?: string;
