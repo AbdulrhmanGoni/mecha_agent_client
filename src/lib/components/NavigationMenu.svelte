@@ -18,10 +18,19 @@
 </button>
 
 <div class="card variant-filled-surface z-50 p-3" data-popup="user-account">
-	<p class="px-4 py-1 text-lg font-bold">{userDataState.user?.name}</p>
-	<hr class="!border-t-1 my-1 !border-surface-300" />
 	<nav class="list-nav">
 		<ul>
+			<li>
+				<a href="/profile">
+					<Avatar width="size-6" src={userDataState.user?.avatar}>
+						<span class="iconify size-6 hugeicons--user-circle-02"></span>
+					</Avatar>
+					<span class="line-clamp-1 max-w-32 flex-auto">
+						{userDataState.user?.name}
+					</span>
+				</a>
+			</li>
+			<hr class="!border-t-1 !border-surface-300" />
 			<li>
 				<a href="/">
 					<span class="iconify size-6 hugeicons--home-11"></span>
