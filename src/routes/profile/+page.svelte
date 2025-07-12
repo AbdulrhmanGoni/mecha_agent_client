@@ -3,6 +3,7 @@
 	import SubscriptionModalButton from '$lib/components/dashboard/SubscriptionModalButton.svelte';
 	import Divider from '$lib/components/shared/Divider.svelte';
 	import { Avatar } from '@skeletonlabs/skeleton';
+	import ChangePasswordSection from './ChangePasswordSection.svelte';
 </script>
 
 {#if userDataState.user}
@@ -51,6 +52,11 @@
 						{userDataState.user.currentPlan} plan
 					</SubscriptionModalButton>
 				</div>
+			</div>
+			<Divider />
+			<h4 class="mb-4 flex items-center gap-2 text-2xl font-bold">Account</h4>
+			<div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
+				<ChangePasswordSection user={userDataState.user} />
 			</div>
 			<Divider />
 		</div>
