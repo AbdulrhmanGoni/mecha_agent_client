@@ -4,7 +4,6 @@
 	import SignInWithGoogle from '$lib/components/auth/SignInWithGoogle.svelte';
 	import UserCredentialsForm from '$lib/components/auth/UserCredentialsForm.svelte';
 	import SignInErrorMessages from '$lib/components/auth/SignInErrorMessages.svelte';
-	import { PUBLIC_GOOGLE_VERIFICATION_SITE_TOKEN } from '$env/static/public';
 
 	let isNewUser = $state(false);
 
@@ -25,7 +24,6 @@
 			'Give them custom knowledge and instructions, ' +
 			'And publish them for the world to interact and chat with.'}
 	/>
-	<meta name="google-site-verification" content={PUBLIC_GOOGLE_VERIFICATION_SITE_TOKEN} />
 </svelte:head>
 
 <div class="flex flex-1 flex-col justify-center py-6 sm:py-12">
