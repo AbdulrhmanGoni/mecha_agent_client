@@ -6,12 +6,21 @@
 	import { goto } from '$app/navigation';
 	import SubscriptionModalButton from './dashboard/SubscriptionModalButton.svelte';
 	import Logo from './Logo.svelte';
+	import { page } from '$app/stores';
+
+	function goHome() {
+		if ($page.url.pathname !== '/' && $page.url.pathname !== '/sign-in') {
+			goto('/');
+		}
+	}
 </script>
 
 <AppBar background="none" padding="px-0 py-4">
 	<svelte:fragment slot="lead">
 		<div class="flex items-center gap-3">
-			<Logo className="w-10 shrink-0" />
+			<button class="shrink-0" onclick={goHome}>
+				<Logo className="w-10" />
+			</button>
 			<h1 class="gradient-heading text-xl font-extrabold sm:text-2xl">Mecha Agent</h1>
 		</div>
 	</svelte:fragment>
