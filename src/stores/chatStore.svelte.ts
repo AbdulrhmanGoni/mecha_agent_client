@@ -61,7 +61,6 @@ export function fetchChatMessages(agentId: string, chatId: string) {
             openedChatState.error = "";
         })
         .catch((error) => {
-            console.log(error)
             openedChatState.error = error;
         })
         .finally(() => {

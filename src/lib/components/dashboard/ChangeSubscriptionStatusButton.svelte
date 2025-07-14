@@ -22,9 +22,6 @@
 			method: isActive ? 'DELETE' : 'PATCH'
 		})
 			.then(async (res) => {
-				await new Promise((r) => {
-					setTimeout(r, 3000);
-				});
 				toastStore.trigger({
 					message: res,
 					background: 'variant-filled-success'
