@@ -8,6 +8,8 @@
 	function closeChangePasswordForm() {
 		changePasswordFormOpen = false;
 	}
+
+	const passwordCantBeChanged = user.signingMethod !== 'credentials';
 </script>
 
 <div class="space-y-3">
@@ -17,12 +19,15 @@
 			<span>Change Password</span>
 		</p>
 	{/if}
-	{#if user.signingMethod === 'credentials'}
-		<p class="secondary-text-color">
+	<p class="secondary-text-color">
+		{#if passwordCantBeChanged}
+			You cannot change your password because you have signed up with
+			<strong>{user.signingMethod}</strong>
+		{:else}
 			You can change your password here whenever you want if you have signed up with your
 			<strong>Email</strong> and <strong>Password</strong>
-		</p>
-	{/if}
+		{/if}
+	</p>
 	{#if changePasswordFormOpen}
 		<ChangePasswordForm
 			onCancel={closeChangePasswordForm}
@@ -30,10 +35,13 @@
 		/>
 	{:else}
 		<Button
-			class="variant-filled-primary gap-2"
+			class="{passwordCantBeChanged
+				? 'variant-filled-surface cursor-not-allowed'
+				: 'variant-filled-primary'} gap-2"
 			onclick={() => {
 				changePasswordFormOpen = true;
 			}}
+			disabled={passwordCantBeChanged}
 		>
 			Change Password
 		</Button>
