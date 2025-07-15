@@ -17,7 +17,7 @@
 				<div
 					class="-mt-28 size-32 shrink-0 overflow-hidden rounded-full border-4 border-white shadow-md sm:size-48"
 				>
-					<Avatar width="size-full" src={userDataState.user?.avatar}>
+					<Avatar width="size-full" src={userDataState.user.avatar}>
 						<span class="iconify size-full hugeicons--user-03"></span>
 					</Avatar>
 				</div>
@@ -28,24 +28,30 @@
 						{userDataState.user.name}
 					</h3>
 					<p class="secondary-text-color flex items-center justify-center gap-2">
-						<span class="iconify size-5 hugeicons--mail-at-sign-02"></span>
+						<span
+							class="iconify size-5 text-black dark:text-white {userDataState.user.signingMethod ===
+							'github'
+								? 'hugeicons--github-01'
+								: userDataState.user.signingMethod === 'google'
+									? 'hugeicons--google'
+									: 'hugeicons--mail-01'}"
+						></span>
 						{userDataState.user.email}
 					</p>
-					<span
-						class="badge variant-gradient-warning-error gap-1 bg-gradient-to-br text-sm sm:text-base"
-					>
-						Signed in with {userDataState.user.signingMethod == 'credentials'
-							? 'Email and Password'
-							: userDataState.user.signingMethod.charAt(0).toUpperCase() +
-								userDataState.user.signingMethod.slice(1)}
-						{#if userDataState.user.signingMethod === 'github'}
-							<span class="iconify size-5 hugeicons--github-01"></span>
-						{:else if userDataState.user.signingMethod === 'google'}
-							<span class="iconify size-5 hugeicons--google"></span>
-						{:else}
-							<span class="iconify size-5 hugeicons--mail-account-02"></span>
-						{/if}
-					</span>
+					<p class="text-sm font-semibold">
+						Last sign in:
+						<span class="secondary-text-color">
+							{userDataState.user.lastSignIn
+								? new Date(userDataState.user.lastSignIn).toLocaleDateString('en-US', {
+										year: 'numeric',
+										month: 'long',
+										day: 'numeric',
+										hour: '2-digit',
+										minute: '2-digit'
+									})
+								: 'Never'}
+						</span>
+					</p>
 					<SubscriptionModalButton
 						class="badge variant-gradient-primary-tertiary relative bg-gradient-to-br text-sm uppercase sm:text-base"
 						user={userDataState.user}
