@@ -4,6 +4,7 @@
 	import Divider from '$lib/components/shared/Divider.svelte';
 	import { Avatar } from '@skeletonlabs/skeleton';
 	import ChangePasswordSection from './ChangePasswordSection.svelte';
+	import DeleteAccountSection from './DeleteAccountSection.svelte';
 </script>
 
 {#if userDataState.user}
@@ -59,6 +60,8 @@
 				<ChangePasswordSection user={userDataState.user} />
 			</div>
 			<Divider />
+			<h4 class="mb-4 flex items-center gap-2 text-2xl font-bold text-red-600">Danger Zone</h4>
+			<DeleteAccountSection />
 		</div>
 	</div>
 {/if}
