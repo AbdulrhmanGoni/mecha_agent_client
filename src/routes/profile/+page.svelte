@@ -56,7 +56,7 @@
 						class="badge variant-gradient-primary-tertiary relative bg-gradient-to-br text-sm uppercase sm:text-base"
 						user={userDataState.user}
 					>
-						{userDataState.user.currentPlan} plan
+						{userDataState.user.subscription!.planName ?? 'Free'} plan
 					</SubscriptionModalButton>
 				</div>
 			</div>

@@ -8,6 +8,7 @@
 	const modalStore = getModalStore();
 
 	const isActive = $derived(user.subscription?.status === 'active');
+	const subscription = $derived(user.subscription!);
 </script>
 
 <div class="card relative z-10 flex w-full max-w-lg flex-col gap-3.5 p-4">
@@ -18,17 +19,17 @@
 		</button>
 	</div>
 	<div class="flex w-full justify-between">
-		Plan
+		<p class="font-semibold">Plan:</p>
 		<p
-			class="badge uppercase {user.currentPlan === 'Free'
+			class="badge uppercase {subscription.planName === 'Free'
 				? 'variant-gradient-secondary-primary'
 				: 'variant-filled-primary'} bg-gradient-to-br"
 		>
-			{user.currentPlan}
+			{subscription.planName}
 		</p>
 	</div>
 	<div class="flex w-full justify-between">
-		Status
+		<p class="font-semibold">Status:</p>
 		<p
 			class="{isActive
 				? 'variant-filled-success'
@@ -38,9 +39,15 @@
 		</p>
 	</div>
 	<div class="flex w-full justify-between gap-3">
-		Subscribed at
+		<p class="font-semibold">Period start:</p>
 		<p class="secondary-text-color">
-			{new Date(user.subscription?.createdAt!).toDateString()}
+			{new Date(subscription.currentPeriodStart * 1000).toDateString()}
+		</p>
+	</div>
+	<div class="flex w-full justify-between gap-3">
+		<p class="font-semibold">Period end:</p>
+		<p class="secondary-text-color">
+			{new Date(subscription.currentPeriodEnd * 1000).toDateString()}
 		</p>
 	</div>
 	<Divider />

@@ -10,16 +10,17 @@ export const load: PageServerLoad = async ({ locals, url, cookies }) => {
     if (session) {
         if (sessionId) {
             const res = await serverFetchAPI({
-                path: "/api/subscriptions/sessions/verify-session?id=" + sessionId,
+                path: "/api/subscriptions/sessions/successful-checkout?id=" + sessionId,
                 cookies,
             }).then((res) => res.json())
 
-            return {
-                session,
-                checkSessionSuccess: !!res.result,
+            if (res.result) {
+                return { session, result: res.result }
+            } else {
+                redirect(302, "/")
             }
         } else {
-            redirect(301, "/")
+            redirect(302, "/")
         }
     }
 

@@ -26,17 +26,17 @@
 	</svelte:fragment>
 	<svelte:fragment slot="trail">
 		<LightSwitch rounded="rounded-full" />
-		{#if userDataState.user?.currentPlan === 'Free'}
-			<Button size="sm" class="variant-ghost-primary" onclick={() => goto('/plans')}>
-				Upgrade 🚀
-			</Button>
-		{:else if userDataState.user?.subscription}
+		{#if userDataState.user?.subscription}
 			<SubscriptionModalButton
 				class="badge variant-gradient-primary-tertiary relative bg-gradient-to-br uppercase"
 				user={userDataState.user}
 			>
-				{userDataState.user.currentPlan}
+				{userDataState.user.subscription.planName}
 			</SubscriptionModalButton>
+		{:else}
+			<Button size="sm" class="variant-ghost-primary" onclick={() => goto('/plans')}>
+				Upgrade 🚀
+			</Button>
 		{/if}
 		{#if userDataState.isFetching}
 			<div class="placeholder h-11 w-11 rounded-full"></div>

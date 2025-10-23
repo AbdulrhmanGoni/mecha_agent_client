@@ -7,7 +7,6 @@ type User = {
     publishedAgents: number;
     apiKeysCount: number;
     datasetsCount: number;
-    currentPlan: Plan["planName"];
     signingMethod: string;
     todayInference: {
         current: number | string,
@@ -15,8 +14,17 @@ type User = {
     };
     subscription?: {
         status: string;
-        createdAt: string;
-    };
+        subscriptionId: string;
+        planName: string;
+        priceId: string;
+        currentPeriodEnd: number;
+        currentPeriodStart: number;
+        cancelAtPeriodEnd: boolean;
+        paymentMethod: {
+            brand: string;
+            last4: string;
+        };
+    }
     lastWeekInferences: (number | string)[];
 }
 

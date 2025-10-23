@@ -4,10 +4,13 @@
 	import { getToastStore } from '@skeletonlabs/skeleton';
 	import Button from './shared/Button.svelte';
 	import LoadingOverlay from './shared/LoadingOverlay.svelte';
+
 	const { plan, user }: { plan: Plan; user: User | null } = $props();
 
-	const isUserCurrentPlan = $derived(user?.currentPlan === plan.planName);
-	const isNotPaidUser = $derived(user?.currentPlan !== 'Free');
+	const isUserCurrentPlan = $derived(user?.subscription?.planName == plan.planName);
+	const isNotPaidUser = $derived(
+		user?.subscription?.planName && user.subscription.planName != 'Free'
+	);
 	const isPaidPlan = plan.planName !== 'Free';
 
 	const toastStore = getToastStore();
@@ -63,8 +66,7 @@
 	</ul>
 
 	<Button
-		class={`w-fit ${isUserCurrentPlan ? 'bg-primary-500/50' : 'bg-primary-500'} cursor-not-allowed`}
-		disabled={true}
+		class={`w-fit ${isUserCurrentPlan ? 'bg-primary-500/50' : 'bg-primary-500'}`}
 		onclick={() => {
 			if (isPaidPlan && !isNotPaidUser) {
 				goToCheckout(plan.planName);
