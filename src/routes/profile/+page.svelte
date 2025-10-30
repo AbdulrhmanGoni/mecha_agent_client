@@ -52,12 +52,20 @@
 								: 'Never'}
 						</span>
 					</p>
-					<SubscriptionModalButton
-						class="badge variant-gradient-primary-tertiary relative bg-gradient-to-br text-sm uppercase sm:text-base"
-						user={userDataState.user}
-					>
-						{userDataState.user.subscription!.planName ?? 'Free'} plan
-					</SubscriptionModalButton>
+					{#if userDataState.user.subscription}
+						<SubscriptionModalButton
+							class="badge variant-gradient-primary-tertiary relative bg-gradient-to-br text-sm uppercase sm:text-base"
+							user={userDataState.user}
+						>
+							{userDataState.user.subscription.planName} plan
+						</SubscriptionModalButton>
+					{:else}
+						<span
+							class="badge variant-gradient-secondary-tertiary relative bg-gradient-to-br text-sm uppercase sm:text-base"
+						>
+							Free plan
+						</span>
+					{/if}
 				</div>
 			</div>
 			<Divider />

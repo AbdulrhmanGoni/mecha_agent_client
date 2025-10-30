@@ -7,7 +7,7 @@
 
 	const modalStore = getModalStore();
 
-	const isActive = $derived(user.subscription?.status === 'active');
+	const isActive = $derived(user.subscription?.status == 'active');
 	const subscription = $derived(user.subscription!);
 </script>
 
@@ -20,11 +20,7 @@
 	</div>
 	<div class="flex w-full justify-between">
 		<p class="font-semibold">Plan:</p>
-		<p
-			class="badge uppercase {subscription.planName === 'Free'
-				? 'variant-gradient-secondary-primary'
-				: 'variant-filled-primary'} bg-gradient-to-br"
-		>
+		<p class="badge variant-gradient-primary-tertiary bg-gradient-to-br uppercase">
 			{subscription.planName}
 		</p>
 	</div>
