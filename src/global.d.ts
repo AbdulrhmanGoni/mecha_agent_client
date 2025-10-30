@@ -15,7 +15,7 @@ type User = {
     subscription?: {
         status: string;
         subscriptionId: string;
-        planName: string;
+        planName: Plan["planName"];
         priceId: string;
         currentPeriodEnd: number;
         currentPeriodStart: number;

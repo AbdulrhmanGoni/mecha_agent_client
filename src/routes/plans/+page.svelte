@@ -13,18 +13,21 @@
 	/>
 </svelte:head>
 
-<div class="mt-12 flex flex-1 flex-col items-center justify-center gap-8 sm:flex-row">
-	{#if data.plans}
-		{#each data.plans as plan}
-			<PlanCard {plan} user={userDataState.user} />
-		{/each}
-	{:else}
-		<ErrorPage
-			iconName="hugeicons--rss-error"
-			title="Couldn't fetch the plans"
-			errorMessage={data.error}
-			hideBackButton
-			hideRetryButton
-		/>
-	{/if}
+<div class="mt-12 flex flex-1 flex-col items-center justify-center">
+	<div class="flex w-full flex-col items-center justify-center gap-8 sm:flex-row">
+		{#if data.plans}
+			{#each data.plans as plan}
+				<PlanCard {plan} user={userDataState.user} />
+			{/each}
+		{:else}
+			<ErrorPage
+				iconName="hugeicons--rss-error"
+				title="Couldn't fetch the plans"
+				errorMessage={data.error}
+				hideBackButton
+				hideRetryButton
+			/>
+		{/if}
+	</div>
+	<p class="mt-4 text-lg italic">Subscriptions is disabled currently</p>
 </div>

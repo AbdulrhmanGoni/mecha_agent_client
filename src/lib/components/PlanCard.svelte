@@ -7,11 +7,13 @@
 
 	const { plan, user }: { plan: Plan; user: User | null } = $props();
 
-	const isUserCurrentPlan = $derived(user?.subscription?.planName == plan.planName);
-	const isNotPaidUser = $derived(
-		user?.subscription?.planName && user.subscription.planName != 'Free'
+	const isGuestUser = $derived(!user);
+	const isFreeUser = $derived(user && !user.subscription);
+	const isPaidPlan = $derived(plan.planName != 'Free');
+	const freeUserAndPlan = $derived(isFreeUser && !isPaidPlan);
+	const isUserCurrentPlan = $derived(
+		user?.subscription?.planName == plan.planName || freeUserAndPlan
 	);
-	const isPaidPlan = plan.planName !== 'Free';
 
 	const toastStore = getToastStore();
 
@@ -48,7 +50,7 @@
 </script>
 
 <div
-	class={`card relative ${isNotPaidUser && !isPaidPlan ? 'opacity-70' : 'card-hover'} shadow-xl ${isUserCurrentPlan ? 'border border-primary-500' : ''} flex w-full max-w-md flex-col space-y-4 rounded-lg p-6`}
+	class={`card relative shadow-xl ${isUserCurrentPlan ? 'border border-primary-500' : 'card-hover'} flex w-full max-w-md flex-col space-y-4 rounded-lg p-6`}
 >
 	<h1 class="text-2xl font-bold sm:text-3xl">
 		{plan.planName} <span class="ms-3">${plan.subscriptionCostPerMonth}/m</span>
@@ -66,18 +68,19 @@
 	</ul>
 
 	<Button
-		class={`w-fit ${isUserCurrentPlan ? 'bg-primary-500/50' : 'bg-primary-500'}`}
+		disabled={isPaidPlan || freeUserAndPlan}
+		class={`w-fit ${isUserCurrentPlan ? 'bg-primary-500/30 italic' : 'bg-primary-500'} ${isPaidPlan || freeUserAndPlan ? 'cursor-not-allowed' : ''}`}
 		onclick={() => {
-			if (isPaidPlan && !isNotPaidUser) {
+			if (isPaidPlan && !isGuestUser) {
 				goToCheckout(plan.planName);
-			} else if (!user) {
+			} else if (isGuestUser) {
 				goto('/sign-in');
 			}
 		}}
 	>
 		{#if isUserCurrentPlan}
 			Current Plan
-		{:else if isPaidPlan && user}
+		{:else if isPaidPlan && !isGuestUser}
 			Upgrade 🚀
 		{:else}
 			Get Started 🚀
