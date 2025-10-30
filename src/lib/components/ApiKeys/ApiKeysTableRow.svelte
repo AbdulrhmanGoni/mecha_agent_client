@@ -24,6 +24,12 @@
 	<td>{apiKeyRow.keyName}</td>
 	<td><ApiKeyPermissionsCell {apiKeyRow} /></td>
 	<td><ApiKeyStatusCell {apiKeyRow} /></td>
-	<td>{new Date(apiKeyRow.expirationDate).toDateString()}</td>
+	<td>
+		{#if apiKeyRow.expirationDate}
+			{new Date(apiKeyRow.expirationDate).toDateString()}
+		{:else}
+			<span class="italic">No Expiration</span>
+		{/if}
+	</td>
 	<td>{new Date(apiKeyRow.createdAt).toDateString()}</td>
 </tr>

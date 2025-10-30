@@ -4,7 +4,7 @@ type ApiKeyRow = {
     id: string;
     key: string;
     keyName: string;
-    expirationDate: string;
+    expirationDate: string | null;
     permissions: ApiKeyPermission[];
     status: "Active" | "Inactive";
     createdAt: string;
@@ -23,5 +23,5 @@ type ApiKeysState = {
 }
 
 type CreateApiKeyInput = Pick<ApiKeyRow, "keyName" | "permissions"> & {
-    maxAgeInDays: number;
+    maxAgeInDays?: number;
 };

@@ -42,7 +42,7 @@
 			await createApiKeyRequest({
 				keyName,
 				permissions: selectedPermissions,
-				maxAgeInDays: Number(formData.get('maxAge')?.toString() || 0)
+				maxAgeInDays: Number(formData.get('maxAge')) || undefined
 			})
 				.then((newKey) => {
 					formElement.reset();
@@ -88,7 +88,9 @@
 					placeholder="Key Name"
 				>
 					{#each apiKeymaxAgeOptions as option}
-						<option value={option}>{option} days</option>
+						<option value={option}>
+							{option ? `${option} days` : 'No Expiration'}
+						</option>
 					{/each}
 				</select>
 			</label>
