@@ -98,7 +98,7 @@
 		<Button type="submit" size="sm" class="variant-filled-primary w-fit self-end">
 			{props.submitButtonText}
 			{#if loading}
-				<LoadingSpinner className="size-4" />
+				<LoadingSpinner sizeClass="size-4" />
 			{:else}
 				<span class="iconify size-4 {props.submitButtonIcon}"></span>
 			{/if}

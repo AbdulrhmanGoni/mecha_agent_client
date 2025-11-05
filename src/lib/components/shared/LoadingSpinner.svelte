@@ -1,8 +1,8 @@
 <script lang="ts">
-	const { className }: { className?: string } = $props();
+	const { sizeClass = 'size-5', className }: { sizeClass?: string; className?: string } = $props();
 </script>
 
-<span class={`svg-spinners--6-dots-rotate ${className || 'size-5'}`}></span>
+<span class={`svg-spinners--6-dots-rotate ${sizeClass} ${className}`}></span>
 
 <style>
 	.svg-spinners--6-dots-rotate {

@@ -68,7 +68,7 @@
 	onclick={deleteHandler}
 >
 	{#if isDeleting}
-		<LoadingSpinner className="size-4" />
+		<LoadingSpinner sizeClass="size-4" />
 	{:else}
 		<span class="iconify size-4 transition-colors hugeicons--delete-02 hover:text-red-500"></span>
 	{/if}

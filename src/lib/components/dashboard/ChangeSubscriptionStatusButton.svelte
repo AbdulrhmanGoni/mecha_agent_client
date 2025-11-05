@@ -81,7 +81,7 @@
 			>
 				Yes
 				{#if loading}
-					<LoadingSpinner className="size-4" />
+					<LoadingSpinner sizeClass="size-4" />
 				{/if}
 			</Button>
 		</div>

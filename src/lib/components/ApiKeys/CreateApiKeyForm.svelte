@@ -111,7 +111,7 @@
 		</div>
 		<Button size="sm" class="variant-filled-primary" type="submit">
 			{#if isLoading}
-				<LoadingSpinner className="size-5" />
+				<LoadingSpinner sizeClass="size-5" />
 			{:else}
 				<span class="iconify size-[18px] hugeicons--add-square"></span>
 			{/if}

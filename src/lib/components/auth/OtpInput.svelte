@@ -106,7 +106,7 @@
 		<span class="iconify size-7 hugeicons--arrow-left-02"></span>
 	</button>
 	{#if loading}
-		<LoadingSpinner className="size-14" />
+		<LoadingSpinner sizeClass="size-14" />
 	{:else if sendOtpError}
 		<Alert
 			title="OTP Request Failed"

@@ -175,7 +175,7 @@
 			disabled={props.isLoading}
 		>
 			{#if props.isLoading}
-				<LoadingSpinner className="size-5" />
+				<LoadingSpinner sizeClass="size-5" />
 			{:else if props.submitButtonIconName}
 				<span class={`iconify size-5 ${props.submitButtonIconName}`}></span>
 			{/if}

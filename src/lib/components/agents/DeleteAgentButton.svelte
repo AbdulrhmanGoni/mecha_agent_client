@@ -64,7 +64,7 @@
 	onclick={deleteAgent}
 >
 	{#if isDeleting}
-		<LoadingSpinner className="size-5" />
+		<LoadingSpinner sizeClass="size-5" />
 	{:else}
 		<span class="iconify size-[22px] hugeicons--delete-02"></span>
 	{/if}

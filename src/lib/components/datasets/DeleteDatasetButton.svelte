@@ -75,7 +75,7 @@
 	disabled={isLoading}
 >
 	{#if isLoading}
-		<LoadingSpinner className="size-5" />
+		<LoadingSpinner sizeClass="size-5" />
 	{:else}
 		<span class="iconify size-5 hugeicons--delete-02"></span>
 	{/if}

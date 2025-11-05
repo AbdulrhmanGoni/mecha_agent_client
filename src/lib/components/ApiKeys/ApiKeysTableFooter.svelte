@@ -21,7 +21,7 @@
 				<div
 					class="absolute left-0 top-0 z-50 flex h-full w-full items-center justify-center bg-black/15"
 				>
-					<LoadingSpinner className="size-7" />
+					<LoadingSpinner sizeClass="size-7" />
 				</div>
 			{/if}
 		</th>
