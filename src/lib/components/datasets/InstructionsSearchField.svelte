@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import {
 		fetchDatasetInstructions,
 		datasetInstructionsState
@@ -13,7 +13,7 @@
 		if (search && datasetInstructionsState.search != search) {
 			datasetInstructionsState.search = search;
 			datasetInstructionsState.page = 0;
-			fetchDatasetInstructions($page.params.datasetId);
+			page.params.datasetId && fetchDatasetInstructions(page.params.datasetId);
 		}
 	}
 

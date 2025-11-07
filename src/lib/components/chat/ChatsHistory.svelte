@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { chatsHistoryState, fetchAgentChats } from '../../../stores/chatStore.svelte';
 	import Button from '../shared/Button.svelte';
 	import { goto } from '$app/navigation';
@@ -9,7 +9,7 @@
 	import ChatHistoryItem from './ChatHistoryItem.svelte';
 
 	onMount(() => {
-		fetchAgentChats($page.params.agentId);
+		page.params.agentId && fetchAgentChats(page.params.agentId);
 	});
 
 	const { closeDrawer }: { closeDrawer: () => void } = $props();
@@ -38,7 +38,7 @@
 	<Button
 		class="variant-filled-secondary gap-2"
 		onclick={() => {
-			goto(`/agents/${$page.params.agentId}/chat/new`, { state: { isNewChat: true } });
+			goto(`/agents/${page.params.agentId}/chat/new`, { state: { isNewChat: true } });
 			closeDrawer();
 		}}
 	>

@@ -7,7 +7,7 @@
 	import { fetchUserData } from '../stores/userData.svelte';
 	import { onMount } from 'svelte';
 	import Footer from '$lib/components/Footer.svelte';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 
 	initializeStores();
 
@@ -16,7 +16,7 @@
 	let { children } = $props();
 
 	onMount(() => {
-		if ($page.data.session) fetchUserData();
+		if (page.data.session) fetchUserData();
 	});
 </script>
 

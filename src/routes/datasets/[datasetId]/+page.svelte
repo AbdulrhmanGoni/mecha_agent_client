@@ -10,14 +10,14 @@
 		resetDatasetPageState
 	} from '../../../stores/datasetPage.svelte';
 	import { onMount } from 'svelte';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import AddInstructionsForm from '$lib/components/datasets/AddInstructionsForm.svelte';
 	import EditInstructionsForm from '$lib/components/datasets/EditInstructionsForm.svelte';
 	import BackButton from '$lib/components/shared/BackButton.svelte';
 	import { beforeNavigate } from '$app/navigation';
 
 	onMount(() => {
-		fetchDataset($page.params.datasetId);
+		page.params.datasetId && fetchDataset(page.params.datasetId);
 	});
 
 	beforeNavigate(() => {

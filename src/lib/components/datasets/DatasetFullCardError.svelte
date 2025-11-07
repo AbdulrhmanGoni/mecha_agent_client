@@ -1,5 +1,5 @@
 <script>
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { datasetPageState, fetchDataset } from '../../../stores/datasetPage.svelte';
 	import Button from '../shared/Button.svelte';
 </script>
@@ -12,7 +12,7 @@
 			size="sm"
 			class="variant-ghost-warning size-8"
 			onclick={() => {
-				fetchDataset($page.params.datasetId);
+				page.params.datasetId && fetchDataset(page.params.datasetId);
 			}}
 		>
 			<span class="iconify size-5 hugeicons--refresh"></span>

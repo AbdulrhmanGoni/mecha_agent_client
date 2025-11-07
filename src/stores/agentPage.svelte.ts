@@ -16,7 +16,7 @@ export const agentPageState = $state<AgentPageState>({
     refetchAgent: () => { },
 });
 
-export function fetchAgentState(agentId: string) {
+export function fetchAgentState(agentId?: string) {
     async function agentFetcher() {
         agentPageState.isFetching = true;
         clientFetchAPI<Agent>({ path: '/api/agents/' + agentId })

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import clientFetchAPI from '$lib/functions/clientFetchAPI';
 	import { getModalStore, getToastStore } from '@skeletonlabs/skeleton';
 	import Button from '../shared/Button.svelte';
@@ -22,7 +22,7 @@
 				if (r && !isUnassociating) {
 					isUnassociating = true;
 					clientFetchAPI<string>({
-						path: `/api/agents/${$page.params.agentId}/dataset?action=unassociate&datasetId=${datasetId}`,
+						path: `/api/agents/${page.params.agentId}/dataset?action=unassociate&datasetId=${datasetId}`,
 						method: 'PATCH'
 					})
 						.then((res) => {
@@ -32,7 +32,7 @@
 
 							if (agentsState.agents.length) {
 								agentsState.agents = agentsState.agents.map((agent) => {
-									if (agent.id === $page.params.agentId) {
+									if (agent.id === page.params.agentId) {
 										agent.datasetId = null;
 									}
 									return agent;

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import OtpInput from '$lib/components/auth/OtpInput.svelte';
 	import UserPasswordForm from '$lib/components/shared/UserPasswordForm.svelte';
 	import Alert from '$lib/components/shared/Alert.svelte';
@@ -138,7 +138,7 @@
 					type="email"
 					placeholder="Enter your email address"
 					required
-					value={$page.url.searchParams.get('email') || ''}
+					value={page.url.searchParams.get('email') || ''}
 					autocomplete="email"
 				/>
 				<Button size="sm" type="submit" disabled={loading} class="variant-filled-primary gap-2">

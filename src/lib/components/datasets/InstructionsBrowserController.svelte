@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import {
 		datasetInstructionsState,
 		fetchDatasetInstructions
@@ -8,7 +8,7 @@
 
 	function navigate(pageNumber: number) {
 		datasetInstructionsState.page = pageNumber;
-		fetchDatasetInstructions($page.params.datasetId);
+		page.params.datasetId && fetchDatasetInstructions(page.params.datasetId);
 	}
 
 	function goToNextPage() {

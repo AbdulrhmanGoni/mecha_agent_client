@@ -3,7 +3,7 @@
 	import { datasetsState, fetchDatasets } from '../../../stores/datasets.svelte';
 	import { onMount } from 'svelte';
 	import clientFetchAPI from '$lib/functions/clientFetchAPI';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import Divider from '../shared/Divider.svelte';
 	import timeAgo from '$lib/functions/timeAgo';
 	import type { Writable } from 'svelte/store';
@@ -18,7 +18,7 @@
 		if (!$isAssociating) {
 			isAssociating.set(true);
 			clientFetchAPI<string>({
-				path: `/api/agents/${$page.params.agentId}/dataset?action=associate&datasetId=${dataset.id}`,
+				path: `/api/agents/${page.params.agentId}/dataset?action=associate&datasetId=${dataset.id}`,
 				method: 'PATCH'
 			})
 				.then((res) => {
@@ -28,7 +28,7 @@
 
 					if (agentsState.agents.length) {
 						agentsState.agents = agentsState.agents.map((agent) => {
-							if (agent.id === $page.params.agentId) {
+							if (agent.id === page.params.agentId) {
 								agent.datasetId = dataset.id;
 							}
 							return agent;

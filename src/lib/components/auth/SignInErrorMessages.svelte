@@ -1,6 +1,6 @@
 <script>
 	import { afterNavigate, goto } from '$app/navigation';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import Alert from '../shared/Alert.svelte';
 
 	let error = $state({
@@ -28,7 +28,7 @@
 				message: ''
 			};
 			goto(
-				'/sign-in' + ($page.url.searchParams.get('isNewUser') == 'true' ? '?isNewUser=true' : ''),
+				'/sign-in' + (page.url.searchParams.get('isNewUser') == 'true' ? '?isNewUser=true' : ''),
 				{ replaceState: true }
 			);
 		}}

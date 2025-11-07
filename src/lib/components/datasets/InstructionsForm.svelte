@@ -3,7 +3,7 @@
 	import { getToastStore } from '@skeletonlabs/skeleton';
 	import { datasetInstructionsState } from '../../../stores/datasetPage.svelte';
 	import Button from '../shared/Button.svelte';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import LoadingSpinner from '../shared/LoadingSpinner.svelte';
 
 	const props: DatasetInstructionsFormProps = $props();
@@ -20,7 +20,7 @@
 
 		loading = true;
 		clientFetchAPI<Dataset>({
-			path: '/api/instructions?datasetId=' + $page.params.datasetId,
+			path: '/api/instructions?datasetId=' + page.params.datasetId,
 			method: props.method,
 			body: props.mutateForm ? props.mutateForm(formData) : formData,
 			successStatusCode: props.successStatusCode

@@ -3,7 +3,7 @@
 	import type { HTMLFormAttributes } from 'svelte/elements';
 	import BackButton from '../shared/BackButton.svelte';
 	import Alert from '../shared/Alert.svelte';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import LoadingSpinner from '../shared/LoadingSpinner.svelte';
 	import AgentAvatar from './AgentAvatar.svelte';
 
@@ -21,7 +21,7 @@
 
 	const responseSyntaxOptions = ['markdown'];
 
-	const error = $derived($page.url.searchParams.get('error'));
+	const error = $derived(page.url.searchParams.get('error'));
 </script>
 
 <div class="mt-8 space-y-5">

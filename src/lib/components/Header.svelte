@@ -6,10 +6,10 @@
 	import { goto } from '$app/navigation';
 	import SubscriptionModalButton from './dashboard/SubscriptionModalButton.svelte';
 	import Logo from './Logo.svelte';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 
 	function goHome() {
-		if ($page.url.pathname !== '/' && $page.url.pathname !== '/sign-in') {
+		if (page.url.pathname !== '/' && page.url.pathname !== '/sign-in') {
 			goto('/');
 		}
 	}

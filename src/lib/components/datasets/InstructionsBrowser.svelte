@@ -10,11 +10,15 @@
 	import InstructionsBrowserController from './InstructionsBrowserController.svelte';
 	import Button from '../shared/Button.svelte';
 	import InstructionsSearchField from './InstructionsSearchField.svelte';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
+
+	function fetchInstructions() {
+		page.params.datasetId && fetchDatasetInstructions(page.params.datasetId);
+	}
 
 	onMount(() => {
 		if (!datasetInstructionsState.fetched) {
-			fetchDatasetInstructions($page.params.datasetId);
+			fetchInstructions();
 		}
 	});
 </script>
@@ -37,7 +41,7 @@
 						aria-label="Clear Search"
 						onclick={() => {
 							datasetInstructionsState.search = '';
-							fetchDatasetInstructions($page.params.datasetId);
+							fetchInstructions();
 						}}
 					>
 						<span class="iconify ml-1 size-4 -translate-y-1 hugeicons--cancel-01"></span>
@@ -58,7 +62,7 @@
 						<Button
 							class="variant-ghost-error mx-auto"
 							size="sm"
-							onclick={() => fetchDatasetInstructions($page.params.datasetId)}
+							onclick={() => fetchInstructions()}
 						>
 							Retry
 							<span class="iconify hugeicons--refresh"></span>

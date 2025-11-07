@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import timeAgo from '$lib/functions/timeAgo';
 	import DeleteChatButton from './DeleteChatButton.svelte';
 
@@ -9,14 +9,14 @@
 </script>
 
 <li
-	class="{$page.params.chatId === chatHistory.id
+	class="{page.params.chatId === chatHistory.id
 		? '!variant-filled-primary'
 		: 'variant-soft-surface'} line-clamp-1 w-full rounded-md transition hover:variant-soft-primary"
 >
 	<a
-		href="/agents/{$page.params.agentId}/chat/{chatHistory.id}"
+		href="/agents/{page.params.agentId}/chat/{chatHistory.id}"
 		onclick={(e) => {
-			if (chatHistory.id === $page.params.chatId) {
+			if (chatHistory.id === page.params.chatId) {
 				e.preventDefault();
 				return;
 			}

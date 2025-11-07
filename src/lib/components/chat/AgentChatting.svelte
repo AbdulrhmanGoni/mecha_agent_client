@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { afterNavigate, beforeNavigate, goto } from '$app/navigation';
 	import {
 		fetchChatMessages,
@@ -37,7 +37,7 @@
 	afterNavigate(() => {
 		if (chatId === 'new') {
 			resetOpenedChatState();
-		} else if (!$page.state.isNewChat) {
+		} else if (!page.state.isNewChat) {
 			fetchChatMessages(agent.id, chatId);
 		}
 	});
@@ -49,7 +49,7 @@
 		size="sm"
 		class="variant-filled-secondary gap-2"
 		onclick={() => {
-			goto(`/agents/${$page.params.agentId}/chat/new`, { state: { isNewChat: true } });
+			goto(`/agents/${page.params.agentId}/chat/new`, { state: { isNewChat: true } });
 		}}
 	>
 		<span class="iconify size-5 hugeicons--bubble-chat-add"></span>

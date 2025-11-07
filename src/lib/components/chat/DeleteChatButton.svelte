@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { getModalStore, getToastStore } from '@skeletonlabs/skeleton';
 	import { chatsHistoryState, resetOpenedChatState } from '../../../stores/chatStore.svelte';
 	import { goto } from '$app/navigation';
@@ -36,7 +36,7 @@
 								(chat) => chat.id !== chatHistory.id
 							);
 
-							if ($page.params.chatId === chatHistory.id) {
+							if (page.params.chatId === chatHistory.id) {
 								resetOpenedChatState();
 								goto(`/agents/${chatHistory.agentId}/chat/new`, { replaceState: true });
 							}

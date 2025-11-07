@@ -2,11 +2,11 @@
 	import AgentPageLoading from '$lib/components/agents/AgentPageLoading.svelte';
 	import AgentPageError from '$lib/components/agents/AgentPageError.svelte';
 	import { fetchAgentState, agentPageState } from '../../../stores/agentPage.svelte';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import AgentPageFullCard from '$lib/components/agents/AgentPageFullCard.svelte';
 	import BackButton from '$lib/components/shared/BackButton.svelte';
 
-	fetchAgentState($page.params.agentId);
+	fetchAgentState(page.params.agentId);
 </script>
 
 {#if agentPageState.isFetching}
