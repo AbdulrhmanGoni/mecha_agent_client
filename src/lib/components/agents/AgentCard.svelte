@@ -6,7 +6,6 @@
 	import { goto } from '$app/navigation';
 	import { agentPageState } from '../../../stores/agentPage.svelte';
 	import AgentFallbackAvatar from './AgentFallbackAvatar.svelte';
-	import mediaURL from '$lib/functions/mediaURL';
 
 	const { agent }: { agent: Agent } = $props();
 </script>
@@ -24,7 +23,7 @@
 	<div
 		class="relative mx-auto -mt-16 size-24 overflow-hidden rounded-full border-4 border-solid border-white"
 	>
-		<Avatar width="w-full" src={mediaURL.agentsAvatars(agent.avatar)}>
+		<Avatar width="w-full" src={agent.avatar}>
 			<AgentFallbackAvatar />
 		</Avatar>
 	</div>

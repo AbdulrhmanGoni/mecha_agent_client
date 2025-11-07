@@ -5,7 +5,6 @@
 	import DeleteAgentButton from './DeleteAgentButton.svelte';
 	import EditAgentButton from './EditAgentButton.svelte';
 	import ChatWithAgentButton from '../chat/ChatWithAgentButton.svelte';
-	import mediaURL from '$lib/functions/mediaURL';
 	import { goto } from '$app/navigation';
 	import AgentDatasetCard from '../datasets/AgentDatasetCard.svelte';
 	import PublishAgentCard from './PublishAgentCard.svelte';
@@ -21,7 +20,7 @@
 	<div
 		class="relative mx-auto -mt-20 size-36 rounded-full border-4 border-solid border-white sm:-mt-36 sm:size-60"
 	>
-		<Avatar width="w-full" src={mediaURL.agentsAvatars(agent.avatar)}>
+		<Avatar width="w-full" src={agent.avatar}>
 			<AgentFallbackAvatar />
 		</Avatar>
 	</div>

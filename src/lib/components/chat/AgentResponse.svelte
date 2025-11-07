@@ -4,7 +4,6 @@
 	import { micromark } from 'micromark';
 	import { openedChatState } from '../../../stores/chatStore.svelte';
 	import AgentFallbackAvatar from '../agents/AgentFallbackAvatar.svelte';
-	import mediaURL from '$lib/functions/mediaURL';
 	import Alert from '../shared/Alert.svelte';
 
 	let { agentMessage, agent }: { agentMessage: ChatMessage; agent: Agent } = $props();
@@ -38,7 +37,7 @@
 			/>
 		{/if}
 	</div>
-	<Avatar src={mediaURL.agentsAvatars(agent.avatar)} width="w-12">
+	<Avatar src={agent.avatar} width="w-12">
 		<AgentFallbackAvatar />
 	</Avatar>
 </div>
