@@ -1,20 +1,12 @@
 export default function checkAgentFormChanges(agent: Agent, form: HTMLFormElement) {
     const formData = new FormData(form);
-    const updatedData = new FormData();
+    const updatedData: Record<string, string | boolean> = {}
     let isUpdated = false
 
     formData.forEach((value, key) => {
-        if (key === 'avatar') {
-            const avatar = formData.get('avatar') as File;
-            if (avatar.size && avatar.name) {
-                updatedData.set("avatar", avatar)
-                if (!isUpdated) isUpdated = true
-            }
-            return
-        }
-        if (key === 'removeAvatar') {
+        if (key == 'removeAvatar') {
             if (value === "on") {
-                updatedData.set("removeAvatar", "true")
+                updatedData["removeAvatar"] = true
                 if (!isUpdated) isUpdated = true
             }
             return
@@ -23,7 +15,7 @@ export default function checkAgentFormChanges(agent: Agent, form: HTMLFormElemen
         const oldValue = agent[key as keyof Agent] || "";
         const newValue = value.toString() || "";
         if (newValue !== oldValue) {
-            updatedData.set(key, value)
+            updatedData[key] = newValue
             if (!isUpdated) isUpdated = true
         }
     })

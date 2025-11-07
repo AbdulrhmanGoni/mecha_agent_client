@@ -38,7 +38,9 @@
 		"@tailwindcss/forms": "^0.5.9",
 		"@tailwindcss/typography": "^0.5.15",
 		"@types/node": "^22.10.1",
+		"@uploadthing/svelte": "^7.3.3",
 		"jose": "^5.9.6",
-		"micromark": "^4.0.1"
+		"micromark": "^4.0.1",
+		"uploadthing": "^7.7.4"
 	}
 }

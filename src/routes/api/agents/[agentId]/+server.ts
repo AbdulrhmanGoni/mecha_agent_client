@@ -16,21 +16,16 @@ export async function DELETE({ cookies, url }) {
 }
 
 export async function PATCH({ request, cookies, url }) {
-    const formData = await request.formData();
-    const avatarFile = formData.get("avatar") as File | null;
+    const data = await request.json();
 
-    if (formData.get("responseSyntax") === "none") {
-        formData.delete("responseSyntax")
-    }
-
-    if (avatarFile && !avatarFile.name && !avatarFile.size) {
-        formData.delete("avatar")
+    if (data.responseSyntax == "none") {
+        delete data.responseSyntax
     }
 
     const response = await serverFetchAPI({
         method: "PATCH",
         path: url.pathname,
-        body: formData,
+        body: JSON.stringify(data),
         cookies
     })
 

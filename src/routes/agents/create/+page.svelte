@@ -18,11 +18,16 @@
 	submitButtonIconName="hugeicons--add-square"
 	onFormSubmit={(e) => {
 		e.preventDefault();
+		const newAgentData = {};
 		const formData = new FormData(e.currentTarget);
+		for (const [key, value] of formData.entries()) {
+			Object.assign(newAgentData, { [key]: value });
+		}
+
 		loading = true;
 		clientFetchAPI<string>({
 			path: '/api/agents',
-			body: formData,
+			body: newAgentData,
 			method: 'POST',
 			successStatusCode: 201
 		})

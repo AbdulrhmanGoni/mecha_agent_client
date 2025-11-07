@@ -1,14 +1,11 @@
 <script lang="ts">
 	import Button from '../shared/Button.svelte';
-	import { Avatar } from '@skeletonlabs/skeleton';
 	import type { HTMLFormAttributes } from 'svelte/elements';
-	import mediaURL from '$lib/functions/mediaURL';
-	import AgentFallbackAvatar from './AgentFallbackAvatar.svelte';
 	import BackButton from '../shared/BackButton.svelte';
 	import Alert from '../shared/Alert.svelte';
 	import { page } from '$app/stores';
-	import agentAvatarFieldHandler from './agentAvatarFieldHandler.svelte';
 	import LoadingSpinner from '../shared/LoadingSpinner.svelte';
+	import AgentAvatar from './AgentAvatar.svelte';
 
 	type AgentFormProps = {
 		formTitle: string;
@@ -21,9 +18,6 @@
 	};
 
 	const props: AgentFormProps = $props();
-
-	const { selectedAvatar, onAvatarSelect, onAvatarRemoving, undoAvatarRemoving, avatarRemoved } =
-		agentAvatarFieldHandler(!!props.defaults?.avatar);
 
 	const responseSyntaxOptions = ['markdown'];
 
@@ -56,59 +50,7 @@
 				/>
 				<p id="agent-name-error-message" class="text-red-600"></p>
 			</label>
-			<div class="relative flex flex-1 gap-2">
-				<label class="label flex-1">
-					<span class="font-semibold">
-						Avarat
-						<strong class="text-sm text-red-600">{$avatarRemoved ? '(Removed)' : ''}</strong>
-					</span>
-					<input
-						id="agent-avatar"
-						name="avatar"
-						class="input cursor-pointer"
-						type="file"
-						onchange={onAvatarSelect}
-						disabled={props.isLoading}
-					/>
-				</label>
-				<div class="flex items-end {$avatarRemoved || props.isLoading ? 'opacity-50' : ''}">
-					<Avatar
-						src={$selectedAvatar
-							? ($selectedAvatar as string).toString()
-							: mediaURL.agentsAvatars(props.defaults?.avatar)}
-						width="size-12 sm:size-16"
-					>
-						<AgentFallbackAvatar />
-					</Avatar>
-				</div>
-				{#if props.defaults?.avatar || $selectedAvatar}
-					<input
-						class="hidden"
-						id="avatar-removed"
-						name="removeAvatar"
-						type="checkbox"
-						disabled={props.isLoading}
-					/>
-					<button
-						type="button"
-						onclick={$avatarRemoved ? undoAvatarRemoving : onAvatarRemoving}
-						class="absolute right-0 top-0 {props.isLoading
-							? 'cursor-not-allowed'
-							: 'cursor-pointer'} {props.isLoading
-							? 'opacity-50'
-							: $avatarRemoved
-								? '!opacity-100'
-								: ''}"
-						disabled={props.isLoading}
-					>
-						{#if $avatarRemoved}
-							<span class="iconify size-6 hugeicons--undo-03"></span>
-						{:else}
-							<span class="iconify size-6 hugeicons--cancel-01"></span>
-						{/if}
-					</button>
-				{/if}
-			</div>
+			<AgentAvatar defaultAvatar={props.defaults?.avatar} isLoading={props.isLoading} />
 		</div>
 		<label class="label">
 			<span class="font-semibold">Description</span>
