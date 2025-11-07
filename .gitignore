@@ -8,8 +8,6 @@ node_modules
 /.svelte-kit
 /build
 
-bun.lockb
-
 # Env
 .env
 .env.*
