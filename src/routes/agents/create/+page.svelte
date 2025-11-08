@@ -16,15 +16,14 @@
 	formTitle="Create Agent"
 	submitButtonText="Create"
 	submitButtonIconName="hugeicons--add-square"
-	onFormSubmit={(e) => {
-		e.preventDefault();
+	onBeforeSubmit={() => (loading = true)}
+	onFormSubmit={(form) => {
 		const newAgentData = {};
-		const formData = new FormData(e.currentTarget);
+		const formData = new FormData(form);
 		for (const [key, value] of formData.entries()) {
-			Object.assign(newAgentData, { [key]: value });
+			value && Object.assign(newAgentData, { [key]: value });
 		}
 
-		loading = true;
 		clientFetchAPI<string>({
 			path: '/api/agents',
 			body: newAgentData,

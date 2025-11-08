@@ -6,10 +6,12 @@
 	import { page } from '$app/state';
 	import LoadingSpinner from '../shared/LoadingSpinner.svelte';
 	import AgentAvatar from './AgentAvatar.svelte';
+	import { writable } from 'svelte/store';
 
 	type AgentFormProps = {
 		formTitle: string;
-		onFormSubmit?: (e: SubmitFormEvent) => void;
+		onFormSubmit?: (e: HTMLFormElement) => void;
+		onBeforeSubmit?: () => void;
 		defaults?: Partial<Omit<Agent, 'id' | 'dataset' | 'createdAt'>>;
 		formProps?: HTMLFormAttributes;
 		submitButtonText: string;
@@ -22,6 +24,28 @@
 	const responseSyntaxOptions = ['markdown'];
 
 	const error = $derived(page.url.searchParams.get('error'));
+
+	const avatarIsBeingUploaded = writable(false);
+
+	function onSubmit(e: SubmitFormEvent) {
+		e.preventDefault();
+		props.onBeforeSubmit?.();
+		const form = document.querySelector('#agent-form') as HTMLFormElement | null;
+		if (!form) {
+			return;
+		}
+
+		if ($avatarIsBeingUploaded) {
+			const unsubscribe = avatarIsBeingUploaded.subscribe((state) => {
+				if (!state) {
+					props.onFormSubmit?.(form);
+					unsubscribe();
+				}
+			});
+		} else {
+			props.onFormSubmit?.(form);
+		}
+	}
 </script>
 
 <div class="mt-8 space-y-5">
@@ -30,7 +54,8 @@
 		<BackButton />
 	</div>
 	<form
-		onsubmit={props.onFormSubmit}
+		id="agent-form"
+		onsubmit={onSubmit}
 		{...props.formProps}
 		class={'card flex flex-col gap-4 p-4 ' + props.formProps?.class || ''}
 	>
@@ -50,7 +75,11 @@
 				/>
 				<p id="agent-name-error-message" class="text-red-600"></p>
 			</label>
-			<AgentAvatar defaultAvatar={props.defaults?.avatar} isLoading={props.isLoading} />
+			<AgentAvatar
+				{avatarIsBeingUploaded}
+				defaultAvatar={props.defaults?.avatar}
+				disabled={props.isLoading}
+			/>
 		</div>
 		<label class="label">
 			<span class="font-semibold">Description</span>

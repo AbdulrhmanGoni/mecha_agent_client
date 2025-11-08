@@ -3,8 +3,15 @@
 	import AgentFallbackAvatar from './AgentFallbackAvatar.svelte';
 	import { createUploadThing } from '$lib/functions/uploadthing';
 	import Button from '../shared/Button.svelte';
+	import type { Writable } from 'svelte/store';
 
-	const props: { defaultAvatar?: Agent['avatar']; isLoading?: boolean } = $props();
+	type Props = {
+		defaultAvatar?: Agent['avatar'];
+		disabled?: boolean;
+		avatarIsBeingUploaded: Writable<boolean>;
+	};
+
+	let { avatarIsBeingUploaded, ...props }: Props = $props();
 
 	let avatarRemoved = $state(false);
 	let selectedAvatarUrl = $state('');
@@ -25,8 +32,7 @@
 		},
 		onUploadError() {
 			toastStore.trigger({
-				message:
-					'We couldnt upload the avatar you picked, please try again. If the error persists, change the image',
+				message: 'We couldnt upload the avatar you picked, please try again',
 				background: 'variant-filled-error'
 			});
 			selectedAvatarUrl = '';
@@ -36,6 +42,8 @@
 			uploadProgress = progress;
 		}
 	});
+
+	isUploading.subscribe((state) => avatarIsBeingUploaded.set(state));
 
 	const MAX_FILE_SIZE = 1024 * 1024 * 2; // 2MB
 
@@ -114,7 +122,7 @@
 		<Button
 			class="variant-ghost-primary !mb-[5px] !mt-0 h-[34px]"
 			onclick={() => avatarFileElement?.click()}
-			disabled={props.isLoading}
+			disabled={props.disabled}
 		>
 			Pick
 		</Button>
@@ -123,7 +131,7 @@
 			bind:this={avatarFileElement}
 			type="file"
 			onchange={onAvatarSelect}
-			disabled={props.isLoading}
+			disabled={props.disabled}
 			hidden
 		/>
 		<input
@@ -133,7 +141,7 @@
 			hidden
 		/>
 	</label>
-	<div class="relative flex items-end {avatarRemoved || props.isLoading ? 'opacity-50' : ''}">
+	<div class="relative flex items-end {avatarRemoved || props.disabled ? 'opacity-50' : ''}">
 		<Avatar src={selectedAvatarUrl || props.defaultAvatar} width="size-12 sm:size-16">
 			<AgentFallbackAvatar />
 		</Avatar>
@@ -152,15 +160,15 @@
 			id="avatar-removed"
 			name="removeAvatar"
 			type="checkbox"
-			disabled={props.isLoading}
+			disabled={props.disabled}
 		/>
 		<button
 			type="button"
 			onclick={avatarRemoved ? undoAvatarRemoving : onAvatarRemoving}
-			class="absolute right-0 top-0 {props.isLoading
+			class="absolute right-0 top-0 {props.disabled
 				? 'cursor-not-allowed'
-				: 'cursor-pointer'} {props.isLoading ? 'opacity-50' : avatarRemoved ? '!opacity-100' : ''}"
-			disabled={props.isLoading}
+				: 'cursor-pointer'} {props.disabled ? 'opacity-50' : avatarRemoved ? '!opacity-100' : ''}"
+			disabled={props.disabled}
 		>
 			{#if avatarRemoved}
 				<span class="iconify size-6 hugeicons--undo-03"></span>

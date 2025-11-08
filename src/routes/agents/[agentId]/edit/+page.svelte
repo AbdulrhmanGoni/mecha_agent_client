@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import AgentForm from '$lib/components/agents/AgentForm.svelte';
 	import AgentFormLoading from '$lib/components/agents/AgentFormLoading.svelte';
 	import { fetchAgentState, agentPageState } from '../../../../stores/agentPage.svelte';
@@ -9,24 +9,18 @@
 	import { goto } from '$app/navigation';
 	import AgentPageError from '$lib/components/agents/AgentPageError.svelte';
 
-	fetchAgentState($page.params.agentId);
+	fetchAgentState(page.params.agentId);
 
 	let isLoading = $state(false);
 
 	const toast = getToastStore();
 
-	function onFormSubmit(e: SubmitFormEvent) {
-		e.preventDefault();
+	function onFormSubmit(form: HTMLFormElement) {
 		if (agentPageState.agent) {
-			const { isUpdated, updatedData } = checkAgentFormChanges(
-				agentPageState.agent,
-				e.currentTarget
-			);
-
+			const { isUpdated, updatedData } = checkAgentFormChanges(agentPageState.agent, form);
 			if (isUpdated) {
-				isLoading = true;
 				clientFetchAPI({
-					path: '/api/agents/' + $page.params.agentId,
+					path: '/api/agents/' + page.params.agentId,
 					method: 'PATCH',
 					body: updatedData
 				})
@@ -36,7 +30,7 @@
 							background: 'variant-filled-success'
 						});
 						agentPageState.refetchAgent();
-						goto('/agents/' + $page.params.agentId);
+						goto('/agents/' + page.params.agentId, { replaceState: true });
 					})
 					.catch(() => {
 						toast.trigger({
@@ -66,6 +60,7 @@
 		formTitle="Edit Agent"
 		submitButtonText="Save"
 		submitButtonIconName="hugeicons--pencil-edit-02"
+		onBeforeSubmit={() => (isLoading = true)}
 		{onFormSubmit}
 		{isLoading}
 		defaults={{
