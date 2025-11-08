@@ -26,6 +26,7 @@ export async function PATCH({ request, cookies, url }) {
         method: "PATCH",
         path: url.pathname,
         body: JSON.stringify(data),
+        headers: { "content-type": "application/json" },
         cookies
     })
 

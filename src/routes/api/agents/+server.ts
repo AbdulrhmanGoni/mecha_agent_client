@@ -17,6 +17,7 @@ export async function POST({ request, cookies, url }) {
         method: "POST",
         path: url.pathname,
         body: JSON.stringify(data),
+        headers: { "content-type": "application/json" },
         cookies
     })
 
