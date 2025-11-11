@@ -17,11 +17,16 @@
 		const formElement = e.currentTarget;
 		const formData = new FormData(formElement);
 
+		const data: Record<string, string> = {};
+		formData.entries().forEach(([key, value]) => {
+			data[key] = value.toString();
+		});
+
 		loading = true;
 		clientFetchAPI<Dataset>({
 			path: '/api/datasets' + props.path,
 			method: props.method,
-			body: formData,
+			body: data,
 			successStatusCode: props.successStatusCode
 		})
 			.then((res) => {

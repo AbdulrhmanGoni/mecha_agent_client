@@ -11,7 +11,8 @@ export async function PATCH({ request, cookies, url }) {
         method: "PATCH",
         path: url.pathname,
         cookies,
-        body: await request.formData()
+        headers: { "content-type": "application/json" },
+        body: await request.text()
     })
 
     return new Response(response.body, { status: response.status });
