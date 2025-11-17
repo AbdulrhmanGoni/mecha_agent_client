@@ -1,11 +1,13 @@
 {
   "lockfileVersion": 1,
+  "configVersion": 0,
   "workspaces": {
     "": {
       "name": "mecha-agent-client",
       "dependencies": {
         "@auth/sveltekit": "^1.7.4",
         "@floating-ui/dom": "^1.6.12",
+        "@mecha_agent_inference_client/sveltekit": "^1.5.1",
         "@tailwindcss/container-queries": "^0.1.1",
         "@tailwindcss/forms": "^0.5.9",
         "@tailwindcss/typography": "^0.5.15",
@@ -119,6 +121,10 @@
     "@jridgewell/sourcemap-codec": ["@jridgewell/sourcemap-codec@1.5.5", "", {}, "sha512-cYQ9310grqxueWbl+WuIUIaiUaDcj7WOq5fVhEljNVgRfOUhY9fy2zTvfoqWsnebh8Sl70VScFbICvJnLKB0Og=="],
 
     "@jridgewell/trace-mapping": ["@jridgewell/trace-mapping@0.3.31", "", { "dependencies": { "@jridgewell/resolve-uri": "^3.1.0", "@jridgewell/sourcemap-codec": "^1.4.14" } }, "sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw=="],
+
+    "@mecha_agent_inference_client/core": ["@mecha_agent_inference_client/core@1.5.0", "", {}, "sha512-moDKO2FLeQ2hJu1JXkXpwjV3GYNQz/NbxXUZcVGC9Gn4nCcTtk1laDEgqiH9rDioAMmrGncDQ8Ad8m8L2KE7wA=="],
+
+    "@mecha_agent_inference_client/sveltekit": ["@mecha_agent_inference_client/sveltekit@1.5.1", "", { "dependencies": { "@mecha_agent_inference_client/core": "1.5.0" }, "peerDependencies": { "svelte": "^5.0.0" } }, "sha512-DMJdIZQwVs4wes1EOUywfohZ0nHKCJ5sDsVvoO8AxhYflFkL1GEXBSjxqzkx3MTpIq0JIBsYHNtOS+oddUr50Q=="],
 
     "@msgpackr-extract/msgpackr-extract-darwin-arm64": ["@msgpackr-extract/msgpackr-extract-darwin-arm64@3.0.3", "", { "os": "darwin", "cpu": "arm64" }, "sha512-QZHtlVgbAdy2zAqNA9Gu1UpIuI8Xvsd1v8ic6B2pZmeFnFcMWiPLfWXh7TVw4eGEZ/C9TH281KwhVoeQUKbyjw=="],
 
