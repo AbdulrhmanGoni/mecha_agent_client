@@ -9,13 +9,16 @@
 	let { agentMessage, agent }: { agentMessage: ChatMessage; agent: Agent } = $props();
 </script>
 
-<div class="grid grid-cols-[1fr_auto] gap-2">
+<div class="grid grid-cols-[auto_1fr] gap-2">
+	<Avatar src={agent.avatar} width="w-12">
+		<AgentFallbackAvatar />
+	</Avatar>
 	<div
 		class="card {agentMessage.error
 			? 'variant-soft-error'
-			: 'variant-soft-primary'} space-y-2 rounded-tr-none p-4"
+			: 'variant-soft-primary'} space-y-2 rounded-tl-none p-4"
 	>
-		<header class="flex items-center justify-between">
+		<header class="flex items-center">
 			<p class="font-bold">{agent?.agentName}</p>
 		</header>
 		<article
@@ -37,7 +40,4 @@
 			/>
 		{/if}
 	</div>
-	<Avatar src={agent.avatar} width="w-12">
-		<AgentFallbackAvatar />
-	</Avatar>
 </div>
