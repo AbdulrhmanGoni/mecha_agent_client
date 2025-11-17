@@ -59,7 +59,13 @@
 	</div>
 	<p class="mb-3">
 		{#if agentPageState.agent?.isPublished}
-			You have published this agent to the public, You can now integrate
+			You have published this agent to the public. Now anyone on the web can chat with it in the
+			<a class="text-primary-500 underline" href={`/public_chat/${agentPageState.agent.id}`}>
+				public chat page
+			</a>
+			<br />
+			<br />
+			Or you can integrate
 			<a
 				href="https://github.com/AbdulrhmanGoni/mecha-agent-inference-client"
 				target="_blank"
@@ -68,7 +74,7 @@
 			>
 				Mecha Agent Inference client
 			</a>
-			into your web apps so people can interact with the agent through it
+			into your own web apps so people can interact with the agent through it.
 		{:else}
 			Publish this agent to the public so people can interact with it
 		{/if}
