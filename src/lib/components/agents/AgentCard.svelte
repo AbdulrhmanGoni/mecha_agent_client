@@ -17,9 +17,16 @@
 		agentPageState.agent = agent;
 		goto('/agents/' + agent.id);
 	}}
-	class="card card-hover flex w-full cursor-pointer flex-col overflow-hidden rounded-lg shadow-xl sm:mx-auto sm:max-w-lg"
+	class="card card-hover relative flex w-full cursor-pointer flex-col overflow-hidden rounded-lg shadow-xl sm:mx-auto sm:max-w-lg"
 >
 	<div class="variant-gradient-secondary-tertiary h-32 w-full bg-gradient-to-br"></div>
+	{#if agent.isPublished}
+		<div
+			class="absolute w-40 -translate-x-11 translate-y-5 -rotate-45 rounded-md bg-success-500 px-2 py-1 text-center font-medium shadow-md dark:bg-success-800"
+		>
+			Published
+		</div>
+	{/if}
 	<div
 		class="relative mx-auto -mt-16 size-24 overflow-hidden rounded-full border-4 border-solid border-white"
 	>
