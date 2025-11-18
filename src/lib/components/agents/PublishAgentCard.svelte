@@ -7,6 +7,7 @@
 	import { agentsState } from '../../../stores/agents.svelte';
 	import PublishAgentState from './PublishAgentState.svelte';
 	import { userDataState } from '../../../stores/userData.svelte';
+	import CopyPublicChatUrlButton from './CopyPublicChatUrlButton.svelte';
 
 	const toastStore = getToastStore();
 
@@ -45,6 +46,8 @@
 				isLoading = false;
 			});
 	}
+
+	const publicChatPath = $derived(`/public_chat/${agentPageState.agent?.id}`);
 </script>
 
 <div>
@@ -60,11 +63,8 @@
 	<p class="mb-3">
 		{#if agentPageState.agent?.isPublished}
 			You have published this agent to the public. Now anyone on the web can chat with it in the
-			<a class="text-primary-500 underline" href={`/public_chat/${agentPageState.agent.id}`}>
-				public chat page
-			</a>
-			<br />
-			<br />
+			<a class="text-primary-500 underline" href={publicChatPath}> public chat page </a>
+			<CopyPublicChatUrlButton url={new URL(document.URL).origin + publicChatPath} />
 			Or you can integrate
 			<a
 				href="https://github.com/AbdulrhmanGoni/mecha-agent-inference-client"
