@@ -69,8 +69,7 @@
 			avatar: agentPageState.agent?.avatar,
 			systemInstructions: agentPageState.agent?.systemInstructions,
 			dontKnowResponse: agentPageState.agent?.dontKnowResponse,
-			greetingMessage: agentPageState.agent?.greetingMessage,
-			responseSyntax: agentPageState.agent?.responseSyntax
+			greetingMessage: agentPageState.agent?.greetingMessage
 		}}
 	/>
 {/if}

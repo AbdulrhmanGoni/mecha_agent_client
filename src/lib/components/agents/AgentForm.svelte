@@ -21,8 +21,6 @@
 
 	const props: AgentFormProps = $props();
 
-	const responseSyntaxOptions = ['markdown'];
-
 	const error = $derived(page.url.searchParams.get('error'));
 
 	const avatarIsBeingUploaded = writable(false);
@@ -128,17 +126,6 @@
 				disabled={props.isLoading}
 			/>
 			<p id="agent-name-error-message" class="text-red-600"></p>
-		</label>
-		<label class="label">
-			<span class="font-semibold">Response Syntax</span>
-			<select disabled={props.isLoading} name="responseSyntax" class="select variant-form-material">
-				<option value="none">none</option>
-				{#each responseSyntaxOptions as option}
-					<option selected={option === props.defaults?.responseSyntax} value={option}>
-						{option}
-					</option>
-				{/each}
-			</select>
 		</label>
 		<Button
 			type="submit"

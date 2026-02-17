@@ -7,7 +7,6 @@ type Agent = {
     datasetId?: string | null;
     createdAt: string;
     dontKnowResponse?: string;
-    responseSyntax?: "markdown"
     greetingMessage?: string;
     isPublished: boolean;
 };

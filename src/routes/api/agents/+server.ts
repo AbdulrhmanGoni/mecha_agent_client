@@ -7,16 +7,10 @@ export async function GET({ cookies }) {
 }
 
 export async function POST({ request, cookies, url }) {
-    const data = await request.json();
-
-    if (data.responseSyntax == "none") {
-        delete data.responseSyntax
-    }
-
     const response = await serverFetchAPI({
         method: "POST",
         path: url.pathname,
-        body: JSON.stringify(data),
+        body: await request.text(),
         headers: { "content-type": "application/json" },
         cookies
     })
