@@ -39,6 +39,7 @@
 					title="Published Agents"
 					value={userDataState.user.publishedAgents}
 					icon="hugeicons--internet text-secondary-500"
+					goTo="/agents"
 				/>
 			</div>
 			<div class="col-span-4 md:col-span-2">
