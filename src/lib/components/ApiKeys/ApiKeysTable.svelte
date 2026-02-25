@@ -14,7 +14,6 @@
 	<table class="table table-interactive relative">
 		<thead class="!variant-filled-primary">
 			<tr>
-				<th>Key</th>
 				<th>Key Name</th>
 				<th>Permissions</th>
 				<th>Status</th>

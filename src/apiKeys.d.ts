@@ -2,7 +2,6 @@ type ApiKeyPermission = import("$lib/constants/auth").Permission
 
 type ApiKeyRow = {
     id: string;
-    key: string;
     keyName: string;
     expirationDate: string | null;
     permissions: ApiKeyPermission[];

@@ -3,9 +3,10 @@
 	import { apiKeysState, apiKeymaxAgeOptions } from '../../../stores/apiKeys.svelte';
 	import Button from '../shared/Button.svelte';
 	import { permissions } from '$lib/constants/auth';
-	import { getToastStore } from '@skeletonlabs/skeleton';
+	import { getToastStore, getModalStore } from '@skeletonlabs/skeleton';
 	import LoadingSpinner from '../shared/LoadingSpinner.svelte';
 	import { userDataState } from '../../../stores/userData.svelte';
+	import CopyApiKeyModal from './CopyApiKeyModal.svelte';
 
 	let isLoading = $state(false);
 	let KEY_NAME_MIN_LENGTH = 3;
@@ -13,6 +14,7 @@
 	let permissionsError = $state('');
 
 	const toast = getToastStore();
+	const modalStore = getModalStore();
 
 	async function createApiKeyHandler(event: SubmitFormEvent) {
 		event.preventDefault();
@@ -44,10 +46,21 @@
 				permissions: selectedPermissions,
 				maxAgeInDays: Number(formData.get('maxAge')) || undefined
 			})
-				.then((newKey) => {
+				.then((data) => {
+					console.log(data);
 					formElement.reset();
-					apiKeysState.apiKeys.push(newKey);
+					apiKeysState.apiKeys.push(data.record);
 					userDataState.user!.apiKeysCount++;
+
+					modalStore.trigger({
+						type: 'component',
+						buttonTextCancel: 'Close',
+						title: 'Created API Key',
+						component: {
+							ref: CopyApiKeyModal,
+							props: { apiKey: data.key }
+						}
+					});
 				})
 				.catch((error) => {
 					toast.trigger({
@@ -96,7 +109,7 @@
 			</label>
 		</div>
 		<div class="space-y-2">
-			<span>Key's Permissions</span>
+			<span>API Key Permissions</span>
 			<div class="space-y-2">
 				{#each permissions as permission}
 					<label class="flex w-fit items-center space-x-2">
