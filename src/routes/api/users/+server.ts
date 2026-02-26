@@ -1,15 +1,15 @@
+import { NODE_ENV } from "$env/static/private";
 import serverFetchAPI from "$lib/functions/serverFetchAPI.js";
 
 export async function GET({ cookies }) {
     const response = await serverFetchAPI({ path: "/api/users", cookies })
 
     const json = await response.json();
-    if (json.error == "The jwt's signature does not match the verification signature.") {
-        cookies.delete("authjs.session-token", { path: "/" });
-        cookies.delete("__Secure-authjs.session-token", { path: "/" });
+    if (json.error && json.error.startsWith("Invalid Token")) {
+        cookies.delete(`${NODE_ENV === "production" ? "__Secure-" : ""}authjs.session-token`, { path: "/" });
     }
 
-    return new Response(JSON.stringify(json), { status: response.status });
+    return Response.json(json, { status: response.status });
 }
 
 export async function DELETE({ cookies }) {
