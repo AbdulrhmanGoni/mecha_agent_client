@@ -21,9 +21,9 @@
 	const { variant, title, message, actionIconName, actionFunction }: AlertProps = $props();
 </script>
 
-<div class={`alert ${alertVariants[variant]} flex-row items-center gap-3 px-3 py-2`}>
+<div class={`alert ${alertVariants[variant]} flex-row items-center gap-2 px-3 py-2`}>
 	<span class="iconify size-7 text-white hugeicons--alert-02"></span>
-	<div class="alert-message !mt-0 text-start text-white">
+	<div class="alert-message !m-0 text-start text-white">
 		<h4 class="h4 font-bold">{title}</h4>
 		<p class="!mt-0">{message}</p>
 	</div>
