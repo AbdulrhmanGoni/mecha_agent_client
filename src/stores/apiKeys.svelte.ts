@@ -21,6 +21,8 @@ const apiKeysState = $state<ApiKeysState>({
     refetchApiKeys: () => { },
     updateApiKeys,
     removeApiKeys,
+    page: 0,
+    pageSize: 8,
 });
 
 const apiKeymaxAgeOptions = [7, 15, 30, 60, 90, null];

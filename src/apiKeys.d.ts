@@ -19,6 +19,8 @@ type ApiKeysState = {
     refetchApiKeys: () => void;
     updateApiKeys: (keyIds: string[], newData: Partial<ApiKeyRow>) => void;
     removeApiKeys: (keyIds: string[]) => void;
+    page: number;
+    pageSize: number;
 }
 
 type CreateApiKeyInput = Pick<ApiKeyRow, "keyName" | "permissions"> & {

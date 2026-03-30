@@ -12,8 +12,8 @@ export async function POST({ request, cookies }) {
     return new Response(response.body, { status: response.status })
 }
 
-export async function GET({ cookies }) {
-    const response = await serverFetchAPI({ path: "/api/api-keys", cookies });
+export async function GET({ cookies, url }) {
+    const response = await serverFetchAPI({ path: `/api/api-keys?${url.searchParams.toString()}`, cookies });
 
     return new Response(response.body, { status: response.status })
 }

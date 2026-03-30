@@ -10,11 +10,11 @@
 		apiKeysState.isFetching = true;
 		apiKeysState.isFetched = false;
 
-		clientFetchAPI<ApiKeyRow[]>({ path: '/api/api-keys' })
+		clientFetchAPI<ApiKeyRow[]>({
+			path: `/api/api-keys?page=${apiKeysState.page}&pageSize=${apiKeysState.pageSize}`
+		})
 			.then((data) => {
-				if (data instanceof Array) {
-					apiKeysState.apiKeys = data;
-				}
+				if (data instanceof Array) apiKeysState.apiKeys = data;
 			})
 			.catch((error) => {
 				apiKeysState.error = error;
