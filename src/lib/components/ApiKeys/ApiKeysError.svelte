@@ -12,7 +12,7 @@
 		variant="error"
 		title="Error"
 		message={props.error}
-		actionIconName="stash:arrow-retry"
+		actionIconName="hugeicons--redo"
 		actionFunction={apiKeysState.refetchApiKeys}
 	/>
 </div>
